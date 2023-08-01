@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import CountrySelect from '../../components/CountrySelect';
+/* import CountrySelect from '../../components/CountrySelect'; */
 import Tooltip from '@mui/material/Tooltip';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
@@ -90,7 +90,7 @@ export default function Stepper1() {
           />
         </Grid>
         <Grid item xs={12} sm={4}>
-          {<CountrySelect />}
+          {/* {<CountrySelect />} */}
         </Grid>
         <Grid item xs={12} sm={6}>
           {}
