@@ -5,10 +5,10 @@ import CheckBoxOne from '../../components/CheckBoxOne';
 import CheckBoxTwo from '../../components/CheckBoxTwo';
 import CheckBoxThree from '../../components/CheckBoxThree';
 /* import CheckBoxFour from 'components/CheckBoxFour'; */
-import CheckBoxFive from 'components/CheckBoxFive';
-import CheckBoxSix from 'components/CheckBoxSix';
-import CheckBoxSeven from 'components/CheckBoxSeven';
-import CheckBoxEight from 'components/CheckBoxEight';
+import CheckBoxFive from '../../components/CheckBoxFive';
+import CheckBoxSix from '../../components/CheckBoxSix';
+import CheckBoxSeven from '../../components/CheckBoxSeven';
+import CheckBoxEight from '../../components/CheckBoxEight';
 
 export default function Stepper2() {
   return (

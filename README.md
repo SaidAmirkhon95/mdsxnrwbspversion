@@ -1,48 +1,70 @@
-# MDSxNRW CRE
+# Getting Started with Create React App
 
-TBD
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Docker 🐳
+## Available Scripts
 
-Everything to run an instance of MDSxNRW is provided using docker.
-All services, packages and databases can be run with a single command.
+In the project directory, you can run:
 
-### Docker run MDSxNRW
+### `npm start`
 
-First you need to set the needed ENVs.
-This can e.g. be done by creating a .env in the root of the project folder.
-There is already a `.env.default` file that you can copy/rename.
-Then, just run the provided `docker-compose.yml`.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```sh
-# up services
-docker compose -f "docker-compose.yml" up -d --build
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-```sh
-# down services
-docker compose --file "docker-compose.yml" --project-name "mdsxnrw-cre" down
-```
+### `npm test`
 
-### Docker build apps
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-This section explains how to build docker images locally.
-This is sometimes needed to e.g. test if new versions of our software is still running inside of containers.
-For your local development you can give the image any name/tag you want.
-Just remember that `docker-compose.yml` uses fixed names.
+### `npm run build`
 
-> ! Currently there is no GitLab pipeline building our images. We will need to do it by hand.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```sh
-# build mdsxnrw-frontend
-docker build -f apps/mdsxnrw-frontend/Dockerfile . -t registry.gitlab.cc-asp.fraunhofer.de/mdsxnrw/mdsxnrw-cre/mdsxnrw-frontend:<version>
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```sh
-# build mdsxnrw-backend
-docker build -f apps/mdsxnrw-backend/Dockerfile . -t registry.gitlab.cc-asp.fraunhofer.de/mdsxnrw/mdsxnrw-cre/mdsxnrw-backend:<version>
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Copyright
+### `npm run eject`
 
-Fraunhofer ISST 2023 ©
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

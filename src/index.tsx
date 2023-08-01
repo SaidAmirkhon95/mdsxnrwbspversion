@@ -2,18 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import Navbar from './components/Navbar';
-/* import Layout from './pages/Layout'; */
+import Navbar from './components/Navbar/Navbar';
 import LandingPage from './pages/Landingpage';
-import MDSxNRW from 'pages/InputForm/MDSxNRW';
-/* import App from './App'; */
+import MDSxNRW from './pages/InputForm/MDSxNRW';
 import reportWebVitals from './reportWebVitals';
 import DatenschutzText from './pages/InputForm/DatenschutzText';
 import './i18n';
-import ImpressumText from 'pages/InputForm/ImpressumText';
-import KontaktInfo from 'pages/InputForm/KontaktInfo';
-import ScrollToAbout from 'pages/AboutUs/ScrollToAbout';
-import ScrollToInfo from 'pages/Info/ScrollToInfo';
+import ImpressumText from './pages/InputForm/ImpressumText';
+import KontaktInfo from './pages/InputForm/KontaktInfo';
+import ScrollToAbout from './pages/AboutUs/ScrollToAbout';
+import ScrollToInfo from './pages/Info/ScrollToInfo';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

@@ -7,11 +7,11 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import FilterButtonOne from 'components/FilterButtonOne';
-import FilterButtonTwo from 'components/FilterButtonTwo';
-import FilterButtonThree from 'components/FilterButtonThree';
-import FilterSelect from 'components/FilterSelect';
-import { Connectors } from 'components/Connectors';
+import FilterButtonOne from '../../components/FilterButtonOne';
+import FilterButtonTwo from '../../components/FilterButtonTwo';
+import FilterButtonThree from '../../components/FilterButtonThree';
+import FilterSelect from '../../components/FilterSelect';
+import { Connectors } from '../../components/Connectors';
 import ReactPaginate from 'react-paginate';
 
 const myComponent = {
