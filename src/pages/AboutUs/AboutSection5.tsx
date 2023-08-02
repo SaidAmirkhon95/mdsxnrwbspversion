@@ -107,17 +107,17 @@ const AboutSection5 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Typography
-                gutterBottom
-                variant={isMobile ? 'h6' : 'h2'}
-                component='div'
-                textAlign='center'
-                marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
-              >
-                Transparenz
-              </Typography>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Typography
+              gutterBottom
+              variant={isMobile ? 'h6' : 'h2'}
+              component='div'
+              textAlign='center'
+              marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
+            >
+              Transparenz
+            </Typography>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -130,37 +130,37 @@ const AboutSection5 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '0px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url(./reviews.svg)',
-                    backgroundPosition: 'left',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: isMobile ? 200 : isTablet ? 300 : 230,
-                    height: isMobile ? '160px' : isTablet ? '200px' : '160px',
-                    width: isMobile ? '200px' : isTablet ? '300px' : '530px',
-                    marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
-                  }}
-                ></Box>
-                <CardContent>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign={isMobile ? 'left' : 'left'}
-                  >
-                    Von besonderem Stellenwert ist die Transparenz unserer Recommendation Engine.
-                    Die Connectorempfehlung wird daher möglichst nachvollziehbar gestaltet und mit
-                    unseren Partnern gemeinsam entwickelt. Über den Connector-Score ist einsehbar
-                    welcher Connector wie gut zu Ihrem Unternehmen passt. Es besteht außerdem die
-                    Möglichkeit nachzuvollziehen, wie sich der Score berechnet und welche Merkmale
-                    bei der Berechnung entscheidend sind.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
+            >
+              <Box
+                sx={{
+                  backgroundImage: 'url(./reviews.svg)',
+                  backgroundPosition: 'left',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: isMobile ? 200 : isTablet ? 300 : 230,
+                  height: isMobile ? '160px' : isTablet ? '200px' : '160px',
+                  width: isMobile ? '200px' : isTablet ? '300px' : '530px',
+                  marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                }}
+              ></Box>
+              <CardContent>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign={isMobile ? 'left' : 'left'}
+                >
+                  Von besonderem Stellenwert ist die Transparenz unserer Recommendation Engine. Die
+                  Connectorempfehlung wird daher möglichst nachvollziehbar gestaltet und mit unseren
+                  Partnern gemeinsam entwickelt. Über den Connector-Score ist einsehbar welcher
+                  Connector wie gut zu Ihrem Unternehmen passt. Es besteht außerdem die Möglichkeit
+                  nachzuvollziehen, wie sich der Score berechnet und welche Merkmale bei der
+                  Berechnung entscheidend sind.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

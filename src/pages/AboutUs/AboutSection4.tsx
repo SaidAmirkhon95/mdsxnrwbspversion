@@ -108,17 +108,17 @@ const AboutSection4 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Typography
-                gutterBottom
-                variant={isMobile ? 'h6' : 'h2'}
-                component='div'
-                textAlign='center'
-                marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
-              >
-                NRW
-              </Typography>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Typography
+              gutterBottom
+              variant={isMobile ? 'h6' : 'h2'}
+              component='div'
+              textAlign='center'
+              marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
+            >
+              NRW
+            </Typography>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -131,51 +131,51 @@ const AboutSection4 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '0px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url(./image1.svg)',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
-                    height: isMobile ? '80px' : isTablet ? '120px' : '140px',
-                    width: isMobile ? '300px' : isTablet ? '350px' : '530px',
-                    marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
-                  }}
-                ></Box>
-                <CardContent>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign={isMobile ? 'left' : 'left'}
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
+            >
+              <Box
+                sx={{
+                  backgroundImage: 'url(./image1.svg)',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
+                  height: isMobile ? '80px' : isTablet ? '120px' : '140px',
+                  width: isMobile ? '300px' : isTablet ? '350px' : '530px',
+                  marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                }}
+              ></Box>
+              <CardContent>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign={isMobile ? 'left' : 'left'}
+                >
+                  Nachhaltige, digitale und einfache Mobilität wird für viele Menschen immer
+                  wichtiger. Als bevölkerungsstärkstes Bundesland mit 4,8 Millionen&nbsp;
+                  <a
+                    target='_blank'
+                    href='https://www.it.nrw/pendlerstatistik-nrw-48-millionen-erwerbstaetige-pendeln-zur-arbeit-eine-andere-gemeinde-17066'
+                    style={{ color: '#616161' }}
                   >
-                    Nachhaltige, digitale und einfache Mobilität wird für viele Menschen immer
-                    wichtiger. Als bevölkerungsstärkstes Bundesland mit 4,8 Millionen&nbsp;
-                    <a
-                      target='_blank'
-                      href='https://www.it.nrw/pendlerstatistik-nrw-48-millionen-erwerbstaetige-pendeln-zur-arbeit-eine-andere-gemeinde-17066'
-                      style={{ color: '#616161' }}
-                    >
-                      Berufspendlern
-                    </a>
-                    &nbsp;und 20% der gesamten&nbsp;
-                    <a
-                      target='_blank'
-                      href='https://www.strassen.nrw.de/de/verkehrsdaten.html'
-                      style={{ color: '#616161' }}
-                    >
-                      Fahrleistung
-                    </a>
-                    &nbsp;in Deutschland hat Nordrhein-Westfalen ein besonderes Interesse daran
-                    innovative Mobilitätslösungen zu fördern und einzusetzen. MDSxNRW reiht sich in
-                    diese Digitalisierungsoffensive ein.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+                    Berufspendlern
+                  </a>
+                  &nbsp;und 20% der gesamten&nbsp;
+                  <a
+                    target='_blank'
+                    href='https://www.strassen.nrw.de/de/verkehrsdaten.html'
+                    style={{ color: '#616161' }}
+                  >
+                    Fahrleistung
+                  </a>
+                  &nbsp;in Deutschland hat Nordrhein-Westfalen ein besonderes Interesse daran
+                  innovative Mobilitätslösungen zu fördern und einzusetzen. MDSxNRW reiht sich in
+                  diese Digitalisierungsoffensive ein.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

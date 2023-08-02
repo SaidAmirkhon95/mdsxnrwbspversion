@@ -107,17 +107,17 @@ const AboutSection6 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Typography
-                gutterBottom
-                variant={isMobile ? 'h6' : 'h2'}
-                component='div'
-                textAlign='center'
-                marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
-              >
-                Datensouveränität
-              </Typography>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Typography
+              gutterBottom
+              variant={isMobile ? 'h6' : 'h2'}
+              component='div'
+              textAlign='center'
+              marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
+            >
+              Datensouveränität
+            </Typography>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -130,38 +130,37 @@ const AboutSection6 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '0px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url(./security.svg)',
-                    backgroundPosition: isMobile ? 'center' : 'left',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: isMobile ? 150 : isTablet ? 200 : 230,
-                    height: isMobile ? '150px' : isTablet ? '180px' : '200px',
-                    width: isMobile ? '300px' : isTablet ? '350px' : '530px',
-                    marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
-                  }}
-                ></Box>
-                <CardContent>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign={isMobile ? 'left' : 'left'}
-                  >
-                    Sie entscheiden, was mit Ihren Daten passiert. Für die Entwicklung von
-                    innovativen Geschäftsmodellen ist das Teilen von Daten wichtiger denn je. Sobald
-                    der eigene Datenschatz jedoch die Unternehmensgrenzen verlässt, kommen
-                    Sicherheitsbedenken auf. Ein zentrales Versprechen von Datenräumen ist daher die
-                    Datensouveränität. Auf diese Weise können Sie jederzeit sicher sein, dass Ihre
-                    Daten so genutzt werden, wie Sie es vorgesehen haben – auch außerhalb Ihrer
-                    Unternehmensgrenzen.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
+            >
+              <Box
+                sx={{
+                  backgroundImage: 'url(./security.svg)',
+                  backgroundPosition: isMobile ? 'center' : 'left',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: isMobile ? 150 : isTablet ? 200 : 230,
+                  height: isMobile ? '150px' : isTablet ? '180px' : '200px',
+                  width: isMobile ? '300px' : isTablet ? '350px' : '530px',
+                  marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                }}
+              ></Box>
+              <CardContent>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign={isMobile ? 'left' : 'left'}
+                >
+                  Sie entscheiden, was mit Ihren Daten passiert. Für die Entwicklung von innovativen
+                  Geschäftsmodellen ist das Teilen von Daten wichtiger denn je. Sobald der eigene
+                  Datenschatz jedoch die Unternehmensgrenzen verlässt, kommen Sicherheitsbedenken
+                  auf. Ein zentrales Versprechen von Datenräumen ist daher die Datensouveränität.
+                  Auf diese Weise können Sie jederzeit sicher sein, dass Ihre Daten so genutzt
+                  werden, wie Sie es vorgesehen haben – auch außerhalb Ihrer Unternehmensgrenzen.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

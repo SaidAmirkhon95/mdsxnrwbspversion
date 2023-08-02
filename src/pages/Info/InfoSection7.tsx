@@ -111,19 +111,19 @@ const InfoSection7 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Box
-                sx={{
-                  backgroundImage: 'url(./analytics.svg)',
-                  backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
-                  height: isMobile ? '650px' : isTablet ? '580px' : '780px',
-                  width: isMobile ? '300px' : isTablet ? '350px' : '630px',
-                  marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
-                }}
-              ></Box>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Box
+              sx={{
+                backgroundImage: 'url(./analytics.svg)',
+                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
+                height: isMobile ? '650px' : isTablet ? '580px' : '780px',
+                width: isMobile ? '300px' : isTablet ? '350px' : '630px',
+                marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
+              }}
+            ></Box>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -136,56 +136,56 @@ const InfoSection7 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '-100px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
-              >
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant={isMobile ? 'h6' : 'h5'}
-                    component='div'
-                    textAlign='center'
-                  >
-                    Die Herausforderung
-                    <br />
-                    <br />
-                  </Typography>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign='left'
-                    /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
-                  >
-                    Der Erfolg eines Datenraumes ist abhängig von der Anzahl und Vielfältigkeit
-                    seiner Teilnehmer.
-                    <br />
-                    <br />
-                    Ein wiederkehrender Prozess ist die Anbindung von neuen Teilnehmern an einen
-                    Datenraum, die Daten in den Datenraum einbringen oder verfügbare Daten für die
-                    eigene Wertschöpfung nutzen möchten. Die zentrale Softwarekomponente ist hierbei
-                    der Connector.
-                    <br />
-                    <br />
-                    Potenzielle Datenraumteilnehmer können sehr unterschiedliche organisatorische
-                    sowie technische Anforderungen haben. Vom privaten Mobilitätsdienstleister über
-                    öffentliche Open Data Provider oder die kommunale Verwaltung bis zum
-                    selbstständigen App- Entwickler sind viele verschiedene Unternehmen vertreten.
-                    Zusätzlich existieren verschiedenste Connectorlösungen.
-                    <br />
-                    <br />
-                    Für potenzielle Datenraumteilnehmer ist es eine große Herausforderung den für
-                    ihre Bedürfnisse benötigten Connector zu identifizieren und einzurichten.
-                    <br />
-                    <br />
-                    <span style={{ fontWeight: 'bold' }}>
-                      Die Auswahl des richtigen Connectors und dessen Deployment-Möglichkeiten sind
-                      daher entscheidend.
-                    </span>
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
+            >
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant={isMobile ? 'h6' : 'h5'}
+                  component='div'
+                  textAlign='center'
+                >
+                  Die Herausforderung
+                  <br />
+                  <br />
+                </Typography>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign='left'
+                  /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
+                >
+                  Der Erfolg eines Datenraumes ist abhängig von der Anzahl und Vielfältigkeit seiner
+                  Teilnehmer.
+                  <br />
+                  <br />
+                  Ein wiederkehrender Prozess ist die Anbindung von neuen Teilnehmern an einen
+                  Datenraum, die Daten in den Datenraum einbringen oder verfügbare Daten für die
+                  eigene Wertschöpfung nutzen möchten. Die zentrale Softwarekomponente ist hierbei
+                  der Connector.
+                  <br />
+                  <br />
+                  Potenzielle Datenraumteilnehmer können sehr unterschiedliche organisatorische
+                  sowie technische Anforderungen haben. Vom privaten Mobilitätsdienstleister über
+                  öffentliche Open Data Provider oder die kommunale Verwaltung bis zum
+                  selbstständigen App- Entwickler sind viele verschiedene Unternehmen vertreten.
+                  Zusätzlich existieren verschiedenste Connectorlösungen.
+                  <br />
+                  <br />
+                  Für potenzielle Datenraumteilnehmer ist es eine große Herausforderung den für ihre
+                  Bedürfnisse benötigten Connector zu identifizieren und einzurichten.
+                  <br />
+                  <br />
+                  <span style={{ fontWeight: 'bold' }}>
+                    Die Auswahl des richtigen Connectors und dessen Deployment-Möglichkeiten sind
+                    daher entscheidend.
+                  </span>
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
         <Grid

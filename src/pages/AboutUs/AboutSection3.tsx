@@ -107,17 +107,17 @@ const AboutSection3 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Typography
-                gutterBottom
-                variant={isMobile ? 'h6' : 'h2'}
-                component='div'
-                textAlign='center'
-                marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
-              >
-                Expertise
-              </Typography>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Typography
+              gutterBottom
+              variant={isMobile ? 'h6' : 'h2'}
+              component='div'
+              textAlign='center'
+              marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
+            >
+              Expertise
+            </Typography>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -130,38 +130,37 @@ const AboutSection3 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '0px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url(./FraunhoferISST.png)',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
-                    height: isMobile ? '80px' : isTablet ? '120px' : '140px',
-                    width: isMobile ? '300px' : isTablet ? '350px' : '530px',
-                    marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
-                  }}
-                ></Box>
-                <CardContent>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign={isMobile ? 'left' : 'left'}
-                  >
-                    Die Fraunhofer-Gesellschaft ist ein Pionier für innovative Entwicklungen und
-                    wissenschaftliche Exzellenz in der Datenökonomie. 2015 setzte Fraunhofer den
-                    Grundstein für die Entwicklung der International Data Spaces. Seitdem
-                    spezifiziert und entwickelt Fraunhofer die Technologie gemeinsam mit der
-                    IDS-Community. Als Forschungseinrichtungen vertritt Fraunhofer eine
-                    unvoreingenommene und neutrale Haltung, um sich für Datensouveränität
-                    einzusetzen.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
+            >
+              <Box
+                sx={{
+                  backgroundImage: 'url(./FraunhoferISST.png)',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
+                  height: isMobile ? '80px' : isTablet ? '120px' : '140px',
+                  width: isMobile ? '300px' : isTablet ? '350px' : '530px',
+                  marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                }}
+              ></Box>
+              <CardContent>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign={isMobile ? 'left' : 'left'}
+                >
+                  Die Fraunhofer-Gesellschaft ist ein Pionier für innovative Entwicklungen und
+                  wissenschaftliche Exzellenz in der Datenökonomie. 2015 setzte Fraunhofer den
+                  Grundstein für die Entwicklung der International Data Spaces. Seitdem spezifiziert
+                  und entwickelt Fraunhofer die Technologie gemeinsam mit der IDS-Community. Als
+                  Forschungseinrichtungen vertritt Fraunhofer eine unvoreingenommene und neutrale
+                  Haltung, um sich für Datensouveränität einzusetzen.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

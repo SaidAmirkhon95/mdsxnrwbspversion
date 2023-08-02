@@ -11,7 +11,7 @@ import AboutSection7 from './AboutSection7';
 const ScrollToAbout = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sections = [
-    { id: 0, component: <AboutSection1 /> },
+    /* { id: 0, component: <AboutSection1 /> }, */
     { id: 1, component: <AboutSection2 /> },
     { id: 3, component: <AboutSection3 /> },
     { id: 4, component: <AboutSection4 /> },
@@ -25,7 +25,7 @@ const ScrollToAbout = () => {
   }, [activeSection]);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 1, behavior: 'smooth' });
   };
 
   const scrollToSection = (index: any) => {

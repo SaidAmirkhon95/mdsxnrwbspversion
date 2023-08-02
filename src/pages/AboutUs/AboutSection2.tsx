@@ -96,6 +96,7 @@ const AboutSection2 = () => {
           flexDirection={isMobile ? 'column' : isTablet ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
+          marginTop='70px'
         >
           <Grid
             item
@@ -107,17 +108,17 @@ const AboutSection2 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Typography
-                gutterBottom
-                variant={isMobile ? 'h6' : 'h2'}
-                component='div'
-                textAlign='center'
-                marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
-              >
-                Über das Projekt
-              </Typography>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Typography
+              gutterBottom
+              variant={isMobile ? 'h6' : 'h2'}
+              component='div'
+              textAlign='center'
+              marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
+            >
+              Über das Projekt
+            </Typography>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -130,36 +131,36 @@ const AboutSection2 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '0px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url(./MDSxNRWLogo1.svg)',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: isMobile ? 200 : isTablet ? 350 : 500,
-                    height: isMobile ? '80px' : isTablet ? '120px' : '140px',
-                    width: isMobile ? '300px' : isTablet ? '390px' : '530px',
-                    marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
-                  }}
-                ></Box>
-                <CardContent>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign={isMobile ? 'left' : 'left'}
-                  >
-                    Mit MDSxNRW entsteht das erste Portal zur einfachen Auswahl eines passenden
-                    Connectors und zur unkomplizierten Anbindung an den Mobility Data Space. Das
-                    Projekt wird seit August 2022 vom Fraunhofer Institut für Software- und
-                    Systemtechnik ISST durchgeführt und ist gefördert durch die Landesregierung
-                    Nordrhein-Westfalen mit einer Laufzeit von 36 Monaten.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 650 : 800, height: isMobile ? 770 : 700 }}
+            >
+              <Box
+                sx={{
+                  backgroundImage: 'url(./MDSxNRWLogo1.svg)',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: isMobile ? 200 : isTablet ? 350 : 500,
+                  height: isMobile ? '80px' : isTablet ? '120px' : '140px',
+                  width: isMobile ? '300px' : isTablet ? '390px' : '530px',
+                  marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                }}
+              ></Box>
+              <CardContent>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign={isMobile ? 'left' : 'left'}
+                >
+                  Mit MDSxNRW entsteht das erste Portal zur einfachen Auswahl eines passenden
+                  Connectors und zur unkomplizierten Anbindung an den Mobility Data Space. Das
+                  Projekt wird seit August 2022 vom Fraunhofer Institut für Software- und
+                  Systemtechnik ISST durchgeführt und ist gefördert durch die Landesregierung
+                  Nordrhein-Westfalen mit einer Laufzeit von 36 Monaten.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

@@ -109,19 +109,19 @@ const InfoSection3 = () => {
             ref={sectionRef}
             marginLeft={isMobile ? '' : isTablet ? '0px' : ''}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Box
-                sx={{
-                  backgroundImage: 'url(./connection_lcud.svg)',
-                  backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: isMobile ? 300 : isTablet ? 300 : 630,
-                  height: isMobile ? '480px' : isTablet ? '580px' : '780px',
-                  width: isMobile ? '300px' : isTablet ? '350px' : '630px',
-                  marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
-                }}
-              ></Box>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Box
+              sx={{
+                backgroundImage: 'url(./connection_lcud.svg)',
+                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: isMobile ? 300 : isTablet ? 300 : 630,
+                height: isMobile ? '480px' : isTablet ? '580px' : '780px',
+                width: isMobile ? '300px' : isTablet ? '350px' : '630px',
+                marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
+              }}
+            ></Box>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -134,55 +134,55 @@ const InfoSection3 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '-50px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
-              >
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant={isMobile ? 'h6' : 'h5'}
-                    component='div'
-                    textAlign='center'
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
+            >
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant={isMobile ? 'h6' : 'h5'}
+                  component='div'
+                  textAlign='center'
+                >
+                  Souveräner Datenaustausch über Unternehmensgrenzen hinweg
+                  <br />
+                  <br />
+                </Typography>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign='left'
+                  /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
+                >
+                  Teilnehmer in einem Datenökosystem müssen sich vergewissern, dass die von ihnen
+                  geteilten Daten nach ihren Vorstellungen genutzt werden und dass angebotenen Daten
+                  ihren Qualitätsanforderungen genügen. Um dies zu erreichen schließen sich die
+                  Teilnehmer des Ökosystems zusammen und gründen einen Datenraum.
+                  <br />
+                  <br />
+                  In diesem Kontext beschreibt ein Datenraum eine Infrastruktur, die Transaktionen
+                  zwischen verschiedenen Parteien eines Datenökosystems auf Grundlage des
+                  Governance-Rahmens dieses Datenraumes ermöglicht.
+                  <br />
+                  <br />
+                  Eine Schlüsselfunktion des Datenraumes ist die Wahrung der Datensouveränität. Der
+                  Datengeber in einem Datenraum behält dabei die vollständige Kontrolle über seine
+                  Daten – auch wenn diese durch Dritte genutzt wurden.
+                  <br />
+                  <br />
+                  Weitere Informationen zu Datenräumen und Datensouveränität finden Sie&nbsp;
+                  <a
+                    target='_blank'
+                    rel='interDataSpace'
+                    href='https://internationaldataspaces.org/'
                   >
-                    Souveräner Datenaustausch über Unternehmensgrenzen hinweg
-                    <br />
-                    <br />
-                  </Typography>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign='left'
-                    /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
-                  >
-                    Teilnehmer in einem Datenökosystem müssen sich vergewissern, dass die von ihnen
-                    geteilten Daten nach ihren Vorstellungen genutzt werden und dass angebotenen
-                    Daten ihren Qualitätsanforderungen genügen. Um dies zu erreichen schließen sich
-                    die Teilnehmer des Ökosystems zusammen und gründen einen Datenraum.
-                    <br />
-                    <br />
-                    In diesem Kontext beschreibt ein Datenraum eine Infrastruktur, die Transaktionen
-                    zwischen verschiedenen Parteien eines Datenökosystems auf Grundlage des
-                    Governance-Rahmens dieses Datenraumes ermöglicht.
-                    <br />
-                    <br />
-                    Eine Schlüsselfunktion des Datenraumes ist die Wahrung der Datensouveränität.
-                    Der Datengeber in einem Datenraum behält dabei die vollständige Kontrolle über
-                    seine Daten – auch wenn diese durch Dritte genutzt wurden.
-                    <br />
-                    <br />
-                    Weitere Informationen zu Datenräumen und Datensouveränität finden Sie&nbsp;
-                    <a
-                      target='_blank'
-                      rel='interDataSpace'
-                      href='https://internationaldataspaces.org/'
-                    >
-                      hier
-                    </a>
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+                    hier
+                  </a>
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>

@@ -112,145 +112,145 @@ const AboutSection7 = () => {
             spacing={6}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid item xs={12} sm={6}>
-                <Grid
-                  container
-                  direction='row'
-                  justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-end'}
-                  alignItems='center'
-                  sx={{
-                    '@media (max-width: 900px)': {
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      marginBottom: '15px',
-                    },
-                  }}
-                >
-                  <Grid item xs={10} sm={4}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ marginInline: 'auto' }}>
-                        <img
-                          style={{
-                            borderRadius: '50%',
-                            width: isTablet ? '90%' : isMobile ? '80%' : '100%',
-                            maxWidth: '250px',
-                          }}
-                          src={Marcel}
-                          alt='Marcel Altendeitering'
-                        />
-                      </div>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid item xs={12} sm={6}>
+              <Grid
+                container
+                direction='row'
+                justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-end'}
+                alignItems='center'
+                sx={{
+                  '@media (max-width: 900px)': {
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    marginBottom: '15px',
+                  },
+                }}
+              >
+                <Grid item xs={10} sm={4}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ marginInline: 'auto' }}>
+                      <img
+                        style={{
+                          borderRadius: '50%',
+                          width: isTablet ? '90%' : isMobile ? '80%' : '100%',
+                          maxWidth: '250px',
+                        }}
+                        src={Marcel}
+                        alt='Marcel Altendeitering'
+                      />
                     </div>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    container
-                    direction='column'
-                    justifyContent='center'
-                    alignItems={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+                  </div>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  container
+                  direction='column'
+                  justifyContent='center'
+                  alignItems={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+                >
+                  <Typography
+                    variant={isMobile ? 'h6' : isTablet ? 'h5' : 'h4'}
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <Typography
-                      variant={isMobile ? 'h6' : isTablet ? 'h5' : 'h4'}
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Marcel Altendeitering
-                    </Typography>
-                    <Typography
-                      variant={isMobile ? 'subtitle2' : isTablet ? 'h5' : 'h6'}
-                      sx={{
-                        '@media (max-width: 900px)': {
-                          fontSize: '20px',
-                        },
-                        '@media (max-width: 600px)': {
-                          display: 'flex',
-                          alignItems: 'center',
-                          flexWrap: 'wrap',
-                          justifyContent: 'center',
-                        },
-                      }}
-                    >
-                      Email:&nbsp;&nbsp;
-                      <a href={`mailto: marcel.altendeitering@isst.fraunhofer.de`}>
-                        marcel.altendeitering@isst.fraunhofer.de
-                      </a>
-                      <br />
-                      Tel.: &nbsp;&nbsp;&nbsp;&nbsp;+49 231 97677-461
-                    </Typography>
-                  </Grid>
+                    Marcel Altendeitering
+                  </Typography>
+                  <Typography
+                    variant={isMobile ? 'subtitle2' : isTablet ? 'h5' : 'h6'}
+                    sx={{
+                      '@media (max-width: 900px)': {
+                        fontSize: '20px',
+                      },
+                      '@media (max-width: 600px)': {
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                      },
+                    }}
+                  >
+                    Email:&nbsp;&nbsp;
+                    <a href={`mailto: marcel.altendeitering@isst.fraunhofer.de`}>
+                      marcel.altendeitering@isst.fraunhofer.de
+                    </a>
+                    <br />
+                    Tel.: &nbsp;&nbsp;&nbsp;&nbsp;+49 231 97677-461
+                  </Typography>
                 </Grid>
               </Grid>
-            </Slide>
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid item xs={12} sm={6}>
-                <Grid
-                  container
-                  direction='row'
-                  justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
-                  alignItems='center'
-                  sx={{
-                    '@media (max-width: 900px)': {
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                    },
-                  }}
-                >
-                  <Grid item xs={10} sm={4}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ marginInline: 'auto' }}>
-                        <img
-                          style={{
-                            borderRadius: '50%',
-                            width: isTablet ? '90%' : isMobile ? '80%' : '100%',
-                            maxWidth: '250px',
-                          }}
-                          src={Marius}
-                          alt='Marius Hupperz'
-                        />
-                      </div>
+            </Grid>
+            {/* </Slide> */}
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid item xs={12} sm={6}>
+              <Grid
+                container
+                direction='row'
+                justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+                alignItems='center'
+                sx={{
+                  '@media (max-width: 900px)': {
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  },
+                }}
+              >
+                <Grid item xs={10} sm={4}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ marginInline: 'auto' }}>
+                      <img
+                        style={{
+                          borderRadius: '50%',
+                          width: isTablet ? '90%' : isMobile ? '80%' : '100%',
+                          maxWidth: '250px',
+                        }}
+                        src={Marius}
+                        alt='Marius Hupperz'
+                      />
                     </div>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    container
-                    direction='column'
-                    justifyContent='center'
-                    alignItems={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+                  </div>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  container
+                  direction='column'
+                  justifyContent='center'
+                  alignItems={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+                >
+                  <Typography
+                    variant={isMobile ? 'h6' : isTablet ? 'h5' : 'h4'}
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <Typography
-                      variant={isMobile ? 'h6' : isTablet ? 'h5' : 'h4'}
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Marius Hupperz
-                    </Typography>
-                    <Typography
-                      variant={isMobile ? 'subtitle2' : isTablet ? 'h5' : 'h6'}
-                      sx={{
-                        '@media (max-width: 900px)': {
-                          fontSize: '20px',
-                        },
-                        '@media (max-width: 600px)': {
-                          display: 'flex',
-                          alignItems: 'center',
-                          flexWrap: 'wrap',
-                          justifyContent: 'center',
-                        },
-                      }}
-                    >
-                      Email:&nbsp;&nbsp;
-                      <a href={`mailto: marius.hupperz@isst.fraunhofer.de`}>
-                        marius.hupperz@isst.fraunhofer.de
-                      </a>
-                      <br />
-                      Tel.: &nbsp;&nbsp;&nbsp;&nbsp;+49 231 97677-428
-                    </Typography>
-                  </Grid>
+                    Marius Hupperz
+                  </Typography>
+                  <Typography
+                    variant={isMobile ? 'subtitle2' : isTablet ? 'h5' : 'h6'}
+                    sx={{
+                      '@media (max-width: 900px)': {
+                        fontSize: '20px',
+                      },
+                      '@media (max-width: 600px)': {
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                      },
+                    }}
+                  >
+                    Email:&nbsp;&nbsp;
+                    <a href={`mailto: marius.hupperz@isst.fraunhofer.de`}>
+                      marius.hupperz@isst.fraunhofer.de
+                    </a>
+                    <br />
+                    Tel.: &nbsp;&nbsp;&nbsp;&nbsp;+49 231 97677-428
+                  </Typography>
                 </Grid>
               </Grid>
-            </Slide>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
           <Grid
             sx={{

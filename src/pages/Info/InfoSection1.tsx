@@ -97,7 +97,7 @@ const InfoSection1 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
-          marginTop='70px'
+          marginTop={isMobile ? '70px' : isTablet ? '50px' : ''}
         >
           <Grid
             ref={sectionRef}

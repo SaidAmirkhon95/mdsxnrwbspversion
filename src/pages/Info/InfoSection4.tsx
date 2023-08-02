@@ -107,19 +107,19 @@ const InfoSection4 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
             ref={sectionRef}
           >
-            <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Box
-                sx={{
-                  backgroundImage: 'url(./connected_world.svg)',
-                  backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: isMobile ? 300 : isTablet ? 350 : 630,
-                  height: isMobile ? '480px' : isTablet ? '580px' : '780px',
-                  width: isMobile ? '300px' : isTablet ? '350px' : '630px',
-                  marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
-                }}
-              ></Box>
-            </Slide>
+            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Box
+              sx={{
+                backgroundImage: 'url(./connected_world.svg)',
+                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: isMobile ? 300 : isTablet ? 350 : 630,
+                height: isMobile ? '480px' : isTablet ? '580px' : '780px',
+                width: isMobile ? '300px' : isTablet ? '350px' : '630px',
+                marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
+              }}
+            ></Box>
+            {/* </Slide> */}
           </Grid>
           <Grid
             ref={sectionRef}
@@ -132,46 +132,46 @@ const InfoSection4 = () => {
             alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
             marginLeft={isMobile ? '' : isTablet ? '-100px' : '-200px'}
           >
-            <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}>
-              <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
-              >
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant={isMobile ? 'h6' : 'h5'}
-                    component='div'
-                    textAlign='center'
-                  >
-                    Was sind Connectoren?
-                    <br />
-                  </Typography>
-                  <Typography
-                    variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
-                    color='text.secondary'
-                    textAlign='left'
-                    /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
-                  >
-                    <br />
-                    Connectoren stellen das Gateway in einen Datenraum dar. Diese bieten die
-                    Möglichkeit sicher und souverän Daten in einem Datenraum zu teilen.
-                    <br />
-                    <br />
-                    Über eine lokale Installation fungieren die Connectoren als Endpunkte für die
-                    Peer-2-Peer Kommunikation zwischen Datenanbieter und Datenkonsument. Zusätzlich
-                    bieten die Connectoren die Möglichkeit, Nutzungsbedingungen für die Daten zu
-                    vergeben und zu verfolgen, Services zu integrieren und die Identität der
-                    Datenraumteilnehmer zu verifizieren.
-                    <br />
-                    <br />
-                    Diese Nutzungsbedingungen werden mit den Daten ausgetauscht und stellen Regeln
-                    und Auflagen dar, unter denen die angebotenen Daten genutzt werden dürfen.
-                    Beispielsweise kann die Nutzergruppe eingeschränkt oder die Nutzung nur für eine
-                    bestimmte Zeit erlaubt werden.
-                  </Typography>
-                </CardContent>
-              </Grid>
-            </Slide>
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Grid
+              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 800 }}
+            >
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant={isMobile ? 'h6' : 'h5'}
+                  component='div'
+                  textAlign='center'
+                >
+                  Was sind Connectoren?
+                  <br />
+                </Typography>
+                <Typography
+                  variant={isMobile ? 'subtitle2' : isTablet ? 'body1' : 'h6'}
+                  color='text.secondary'
+                  textAlign='left'
+                  /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
+                >
+                  <br />
+                  Connectoren stellen das Gateway in einen Datenraum dar. Diese bieten die
+                  Möglichkeit sicher und souverän Daten in einem Datenraum zu teilen.
+                  <br />
+                  <br />
+                  Über eine lokale Installation fungieren die Connectoren als Endpunkte für die
+                  Peer-2-Peer Kommunikation zwischen Datenanbieter und Datenkonsument. Zusätzlich
+                  bieten die Connectoren die Möglichkeit, Nutzungsbedingungen für die Daten zu
+                  vergeben und zu verfolgen, Services zu integrieren und die Identität der
+                  Datenraumteilnehmer zu verifizieren.
+                  <br />
+                  <br />
+                  Diese Nutzungsbedingungen werden mit den Daten ausgetauscht und stellen Regeln und
+                  Auflagen dar, unter denen die angebotenen Daten genutzt werden dürfen.
+                  Beispielsweise kann die Nutzergruppe eingeschränkt oder die Nutzung nur für eine
+                  bestimmte Zeit erlaubt werden.
+                </Typography>
+              </CardContent>
+            </Grid>
+            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>
