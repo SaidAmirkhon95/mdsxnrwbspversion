@@ -35,7 +35,7 @@ const ImpressumText = () => {
     };
   }, []);
   return (
-    <Grid id='impressum' overflow='hidden'>
+    <Grid id='impressum' style={{ overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
       <header style={{ width: '100%', height: '100%', position: 'relative' }}>
         <img
           src={DataVisualizationThree}

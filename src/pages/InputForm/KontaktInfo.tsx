@@ -37,7 +37,7 @@ const KontaktInfo = () => {
     };
   }, []);
   return (
-    <Grid id='kontaktinfo'>
+    <Grid id='kontaktinfo' style={{ overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
       <header>
         <img
           src={DataVisualizationThree}

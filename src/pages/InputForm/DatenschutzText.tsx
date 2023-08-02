@@ -34,7 +34,7 @@ const DatenschutzText = () => {
     };
   }, []);
   return (
-    <Grid id='datenschutz' overflow='hidden'>
+    <Grid id='datenschutz' style={{ overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
       <header style={{ width: '100%', height: '100%', position: 'relative' }}>
         <img
           src={DataVisualizationThree}
