@@ -135,7 +135,7 @@ const DrawerItem = () => {
               </ListItem>
             );
           })}
-          <div style={{ marginLeft: '8%' }}>
+          <div style={{ marginLeft: '8px' }}>
             <TranslationButton />
           </div>
         </List>
