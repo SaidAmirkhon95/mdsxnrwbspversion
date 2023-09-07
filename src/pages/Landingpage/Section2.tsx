@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Slide from '@mui/material/Slide';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const Section2 = () => {
   const theme = createTheme({
@@ -28,6 +30,7 @@ const Section2 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -115,7 +118,7 @@ const Section2 = () => {
           >
             <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}>
               <Grid
-                sx={{ width: isMobile ? 320 : isTablet ? 450 : 900, height: isMobile ? 600 : 650 }}
+                sx={{ width: isMobile ? 320 : isTablet ? 450 : 650, height: isMobile ? 600 : 650 }}
               >
                 <CardContent>
                   <Typography
@@ -133,16 +136,14 @@ const Section2 = () => {
                     textAlign='center'
                   >
                     <br />
-                    <h4>Passgenaue Empfehlungen</h4>
-                    Auf Basis Ihrer Angaben sucht unsere Recommendation Engine den
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    Connector, der zu ihrem Unternehmen und Ihren Anforderungen am
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    Besten passt. Hierfür müssen Sie uns nur einige Fragen zu Ihrem
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    Unternehmen beantworten und wir suchen die passenden
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    Connectoren.
+                    <h4>
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.passgenaueEmpfehlungen
+                        : translationFunction().englishTranslations.passgenaueEmpfehlungen}
+                    </h4>
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.section2Absatz1
+                      : translationFunction().englishTranslations.section2Absatz1}
                     <br />
                   </Typography>
                   <Typography
@@ -150,18 +151,14 @@ const Section2 = () => {
                     color='text.secondary'
                     textAlign='center'
                   >
-                    <h4>Wie funktioniert das?</h4>
-                    Unsere Recommendation Engine errechnet aus der Überlagerung
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    von Ihren unternehmensspezifischen Angaben und den Angaben
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    der Connectoranbieter einen Score, der wiedergibt wie gut
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    sich die Spezifikationen überschneiden. Die Berechnung des
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    Scores und die relevanten Eigenschaften können Sie später
-                    {isMobile ? '' : isTablet ? '' : <br />}
-                    einsehen.
+                    <h4>
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.wieFunktioniertDas
+                        : translationFunction().englishTranslations.wieFunktioniertDas}
+                    </h4>
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.section2Absatz2
+                      : translationFunction().englishTranslations.section2Absatz2}
                   </Typography>
                 </CardContent>
                 <CardActions
@@ -186,7 +183,9 @@ const Section2 = () => {
                         marginBottom: '5px',
                       }}
                     />
-                    Zur Projektbeschreibung
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.projektbeschreibung
+                      : translationFunction().englishTranslations.projektbeschreibung}
                   </Button>
                 </CardActions>
               </Grid>
@@ -211,7 +210,7 @@ const Section2 = () => {
                   backgroundPosition: isMobile ? 'center' : isTablet ? 'bottom' : 'bottom',
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: isMobile ? 300 : isTablet ? 480 : 730,
-                  height: isMobile ? '480px' : isTablet ? '580px' : '780px',
+                  height: isMobile ? '480px' : isTablet ? '580px' : '720px',
                   width: isMobile ? '300px' : isTablet ? '350px' : '530px',
                   marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
                 }}

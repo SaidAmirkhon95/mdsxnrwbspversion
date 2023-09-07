@@ -12,6 +12,8 @@ import Kontakt from 'pages/InputForm/Kontakt';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const Section3 = () => {
   const theme = createTheme({
@@ -30,6 +32,7 @@ const Section3 = () => {
       },
     },
   });
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   useEffect(() => {
@@ -119,17 +122,29 @@ const Section3 = () => {
                 />
                 <CardContent>
                   <Typography variant='body1' color='text.secondary' textAlign='center'>
-                    Innovationen aus Daten
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer1
+                      : translationFunction().englishTranslations.fraunhofer1}
                     <br />
-                    Das Fraunhofer-Institut für Software-
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer2
+                      : translationFunction().englishTranslations.fraunhofer2}
                     <br />
-                    und Systemtechnik ISST identifiziert
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer3
+                      : translationFunction().englishTranslations.fraunhofer3}
                     <br />
-                    zusammen mit Unternehmen den
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer4
+                      : translationFunction().englishTranslations.fraunhofer4}
                     <br />
-                    strategischen Wert ihrer Daten und
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer5
+                      : translationFunction().englishTranslations.fraunhofer5}
                     <br />
-                    macht sie nutzbar.
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.fraunhofer6
+                      : translationFunction().englishTranslations.fraunhofer6}
                     <br />
                     <br />
                   </Typography>
@@ -161,12 +176,31 @@ const Section3 = () => {
                 />
                 <CardContent>
                   <Typography variant='body1' color='text.secondary' textAlign='center'>
-                    Datenraum für die Mobilität von Morgen
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace1
+                      : translationFunction().englishTranslations.mobilityDataSpace1}
                     <br />
-                    Der Mobility Data Space ist die Data <br /> Sharing Community für alle, die die
-                    <br /> Mobilität umweltfreundlicher, sicherer, <br /> nutzerfreundlicher und
-                    fair gestalten <br /> wollen.
-                    <br /> <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace2
+                      : translationFunction().englishTranslations.mobilityDataSpace2}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace3
+                      : translationFunction().englishTranslations.mobilityDataSpace3}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace4
+                      : translationFunction().englishTranslations.mobilityDataSpace4}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace5
+                      : translationFunction().englishTranslations.mobilityDataSpace5}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.mobilityDataSpace6
+                      : translationFunction().englishTranslations.mobilityDataSpace6}
+                    <br />
+                    <br />
                   </Typography>
                 </CardContent>
                 <CardActions
@@ -203,12 +237,27 @@ const Section3 = () => {
                 />
                 <CardContent>
                   <Typography variant='body1' color='text.secondary' textAlign='center'>
-                    Das Data Spaces Support Centre <br /> (DSSC) errichtet und betreibt eine
-                    <br /> Supportplattform für Datenräume, um <br /> die Ziele der «European
-                    Strategy of
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.dssc1
+                      : translationFunction().englishTranslations.dssc1}
                     <br />
-                    Data» umzusetzen.
-                    <br /> <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.dssc2
+                      : translationFunction().englishTranslations.dssc2}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.dssc3
+                      : translationFunction().englishTranslations.dssc3}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.dssc4
+                      : translationFunction().englishTranslations.dssc4}
+                    <br />
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.dssc5
+                      : translationFunction().englishTranslations.dssc5}
+                    <br />
+                    <br />
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'center', mt: '24px', alignItems: 'stretch' }}>

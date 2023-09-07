@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
 import { Link as ScrollLink } from 'react-scroll';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const InfoSection1 = () => {
   const theme = createTheme({
@@ -25,6 +27,7 @@ const InfoSection1 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -142,10 +145,10 @@ const InfoSection1 = () => {
                     /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
                   >
                     <br />
-                    Durch die zielgerichtete Verwendung von Daten können innovative und nachhaltige
-                    Produkte und Dienstleistungen entstehen. Einzelne Akteure besitzen jedoch selten
-                    genug Daten für innovative Business Cases, um Daten zu monetarisieren oder
-                    Kosten einzusparen. In den jeweiligen&nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection11
+                      : translationFunction().englishTranslations.infoSection11}
+                    &nbsp;
                     <ScrollLink
                       to='section-one'
                       smooth={true}
@@ -161,13 +164,20 @@ const InfoSection1 = () => {
                         fontWeight: 'bold',
                       }}
                     >
-                      Datenökosysteme
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.infoSection12
+                        : translationFunction().englishTranslations.infoSection12}
                     </ScrollLink>
-                    &nbsp;tauschen sich daher Partner aus und teilen ihre Daten, um die benötigte
-                    Datengrundlage zu schaffen.
+                    &nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection13
+                      : translationFunction().englishTranslations.infoSection13}
                     <br />
                     <br />
-                    Damit Teilnehmer innerhalb dieser Ökosysteme einen sicheren und&nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection14
+                      : translationFunction().englishTranslations.infoSection14}
+                    &nbsp;
                     <ScrollLink
                       to='section-two'
                       smooth={true}
@@ -181,10 +191,15 @@ const InfoSection1 = () => {
                         fontWeight: 'bold',
                       }}
                     >
-                      souveränen Datenaustausch
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.infoSection15
+                        : translationFunction().englishTranslations.infoSection15}
                     </ScrollLink>
-                    &nbsp;durchführen können bilden sich immer mehr Datenrauminitiativen. Der für
-                    die Domäne Mobilität zuständige&nbsp;
+                    &nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection16
+                      : translationFunction().englishTranslations.infoSection16}
+                    &nbsp;
                     <ScrollLink
                       to='section-five'
                       smooth={true}
@@ -200,8 +215,11 @@ const InfoSection1 = () => {
                     >
                       Mobility Data Space
                     </ScrollLink>
-                    &nbsp;ermöglicht dafür innovative und nachhaltige Anwendungsfälle im
-                    Mobilitätssektor. Die&nbsp;
+                    &nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection17
+                      : translationFunction().englishTranslations.infoSection17}
+                    &nbsp;
                     <ScrollLink
                       to='section-six'
                       smooth={true}
@@ -215,16 +233,19 @@ const InfoSection1 = () => {
                         fontWeight: 'bold',
                       }}
                     >
-                      Herausforderung
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.infoSection18
+                        : translationFunction().englishTranslations.infoSection18}
                     </ScrollLink>
-                    &nbsp;dabei ist die Anbindung von neuen Teilnehmern an den Mobility Data Space,
-                    um die Mobilität umweltfreundlicher, sicherer, nutzerfreundlicher und fair zu
-                    gestalten.
+                    &nbsp;
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection19
+                      : translationFunction().englishTranslations.infoSection19}
                     <br />
                     <br />
-                    Hierfür wurde MDSxNRW ins Leben gerufen. Durch MDSxNRW wird potentiellen
-                    Teilnehmenden eine passgenaue Connector-Empfehlung gegeben, um am Mobility Data
-                    Space teilzunehmen und die Mobilität von Morgen mitzugestalten.
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection110
+                      : translationFunction().englishTranslations.infoSection110}
                     <br />
                   </Typography>
                 </CardContent>

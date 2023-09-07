@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const InfoSection6 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const InfoSection6 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -96,7 +99,7 @@ const InfoSection6 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
-          marginTop='100px'
+          marginTop={isMobile ? '' : '200px'}
         >
           <Grid
             item
@@ -105,7 +108,7 @@ const InfoSection6 = () => {
             flexDirection='column'
             container
             justifyContent={isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start'}
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
             {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
@@ -131,7 +134,7 @@ const InfoSection6 = () => {
             container
             justifyContent='center'
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
-            marginLeft={isMobile ? '' : isTablet ? '-100px' : '-200px'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
           >
             {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Grid
@@ -154,22 +157,34 @@ const InfoSection6 = () => {
                   textAlign='left'
                   /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
                 >
-                  Im Mobility Data Space finden sich mittlerweile&nbsp;
-                  <span style={{ fontWeight: 'bold' }}>über 95 verschiedene Teilnehmer</span>
-                  &nbsp;aus den Bereichen Mobilität, öffentliche Verwaltung & Verkehr, Mobilfunk,
-                  Energie und Forschung.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection61
+                    : translationFunction().englishTranslations.infoSection61}
+                  &nbsp;
+                  <span style={{ fontWeight: 'bold' }}>
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection62
+                      : translationFunction().englishTranslations.infoSection62}
+                  </span>
+                  &nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection63
+                    : translationFunction().englishTranslations.infoSection63}
                   <br />
                   <br />
-                  Mit der Umsetzung verschiedenster Business Cases wurde bereits begonnen, um die
-                  Mobilität digitaler und nachhaltiger zu gestalten. Dabei werden verschiedenste
-                  Anwendungsfälle bereits umgesetzt. Themen wie das intermodale Reisen, lokale
-                  Unwetterprognosen, bis hin zu KI-basierten Optimierungen für Mobilitätsangebote
-                  sind alles Themenfelder die durch den Mobility Data Space ermöglicht werden.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection64
+                    : translationFunction().englishTranslations.infoSection64}
                   <br />
                   <br />
-                  Weitere Business Cases des MDS finden sie&nbsp;
-                  <a target='_blank' rel='mobilDataSpace' href='https://mobility-dataspace.eu/de'>
-                    hier
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection65
+                    : translationFunction().englishTranslations.infoSection65}
+                  &nbsp;
+                  <a rel='mobilDataSpace' target='_blank' href='https://mobility-dataspace.eu/de'>
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection66
+                      : translationFunction().englishTranslations.infoSection66}
                   </a>
                 </Typography>
               </CardContent>

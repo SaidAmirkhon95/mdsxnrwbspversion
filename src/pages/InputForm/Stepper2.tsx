@@ -9,13 +9,17 @@ import CheckBoxFive from 'components/CheckBoxFive';
 import CheckBoxSix from 'components/CheckBoxSix';
 import CheckBoxSeven from 'components/CheckBoxSeven';
 import CheckBoxEight from 'components/CheckBoxEight';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 export default function Stepper2() {
+  const { isDeutsch } = useLanguage();
   return (
     <React.Fragment>
       <Typography variant='h6' gutterBottom align='center' style={{ marginBottom: '20px' }}>
-        Bitte tragen Sie im Folgenden Informationen ein, die zur Kategorisieung Ihres Unternehmens
-        dienen.
+        {isDeutsch
+          ? translationFunction().deutschTranslations.stepper2
+          : translationFunction().englishTranslations.stepper2}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>

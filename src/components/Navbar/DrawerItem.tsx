@@ -20,6 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { createTheme } from '@mui/material/styles';
+import TranslationButton from '../../components/TranslationButton';
 
 const drawerWidth = 240;
 const theme = createTheme({
@@ -134,6 +135,9 @@ const DrawerItem = () => {
               </ListItem>
             );
           })}
+          <div style={{ marginLeft: '8%' }}>
+            <TranslationButton />
+          </div>
         </List>
       </Drawer>
     </>

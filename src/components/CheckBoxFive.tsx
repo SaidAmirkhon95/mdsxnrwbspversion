@@ -10,6 +10,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
+import { useLanguage } from '../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const MenuProps = {
   PaperProps: {
@@ -25,7 +27,24 @@ const datas = [
   'Service Provider (Bereitstellung von Services im MDS)',
   'Noch nicht sicher',
 ];
+
+const datasObject = {
+  datasAufDeutsch: [
+    'Datengeber (Datenquelle)',
+    'Datennehmer (Datenkonsument)',
+    'Service Provider (Bereitstellung von Services im MDS)',
+    'Noch nicht sicher',
+  ],
+  datasAufEnglisch: [
+    'Data supplier (Data source)',
+    'Data client (Data consumer)',
+    'Service Provider (provision of services in the MDS)',
+    'Not sure yet',
+  ],
+};
+
 export default function FilterSelect() {
+  const { isDeutsch } = useLanguage();
   const [dataName, setDataName] = React.useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof dataName>) => {
@@ -41,9 +60,17 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>Rolle im Dataspace</FormLabel>
+        <FormLabel component='legend'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxFive1
+            : translationFunction().englishTranslations.checkBoxFive1}
+        </FormLabel>
         <Tooltip
-          title='Bitte geben Sie an, welche Rolle Sie im Data Space einnehmen möchten.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxFive2
+              : translationFunction().englishTranslations.checkBoxFive2
+          }
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -51,7 +78,11 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>Mehrfachantwort möglich</InputLabel>
+        <InputLabel id='element'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxFive3
+            : translationFunction().englishTranslations.checkBoxFive3}
+        </InputLabel>
         <Select
           labelId='element'
           id='someelement'
@@ -59,14 +90,28 @@ export default function FilterSelect() {
           value={dataName}
           label='Wählen Sie ein Element aus'
           onChange={handleChange}
-          input={<OutlinedInput label='Mehrfachantwort möglich' />}
+          input={
+            <OutlinedInput
+              label={
+                isDeutsch
+                  ? translationFunction().deutschTranslations.checkBoxFive3
+                  : translationFunction().englishTranslations.checkBoxFive3
+              }
+            />
+          }
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {datas.map((data) => (
+          {datas.map((data, index) => (
             <MenuItem key={data} value={data} style={{ whiteSpace: 'normal' }}>
               <Checkbox checked={dataName.indexOf(data) > -1} style={{ marginLeft: '-10px' }} />
-              <ListItemText primary={data} />
+              <ListItemText
+                primary={
+                  isDeutsch
+                    ? datasObject.datasAufDeutsch[index]
+                    : datasObject.datasAufEnglisch[index]
+                }
+              />
             </MenuItem>
           ))}
         </Select>

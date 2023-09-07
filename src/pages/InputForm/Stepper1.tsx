@@ -7,8 +7,11 @@ import Checkbox from '@mui/material/Checkbox';
 import CountrySelect from '../../components/CountrySelect';
 import Tooltip from '@mui/material/Tooltip';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 export default function Stepper1() {
+  const { isDeutsch } = useLanguage();
   return (
     <React.Fragment>
       <Grid
@@ -20,11 +23,16 @@ export default function Stepper1() {
         }}
       >
         <Typography variant='h6' gutterBottom>
-          Generelle Unternehmensinformationen
+          {isDeutsch
+            ? translationFunction().deutschTranslations.stepper11
+            : translationFunction().englishTranslations.stepper11}
         </Typography>
         <Tooltip
-          title='Tragen Sie hier bitte generelle Informationen zu Ihrem Unternehmen in den Freitextfeldern ein. Diese dienen 
-          der eindeutigen Zuordnung ihres Unternehmens.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.stepper12
+              : translationFunction().englishTranslations.stepper12
+          }
           placement='top-start'
         >
           <InfoOutlinedIcon
@@ -43,7 +51,11 @@ export default function Stepper1() {
             required
             id='unternehmen'
             name='unternehmen'
-            label='Name ihres Unternehmens'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper13
+                : translationFunction().englishTranslations.stepper13
+            }
             fullWidth
             autoComplete='unternehmen'
             variant='standard'
@@ -53,7 +65,11 @@ export default function Stepper1() {
           <TextField
             id='form'
             name='form'
-            label='Gesellschaftsform'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper14
+                : translationFunction().englishTranslations.stepper14
+            }
             fullWidth
             autoComplete='form'
             variant='standard'
@@ -63,7 +79,11 @@ export default function Stepper1() {
           <TextField
             id='branch'
             name='branch'
-            label='Branche'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper15
+                : translationFunction().englishTranslations.stepper15
+            }
             fullWidth
             autoComplete='branch'
             variant='standard'
@@ -73,7 +93,11 @@ export default function Stepper1() {
           <TextField
             id='ort'
             name='ort'
-            label='Hauptstandort'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper16
+                : translationFunction().englishTranslations.stepper16
+            }
             fullWidth
             autoComplete='ort'
             variant='standard'
@@ -83,7 +107,11 @@ export default function Stepper1() {
           <TextField
             id='plz'
             name='postleitzahl'
-            label='Postleitzahl'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper17
+                : translationFunction().englishTranslations.stepper17
+            }
             fullWidth
             autoComplete='postleitzahl'
             variant='standard'
@@ -106,10 +134,16 @@ export default function Stepper1() {
         }}
       >
         <Typography variant='h6' gutterBottom>
-          Kontaktinformationen
+          {isDeutsch
+            ? translationFunction().deutschTranslations.stepper18
+            : translationFunction().englishTranslations.stepper18}
         </Typography>
         <Tooltip
-          title='Tragen Sie hier bitte Informationen zur Kontaktperson in den Freitextfeldern ein.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.stepper19
+              : translationFunction().englishTranslations.stepper19
+          }
           placement='top-start'
           style={{ marginLeft: '5px', marginTop: '5px' }}
         >
@@ -122,7 +156,11 @@ export default function Stepper1() {
             required
             id='vorname'
             name='vorname'
-            label='Vorname'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper110
+                : translationFunction().englishTranslations.stepper110
+            }
             fullWidth
             autoComplete='vorname'
             variant='standard'
@@ -133,7 +171,11 @@ export default function Stepper1() {
             required
             id='nachname'
             name='nachname'
-            label='Nachname'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper111
+                : translationFunction().englishTranslations.stepper111
+            }
             fullWidth
             autoComplete='nachname'
             variant='standard'
@@ -144,7 +186,11 @@ export default function Stepper1() {
             required
             id='email'
             name='email'
-            label='E-Mail für Kontakt'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper112
+                : translationFunction().englishTranslations.stepper112
+            }
             fullWidth
             autoComplete='email'
             variant='standard'
@@ -161,10 +207,18 @@ export default function Stepper1() {
         >
           <FormControlLabel
             control={<Checkbox color='primary' name='saveInfo' value='yes' />}
-            label='Möchten Sie zukünftig weitere Data Spaces adressieren?'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper113
+                : translationFunction().englishTranslations.stepper113
+            }
           />
           <Tooltip
-            title='Sie benötigen nur einen Connector bei ihrem Unternehmen, um andere Data Spaces zu adressieren. Sollten andere Domänen, neben der Domäne Mobolität (bspw. Automotive, Gesundheitswesen, Energie etc.), für Sie relevant sein empfehlen wir hier einen Haken zu setzen.'
+            title={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper114
+                : translationFunction().englishTranslations.stepper114
+            }
             placement='top-start'
             style={{ marginLeft: '-10px', marginTop: '10px' }}
           >

@@ -5,8 +5,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
-const InfoSection5 = () => {
+const InfoSection3 = () => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -24,6 +26,7 @@ const InfoSection5 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -96,22 +99,60 @@ const InfoSection5 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
-          marginTop='100px'
+          marginTop={isMobile ? '70px' : '50px'}
         >
           <Grid
             item
-            xs={isMobile ? 12 : isTablet ? 8 : 12}
-            md={7}
+            xs={isMobile ? 12 : isTablet ? 6 : 12}
+            md={6}
             flexDirection='column'
             container
-            justifyContent={isMobile ? 'center' : isTablet ? 'flex-end' : 'center'}
-            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            alignItems={isMobile ? 'center' : isTablet ? 'flex-end' : 'center'}
             ref={sectionRef}
-            marginRight={isMobile ? '' : isTablet ? '100px' : '100px'}
           >
             {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Box
+              sx={{
+                backgroundImage: 'url(./logo_MDS_black.svg)',
+                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: isMobile ? 200 : isTablet ? 250 : 330,
+                height: isMobile ? '80px' : isTablet ? '180px' : '230px',
+                width: isMobile ? '300px' : isTablet ? '350px' : '430px',
+                marginTop: isMobile ? '-130px' : isTablet ? '' : '-40px',
+                marginLeft: isMobile ? '' : isTablet ? '-60px' : '',
+              }}
+            ></Box>
+            <Typography variant={isMobile ? 'h5' : isTablet ? 'h4' : 'h2'} textAlign='center'>
+              {isDeutsch
+                ? translationFunction().deutschTranslations.infoSection51
+                : translationFunction().englishTranslations.infoSection51}
+              <br />
+              {isDeutsch
+                ? translationFunction().deutschTranslations.infoSection52
+                : translationFunction().englishTranslations.infoSection52}
+              <br />
+              {isDeutsch
+                ? translationFunction().deutschTranslations.infoSection53
+                : translationFunction().englishTranslations.infoSection53}
+            </Typography>
+            {/* </Slide> */}
+          </Grid>
+          <Grid
+            ref={sectionRef}
+            item
+            xs={isMobile ? 12 : isTablet ? 6 : 12}
+            md={6}
+            direction='column'
+            container
+            justifyContent='center'
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
+          >
+            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Grid
-              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 600 : 650 }}
+              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 500 }}
             >
               <CardContent>
                 <Typography
@@ -119,60 +160,27 @@ const InfoSection5 = () => {
                   color='text.secondary'
                   textAlign='left'
                 >
-                  Der Mobility Data Space ist die Data Sharing Community für alle, die die Mobilität
-                  umweltfreundlicher, sicherer, nutzerfreundlicher und fair gestalten wollen.
-                  Initiiert wurde der Mobility Data Space 2021 als eines der 18 Leuchtturmprojekte
-                  der Digitalstrategie der Bundesregierung.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection54
+                    : translationFunction().englishTranslations.infoSection54}
                   <br />
                   <br />
-                  Der Mobility Data Space (MDS) bringt Firmen, Organisationen und Institutionen
-                  zusammen: diejenigen, die ihre Datenschätze monetarisieren oder Kosten einsparen
-                  wollen und diejenigen, die Daten für innovative Mobilitätslösungen benötigen.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection55
+                    : translationFunction().englishTranslations.infoSection55}
                   <br />
                   <br />
-                  Ziel ist es, eine unternehmensübergreifende Datenökonomie zu schaffen, um
-                  innovative, umwelt- und nutzerfreundliche Mobilitätskonzepte zu realisieren und
-                  weiterzuentwickeln. Mehr dazu&nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection56
+                    : translationFunction().englishTranslations.infoSection56}
+                  &nbsp;
                   <a target='_blank' rel='mobilDataSpace' href='https://mobility-dataspace.eu/de'>
-                    hier
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection57
+                      : translationFunction().englishTranslations.infoSection57}
                   </a>
                 </Typography>
               </CardContent>
-            </Grid>
-            {/* </Slide> */}
-          </Grid>
-          <Grid
-            ref={sectionRef}
-            item
-            xs={isMobile ? 12 : isTablet ? 4 : 12}
-            md={5}
-            direction='column'
-            container
-            justifyContent={isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start'}
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start'}
-            marginLeft={isMobile ? '' : isTablet ? '-150px' : '-250px'}
-          >
-            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
-            <Grid marginLeft={isMobile ? '' : '-50px'}>
-              <Box
-                sx={{
-                  backgroundImage: 'url(./logo_MDS_black.svg)',
-                  backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: isMobile ? 200 : isTablet ? 250 : 330,
-                  height: isMobile ? '80px' : isTablet ? '180px' : '230px',
-                  width: isMobile ? '300px' : isTablet ? '350px' : '430px',
-                  marginTop: isMobile ? '-130px' : isTablet ? '' : '-40px',
-                  marginLeft: isMobile ? '' : isTablet ? '-60px' : '',
-                }}
-              ></Box>
-              <Typography variant={isMobile ? 'h5' : isTablet ? 'h4' : 'h2'} textAlign='center'>
-                Der Datenraum für
-                <br />
-                die Mobilität von
-                <br />
-                Morgen
-              </Typography>
             </Grid>
             {/* </Slide> */}
           </Grid>
@@ -181,4 +189,4 @@ const InfoSection5 = () => {
     </ThemeProvider>
   );
 };
-export default InfoSection5;
+export default InfoSection3;

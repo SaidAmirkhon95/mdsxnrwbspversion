@@ -4,31 +4,11 @@ import { Link } from 'react-router-dom';
 import styles from './Page.module.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const Header = () => {
-  /*  const CustomBox = styled(Box)(({ theme }) => ({
-    minHeight: '80vh',
-    display: 'flex',
-    justifyContent: 'center',
-    gap: theme.spacing(2),
-    paddingTop: theme.spacing(10),
-    [theme.breakpoints.down('md')]: {
-      flexDirection: isMobile ? 'column' : 'row',
-      alignItems: 'left',
-      textAlign: 'center',
-    },
-  }));
-
-  const BoxText = styled(Box)(({ theme }) => ({
-    flex: '1',
-    paddingLeft: theme.spacing(8),
-    [theme.breakpoints.down('md')]: {
-      flex: '2',
-      textAlign: isMobile ? 'center' : 'start',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
-  })); */
+  const { isDeutsch } = useLanguage();
 
   const theme = createTheme({
     palette: {
@@ -75,6 +55,28 @@ const Header = () => {
     };
   }, []);
 
+  //textOverlapping
+  const OverlappingContainer = styled('div')({
+    position: 'relative',
+    display: 'inline-block',
+  });
+
+  const BaseText = styled('div')({
+    position: 'relative',
+    zIndex: 1,
+    color: 'white',
+  });
+
+  const OverlappedText = styled('div')({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 2,
+    color: '#11998E',
+    fontWeight: 'bold',
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <div style={{ overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
@@ -112,21 +114,39 @@ const Header = () => {
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  MDSxNRW in wenigen <br /> Schritten zum passenden <br />
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.mdsInWenig
+                    : translationFunction().englishTranslations.mdsInWenig}
+                  <br />
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.schritteZu
+                    : translationFunction().englishTranslations.schritteZu}
+                  <br />
                   Connector
                 </Typography>
                 <Typography
                   variant={isMobile ? 'subtitle2' : isTablet ? 'body2' : 'body1'}
                   color='text.secondary'
                 >
-                  Wir unterstützen Sie bei der Anbindung {isMobile ? <br /> : ''} in dem Mobility
-                  Data
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.anbindung
+                    : translationFunction().englishTranslations.anbindung}
+                  {isMobile ? <br /> : ''}
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.md
+                    : translationFunction().englishTranslations.md}
                   {isMobile ? '' : <br />}
-                  Space durch eine {isMobile ? <br /> : ''}passgenaue Empfehlung für einen
-                  Connector!
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.sDurch
+                    : translationFunction().englishTranslations.sDurch}
+                  {isMobile ? <br /> : ''}
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.passgenau
+                    : translationFunction().englishTranslations.passgenau}
                 </Typography>
                 <Typography sx={{ display: 'flex', marginTop: isMobile ? '' : '30px' }}>
                   <Button
+                    /* disabled */ // am Ende muss weg
                     component={Link}
                     to={'/app'}
                     variant='contained'
@@ -136,7 +156,6 @@ const Header = () => {
                       height: '60px',
                       textTransform: 'none',
                       color: 'primary',
-
                       '&&:focus': {
                         backgroundColor: '#343a55',
                       },
@@ -145,9 +164,26 @@ const Header = () => {
                     <Typography
                       component='body'
                       variant={isMobile ? 'body2' : isTablet ? 'h6' : 'h5'}
-                      sx={{ whiteSpace: 'nowrap' }}
+                      sx={{
+                        whiteSpace: 'nowrap',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                      }}
                     >
-                      Empfehlung starten
+                      <OverlappingContainer>
+                        <BaseText>
+                          {isDeutsch
+                            ? translationFunction().deutschTranslations.empfehlungStarten
+                            : translationFunction().englishTranslations.empfehlungStarten}
+                        </BaseText>
+                        {/* <OverlappedText>Coming Soon</OverlappedText> */}
+                      </OverlappingContainer>
+                      {/* {isDeutsch
+                        ? translationFunction().deutschTranslations.empfehlungStarten
+                        : translationFunction().englishTranslations.empfehlungStarten}
+                      <span style={{ fontSize: '15px', marginTop: '8px' }}>Coming Soon</span> */}
                     </Typography>
                   </Button>
                   <Button
@@ -173,7 +209,9 @@ const Header = () => {
                       variant={isMobile ? 'body2' : isTablet ? 'h6' : 'h5'}
                       sx={{ whiteSpace: 'nowrap' }}
                     >
-                      Weitere Infos
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.weiterInfo
+                        : translationFunction().englishTranslations.weiterInfo}
                     </Typography>
                   </Button>
                 </Typography>

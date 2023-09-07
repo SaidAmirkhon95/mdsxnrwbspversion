@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Slide from '@mui/material/Slide';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const Section1 = () => {
   const theme = createTheme({
@@ -29,6 +31,7 @@ const Section1 = () => {
   });
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  const { isDeutsch } = useLanguage();
 
   useEffect(() => {
     const handleResize = () => {
@@ -130,7 +133,9 @@ const Section1 = () => {
                     component='div'
                     textAlign='center'
                   >
-                    Was ist MDSxNRW?
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.wasIstMDX
+                      : translationFunction().englishTranslations.wasIstMDX}
                     <br />
                   </Typography>
                   <Typography
@@ -138,16 +143,20 @@ const Section1 = () => {
                     color='text.secondary'
                     textAlign='center'
                   >
-                    <h4>Datensouveränität für Alle</h4>
+                    <h4>
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.datensouveränität
+                        : translationFunction().englishTranslations.datensouveränität}
+                    </h4>
                     <br />
-                    Die Anbindung an Data Spaces stellt vor allem kleinere Organisationen vor eine
-                    große Herausforderung. Oft ist das notwendige IT-Know-How nicht vorhanden oder
-                    die zeitlichen und finanziellen Barrieren sind zu hoch.
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.section1Absatz1
+                      : translationFunction().englishTranslations.section1Absatz1}
                     <br />
                     <br />
-                    Das MDSxNRW-Portal dient der Unterstützung zur Teilnahme am Mobility Data Space
-                    und hilft bei der Auswahl und Bereitstellung eines individuell geeigneten
-                    Connectors.
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.section1Absatz2
+                      : translationFunction().englishTranslations.section1Absatz2}
                   </Typography>
                 </CardContent>
                 <CardActions
@@ -172,7 +181,9 @@ const Section1 = () => {
                         marginBottom: '5px',
                       }}
                     />
-                    Zur Projektbeschreibung
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.projektbeschreibung
+                      : translationFunction().englishTranslations.projektbeschreibung}
                   </Button>
                 </CardActions>
               </Grid>
@@ -194,7 +205,9 @@ const Section1 = () => {
                     component='h4'
                     sx={{ color: 'black', ml: isMobile ? '25%' : isTablet ? '25%' : '200px' }}
                   >
-                    Netzwerk & Partner
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.netzwerkPartner
+                      : translationFunction().englishTranslations.netzwerkPartner}
                   </Typography>
                   <Box
                     sx={{
@@ -222,7 +235,9 @@ const Section1 = () => {
                     component='h4'
                     sx={{ color: 'black', ml: isMobile ? '80px' : '100px' }}
                   >
-                    Gefördert durch:
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.gefördertDurch
+                      : translationFunction().englishTranslations.gefördertDurch}
                   </Typography>
                   <Card
                     sx={{

@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection6 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const AboutSection6 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -115,7 +118,9 @@ const AboutSection6 = () => {
               textAlign='center'
               marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
             >
-              Datensouveränität
+              {isDeutsch
+                ? translationFunction().deutschTranslations.aboutSection61
+                : translationFunction().englishTranslations.aboutSection61}
             </Typography>
             {/* </Slide> */}
           </Grid>
@@ -151,12 +156,9 @@ const AboutSection6 = () => {
                   color='text.secondary'
                   textAlign={isMobile ? 'left' : 'left'}
                 >
-                  Sie entscheiden, was mit Ihren Daten passiert. Für die Entwicklung von innovativen
-                  Geschäftsmodellen ist das Teilen von Daten wichtiger denn je. Sobald der eigene
-                  Datenschatz jedoch die Unternehmensgrenzen verlässt, kommen Sicherheitsbedenken
-                  auf. Ein zentrales Versprechen von Datenräumen ist daher die Datensouveränität.
-                  Auf diese Weise können Sie jederzeit sicher sein, dass Ihre Daten so genutzt
-                  werden, wie Sie es vorgesehen haben – auch außerhalb Ihrer Unternehmensgrenzen.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection62
+                    : translationFunction().englishTranslations.aboutSection62}
                 </Typography>
               </CardContent>
             </Grid>

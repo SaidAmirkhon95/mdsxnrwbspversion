@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const InfoSection3 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const InfoSection3 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -96,7 +99,7 @@ const InfoSection3 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
-          marginTop='10px'
+          marginTop={isMobile ? '' : '100px'}
         >
           <Grid
             item
@@ -105,9 +108,8 @@ const InfoSection3 = () => {
             flexDirection='column'
             container
             justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'center'}
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-end' : 'center'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
-            marginLeft={isMobile ? '' : isTablet ? '0px' : ''}
           >
             {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Box
@@ -131,8 +133,8 @@ const InfoSection3 = () => {
             direction='column'
             container
             justifyContent='center'
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
-            marginLeft={isMobile ? '' : isTablet ? '-50px' : '-200px'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
           >
             {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Grid
@@ -145,7 +147,9 @@ const InfoSection3 = () => {
                   component='div'
                   textAlign='center'
                 >
-                  Souveräner Datenaustausch über Unternehmensgrenzen hinweg
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection31
+                    : translationFunction().englishTranslations.infoSection31}
                   <br />
                   <br />
                 </Typography>
@@ -155,29 +159,33 @@ const InfoSection3 = () => {
                   textAlign='left'
                   /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
                 >
-                  Teilnehmer in einem Datenökosystem müssen sich vergewissern, dass die von ihnen
-                  geteilten Daten nach ihren Vorstellungen genutzt werden und dass angebotenen Daten
-                  ihren Qualitätsanforderungen genügen. Um dies zu erreichen schließen sich die
-                  Teilnehmer des Ökosystems zusammen und gründen einen Datenraum.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection32
+                    : translationFunction().englishTranslations.infoSection32}
                   <br />
                   <br />
-                  In diesem Kontext beschreibt ein Datenraum eine Infrastruktur, die Transaktionen
-                  zwischen verschiedenen Parteien eines Datenökosystems auf Grundlage des
-                  Governance-Rahmens dieses Datenraumes ermöglicht.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection33
+                    : translationFunction().englishTranslations.infoSection33}
                   <br />
                   <br />
-                  Eine Schlüsselfunktion des Datenraumes ist die Wahrung der Datensouveränität. Der
-                  Datengeber in einem Datenraum behält dabei die vollständige Kontrolle über seine
-                  Daten – auch wenn diese durch Dritte genutzt wurden.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection34
+                    : translationFunction().englishTranslations.infoSection34}
                   <br />
                   <br />
-                  Weitere Informationen zu Datenräumen und Datensouveränität finden Sie&nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection35
+                    : translationFunction().englishTranslations.infoSection35}
+                  &nbsp;
                   <a
                     target='_blank'
                     rel='interDataSpace'
                     href='https://internationaldataspaces.org/'
                   >
-                    hier
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection36
+                      : translationFunction().englishTranslations.infoSection36}
                   </a>
                 </Typography>
               </CardContent>

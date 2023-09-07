@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection4 = () => {
   const theme = createTheme({
@@ -25,6 +27,7 @@ const AboutSection4 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -152,26 +155,37 @@ const AboutSection4 = () => {
                   color='text.secondary'
                   textAlign={isMobile ? 'left' : 'left'}
                 >
-                  Nachhaltige, digitale und einfache Mobilität wird für viele Menschen immer
-                  wichtiger. Als bevölkerungsstärkstes Bundesland mit 4,8 Millionen&nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection41
+                    : translationFunction().englishTranslations.aboutSection41}
+                  &nbsp;
                   <a
                     target='_blank'
                     href='https://www.it.nrw/pendlerstatistik-nrw-48-millionen-erwerbstaetige-pendeln-zur-arbeit-eine-andere-gemeinde-17066'
                     style={{ color: '#616161' }}
                   >
-                    Berufspendlern
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.aboutSection42
+                      : translationFunction().englishTranslations.aboutSection42}
                   </a>
-                  &nbsp;und 20% der gesamten&nbsp;
+                  &nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection43
+                    : translationFunction().englishTranslations.aboutSection43}
+                  &nbsp;
                   <a
                     target='_blank'
                     href='https://www.strassen.nrw.de/de/verkehrsdaten.html'
                     style={{ color: '#616161' }}
                   >
-                    Fahrleistung
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.aboutSection44
+                      : translationFunction().englishTranslations.aboutSection44}
                   </a>
-                  &nbsp;in Deutschland hat Nordrhein-Westfalen ein besonderes Interesse daran
-                  innovative Mobilitätslösungen zu fördern und einzusetzen. MDSxNRW reiht sich in
-                  diese Digitalisierungsoffensive ein.
+                  &nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection45
+                    : translationFunction().englishTranslations.aboutSection45}
                 </Typography>
               </CardContent>
             </Grid>

@@ -2,8 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useLanguage } from '../LanguageContext';
+import translationFunction from 'translationFunction';
 
 export default function CountrySelect() {
+  const { isDeutsch } = useLanguage();
   return (
     <Autocomplete
       id='country-select-demo'
@@ -27,7 +30,11 @@ export default function CountrySelect() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label='Land'
+          label={
+            isDeutsch
+              ? translationFunction().deutschTranslations.countrySelect
+              : translationFunction().englishTranslations.countrySelect
+          }
           required
           inputProps={{
             ...params.inputProps,

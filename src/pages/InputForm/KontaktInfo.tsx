@@ -8,8 +8,11 @@ import Grid from '@mui/material/Grid';
 import Marcel from '../../components/Pictures/Marcel.jpg';
 import Marius from '../../components/Pictures/Marius.jpg';
 import DataVisualizationThree from '../../components/Pictures/DataVisualizationThree.png';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const KontaktInfo = () => {
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -58,12 +61,18 @@ const KontaktInfo = () => {
         >
           <Grid item xs={12} sm={6}>
             <Typography variant={isMobile ? 'h5' : 'h4'}>
-              <h1 style={{ color: '#005B7F' }}>Kontakt</h1>
+              <h1 style={{ color: '#005B7F' }}>
+                {isDeutsch
+                  ? translationFunction().deutschTranslations.kontakt
+                  : translationFunction().englishTranslations.kontakt}
+              </h1>
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant={isMobile ? 'subtitle1' : 'h5'}>
-              Bei Fragen oder Anmerkungen, treten Sie gerne mit uns in Kontakt!
+              {isDeutsch
+                ? translationFunction().deutschTranslations.kontaktFragen
+                : translationFunction().englishTranslations.kontaktFragen}
             </Typography>
           </Grid>
         </Grid>

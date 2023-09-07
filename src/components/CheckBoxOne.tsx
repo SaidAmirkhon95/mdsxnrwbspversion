@@ -7,8 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { useLanguage } from '../LanguageContext';
+import translationFunction from 'translationFunction';
 
 export default function FilterSelect() {
+  const { isDeutsch } = useLanguage();
   const [aufwand, setAufwand] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -21,14 +24,17 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>Unternehmensgröße</FormLabel>
+        <FormLabel component='legend'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxOne1
+            : translationFunction().englishTranslations.checkBoxOne1}
+        </FormLabel>
         <Tooltip
-          title='Bitte geben Sie hier Ihre Unternehmensgröße nach Mitarbeitendenanzahl und Umsatz an:
-          Start-Up: (junges)Kleinesunternehmen mit dynamische Wachstum.
-          Kleinstunternehmen: <10 Beschäftigte, <2 Mio.€ Umsatz. 
-          Kleines Unternehmen: <11-49 Beschäftigte, <10 Mio.€ Umsatz.
-          Mittleres Unternehmen: <50-249 Beschäftigte, <50 Mio.€ Umsatz.
-          Großes Unternehmen: >249 Beschäftigte, >50 Mio.€ Umsatz.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne2
+              : translationFunction().englishTranslations.checkBoxOne2
+          }
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -36,19 +42,43 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
+        <InputLabel id='element'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxOne3
+            : translationFunction().englishTranslations.checkBoxOne3}
+        </InputLabel>
         <Select
           labelId='element'
           id='someelement'
           value={aufwand}
-          label='Wählen Sie ein Element aus'
+          label={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne3
+              : translationFunction().englishTranslations.checkBoxOne3
+          }
           onChange={handleChange}
         >
           <MenuItem value={'startup'}>Start-Up</MenuItem>
-          <MenuItem value={'kleinst'}>Kleinstunternehmen</MenuItem>
-          <MenuItem value={'kleines'}>Kleines Unternehmen</MenuItem>
-          <MenuItem value={'mittel'}>Mittleres Unternehmen</MenuItem>
-          <MenuItem value={'groß'}>Großunternehmen</MenuItem>
+          <MenuItem value={'kleinst'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne4
+              : translationFunction().englishTranslations.checkBoxOne4}
+          </MenuItem>
+          <MenuItem value={'kleines'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne5
+              : translationFunction().englishTranslations.checkBoxOne5}
+          </MenuItem>
+          <MenuItem value={'mittel'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne6
+              : translationFunction().englishTranslations.checkBoxOne6}
+          </MenuItem>
+          <MenuItem value={'groß'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxOne7
+              : translationFunction().englishTranslations.checkBoxOne7}
+          </MenuItem>
         </Select>
       </FormControl>
     </Box>

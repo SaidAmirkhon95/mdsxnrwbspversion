@@ -7,8 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { useLanguage } from '../LanguageContext';
+import translationFunction from 'translationFunction';
 
 export default function FilterSelect() {
+  const { isDeutsch } = useLanguage();
   const [aufwand, setAufwand] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -21,14 +24,17 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>Datennutzungsbediengungen (Usage Policies)</FormLabel>
+        <FormLabel component='legend'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxSeven1
+            : translationFunction().englishTranslations.checkBoxSeven1}
+        </FormLabel>
         <Tooltip
-          title='Welche Datennutzungsbedingungen benötigen Sie?
-          Standardnutzungsbedingungen: zum Beispiel „Datennutzung auf bestimmte Orte beschränken“,
-          „Datennutzung auf bestimmte Connectoren beschränken“, „Datennutzer darf nur verschlüsselte Daten weiterleiten“.
-          Komplette Nutzungsbedingungen siehe: Appendix A.1in Usage Control in the International Data Spaces
-          (https://doi.org/10.5281/zenodo.5675884)
-          Spezielle Nutzungsbedingungen: Selbsterstellte Nutzungsbedingungen, die über die gegebenen Standardbedingungen hinausgehen.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSeven2
+              : translationFunction().englishTranslations.checkBoxSeven2
+          }
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -36,17 +42,37 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
+        <InputLabel id='element'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxSeven3
+            : translationFunction().englishTranslations.checkBoxSeven3}
+        </InputLabel>
         <Select
           labelId='element'
           id='someelement'
           value={aufwand}
-          label='Wählen Sie ein Element aus'
+          label={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSeven3
+              : translationFunction().englishTranslations.checkBoxSeven3
+          }
           onChange={handleChange}
         >
-          <MenuItem value={'keine'}>keine Angabe</MenuItem>
-          <MenuItem value={'standard'}>Standardnutzungsbedingungen</MenuItem>
-          <MenuItem value={'speziell'}>Spezielle Nutzungsbedingungen</MenuItem>
+          <MenuItem value={'keine'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSeven4
+              : translationFunction().englishTranslations.checkBoxSeven4}
+          </MenuItem>
+          <MenuItem value={'standard'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSeven5
+              : translationFunction().englishTranslations.checkBoxSeven5}
+          </MenuItem>
+          <MenuItem value={'speziell'}>
+            {isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSeven6
+              : translationFunction().englishTranslations.checkBoxSeven6}
+          </MenuItem>
         </Select>
       </FormControl>
     </Box>

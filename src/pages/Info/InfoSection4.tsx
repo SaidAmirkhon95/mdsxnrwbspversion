@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const InfoSection4 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const InfoSection4 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -96,6 +99,7 @@ const InfoSection4 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
+          marginTop={isMobile ? '' : '50px'}
         >
           <Grid
             item
@@ -104,7 +108,7 @@ const InfoSection4 = () => {
             flexDirection='column'
             container
             justifyContent={isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start'}
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
             {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
@@ -129,8 +133,8 @@ const InfoSection4 = () => {
             direction='column'
             container
             justifyContent='center'
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
-            marginLeft={isMobile ? '' : isTablet ? '-100px' : '-200px'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
           >
             {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Grid
@@ -143,7 +147,9 @@ const InfoSection4 = () => {
                   component='div'
                   textAlign='center'
                 >
-                  Was sind Connectoren?
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection41
+                    : translationFunction().englishTranslations.infoSection41}
                   <br />
                 </Typography>
                 <Typography
@@ -153,21 +159,19 @@ const InfoSection4 = () => {
                   /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
                 >
                   <br />
-                  Connectoren stellen das Gateway in einen Datenraum dar. Diese bieten die
-                  Möglichkeit sicher und souverän Daten in einem Datenraum zu teilen.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection42
+                    : translationFunction().englishTranslations.infoSection42}
                   <br />
                   <br />
-                  Über eine lokale Installation fungieren die Connectoren als Endpunkte für die
-                  Peer-2-Peer Kommunikation zwischen Datenanbieter und Datenkonsument. Zusätzlich
-                  bieten die Connectoren die Möglichkeit, Nutzungsbedingungen für die Daten zu
-                  vergeben und zu verfolgen, Services zu integrieren und die Identität der
-                  Datenraumteilnehmer zu verifizieren.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection43
+                    : translationFunction().englishTranslations.infoSection43}
                   <br />
                   <br />
-                  Diese Nutzungsbedingungen werden mit den Daten ausgetauscht und stellen Regeln und
-                  Auflagen dar, unter denen die angebotenen Daten genutzt werden dürfen.
-                  Beispielsweise kann die Nutzergruppe eingeschränkt oder die Nutzung nur für eine
-                  bestimmte Zeit erlaubt werden.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection44
+                    : translationFunction().englishTranslations.infoSection44}
                 </Typography>
               </CardContent>
             </Grid>

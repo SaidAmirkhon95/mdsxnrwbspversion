@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection2 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const AboutSection2 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -116,7 +119,9 @@ const AboutSection2 = () => {
               textAlign='center'
               marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
             >
-              Über das Projekt
+              {isDeutsch
+                ? translationFunction().deutschTranslations.aboutSection21
+                : translationFunction().englishTranslations.aboutSection21}
             </Typography>
             {/* </Slide> */}
           </Grid>
@@ -152,11 +157,9 @@ const AboutSection2 = () => {
                   color='text.secondary'
                   textAlign={isMobile ? 'left' : 'left'}
                 >
-                  Mit MDSxNRW entsteht das erste Portal zur einfachen Auswahl eines passenden
-                  Connectors und zur unkomplizierten Anbindung an den Mobility Data Space. Das
-                  Projekt wird seit August 2022 vom Fraunhofer Institut für Software- und
-                  Systemtechnik ISST durchgeführt und ist gefördert durch die Landesregierung
-                  Nordrhein-Westfalen mit einer Laufzeit von 36 Monaten.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection22
+                    : translationFunction().englishTranslations.aboutSection22}
                 </Typography>
               </CardContent>
             </Grid>

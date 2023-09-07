@@ -9,6 +9,8 @@ import Slide from '@mui/material/Slide';
 import Kontakt from 'pages/InputForm/Kontakt';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const InfoSection7 = () => {
   const theme = createTheme({
@@ -28,6 +30,7 @@ const InfoSection7 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -100,6 +103,7 @@ const InfoSection7 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
+          marginTop={isMobile ? '' : '50px'}
         >
           <Grid
             item
@@ -107,8 +111,8 @@ const InfoSection7 = () => {
             md={6}
             flexDirection='column'
             container
-            justifyContent={isMobile ? 'center' : isTablet ? 'flex-start' : 'flex-start'}
-            alignItems={isMobile ? 'center' : isTablet ? 'flex-start' : 'center'}
+            justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
           >
             {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
@@ -134,7 +138,7 @@ const InfoSection7 = () => {
             container
             justifyContent='center'
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
-            marginLeft={isMobile ? '' : isTablet ? '-100px' : '-200px'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
           >
             {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
             <Grid
@@ -147,7 +151,9 @@ const InfoSection7 = () => {
                   component='div'
                   textAlign='center'
                 >
-                  Die Herausforderung
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection71
+                    : translationFunction().englishTranslations.infoSection71}
                   <br />
                   <br />
                 </Typography>
@@ -157,30 +163,30 @@ const InfoSection7 = () => {
                   textAlign='left'
                   /* style={{ textAlign: 'justify', textJustify: 'inter-word' }} */
                 >
-                  Der Erfolg eines Datenraumes ist abhängig von der Anzahl und Vielfältigkeit seiner
-                  Teilnehmer.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection72
+                    : translationFunction().englishTranslations.infoSection72}
                   <br />
                   <br />
-                  Ein wiederkehrender Prozess ist die Anbindung von neuen Teilnehmern an einen
-                  Datenraum, die Daten in den Datenraum einbringen oder verfügbare Daten für die
-                  eigene Wertschöpfung nutzen möchten. Die zentrale Softwarekomponente ist hierbei
-                  der Connector.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection73
+                    : translationFunction().englishTranslations.infoSection73}
                   <br />
                   <br />
-                  Potenzielle Datenraumteilnehmer können sehr unterschiedliche organisatorische
-                  sowie technische Anforderungen haben. Vom privaten Mobilitätsdienstleister über
-                  öffentliche Open Data Provider oder die kommunale Verwaltung bis zum
-                  selbstständigen App- Entwickler sind viele verschiedene Unternehmen vertreten.
-                  Zusätzlich existieren verschiedenste Connectorlösungen.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection74
+                    : translationFunction().englishTranslations.infoSection74}
                   <br />
                   <br />
-                  Für potenzielle Datenraumteilnehmer ist es eine große Herausforderung den für ihre
-                  Bedürfnisse benötigten Connector zu identifizieren und einzurichten.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection75
+                    : translationFunction().englishTranslations.infoSection75}
                   <br />
                   <br />
                   <span style={{ fontWeight: 'bold' }}>
-                    Die Auswahl des richtigen Connectors und dessen Deployment-Möglichkeiten sind
-                    daher entscheidend.
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection76
+                      : translationFunction().englishTranslations.infoSection76}
                   </span>
                 </Typography>
               </CardContent>

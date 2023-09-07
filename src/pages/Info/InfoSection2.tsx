@@ -5,8 +5,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
-const InfoSection2 = () => {
+const InfoSection3 = () => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -24,6 +26,7 @@ const InfoSection2 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -96,21 +99,43 @@ const InfoSection2 = () => {
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent='center'
           alignContent='center'
+          marginTop={isMobile ? '' : '50px'}
         >
           <Grid
             item
-            xs={isMobile ? 12 : isTablet ? 8 : 12}
-            md={7}
+            xs={isMobile ? 12 : isTablet ? 6 : 12}
+            md={6}
             flexDirection='column'
             container
-            justifyContent={isMobile ? 'center' : isTablet ? 'flex-end' : 'center'}
+            justifyContent={isMobile ? 'flex-end' : isTablet ? 'center' : 'center'}
             alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
             ref={sectionRef}
-            marginRight={isMobile ? '' : isTablet ? '100px' : '100px'}
           >
-            {/* <Slide direction='right' in={isMobile ? true : animationPlayed} timeout={1000}> */}
+            <Box
+              sx={{
+                backgroundImage: 'url(./connection_6778.svg)',
+                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: isMobile ? 300 : isTablet ? 300 : 630,
+                height: isMobile ? '480px' : isTablet ? '580px' : '780px',
+                width: isMobile ? '300px' : isTablet ? '350px' : '630px',
+                marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
+              }}
+            ></Box>
+          </Grid>
+          <Grid
+            ref={sectionRef}
+            item
+            xs={isMobile ? 12 : isTablet ? 6 : 12}
+            md={6}
+            direction='column'
+            container
+            justifyContent={isMobile ? 'flex-start' : 'center'}
+            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'center'}
+            marginLeft={isMobile ? '' : isTablet ? '-65px' : '-200px'}
+          >
             <Grid
-              sx={{ width: isMobile ? 320 : isTablet ? 350 : 700, height: isMobile ? 600 : 650 }}
+              sx={{ width: isMobile ? 320 : isTablet ? 400 : 700, height: isMobile ? 750 : 500 }}
             >
               <CardContent>
                 <Typography
@@ -119,7 +144,9 @@ const InfoSection2 = () => {
                   component='div'
                   textAlign='center'
                 >
-                  Was sind Datenökosysteme?
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection21
+                    : translationFunction().englishTranslations.infoSection21}
                   <br />
                   <br />
                 </Typography>
@@ -128,51 +155,31 @@ const InfoSection2 = () => {
                   color='text.secondary'
                   textAlign='left'
                 >
-                  Daten sind eine der wichtigsten Ressourcen unserer Zeit. Diese bilden die
-                  Grundlage für innovative Produkte, Dienstleistungen und Geschäftsmodelle.
-                  Besonders künstliche Intelligenz und statistische Prognosen auf Grundlage von Big
-                  Data benötigen große Mengen qualitativ hochwertiger Daten.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection22
+                    : translationFunction().englishTranslations.infoSection22}
                   <br />
                   <br />
-                  Dieser Bedarf nach Daten kann oft nicht durch ein Unternehmen selbst gedeckt
-                  werden. Aus diesem Grund schließen sich verschiedene Akteure in diesem Umfeld
-                  zusammen und bilden ein Datenökosystem. Hier werden Daten untereinander&nbsp;
-                  <span style={{ fontStyle: 'italic' }}>geteilt, verarbeitet und angereichert</span>
-                  &nbsp;– über Unternehmensgrenzen hinaus.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection23
+                    : translationFunction().englishTranslations.infoSection23}
+                  &nbsp;
+                  <span style={{ fontStyle: 'italic' }}>
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.infoSection24
+                      : translationFunction().englishTranslations.infoSection24}
+                  </span>
+                  &nbsp;
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.infoSection25
+                    : translationFunction().englishTranslations.infoSection25}
                 </Typography>
               </CardContent>
             </Grid>
-            {/* </Slide> */}
-          </Grid>
-          <Grid
-            ref={sectionRef}
-            item
-            xs={isMobile ? 12 : isTablet ? 4 : 12}
-            md={5}
-            direction='column'
-            container
-            justifyContent={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
-            alignItems={isMobile ? 'center' : isTablet ? 'center' : 'flex-start'}
-            marginLeft={isMobile ? '' : isTablet ? '-150px' : '-200px'}
-          >
-            {/* <Slide direction='left' in={isMobile ? true : animationPlayed} timeout={1000}> */}
-            <Box
-              sx={{
-                backgroundImage: 'url(./connection_6778.svg)',
-                backgroundPosition: isMobile ? 'center' : isTablet ? 'center' : 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: isMobile ? 300 : isTablet ? 300 : 530,
-                height: isMobile ? '480px' : isTablet ? '580px' : '780px',
-                width: isMobile ? '300px' : isTablet ? '350px' : '530px',
-                marginTop: isMobile ? '-130px' : isTablet ? '-40px' : '-40px',
-                marginLeft: isMobile ? '' : isTablet ? '-100px' : '',
-              }}
-            ></Box>
-            {/* </Slide> */}
           </Grid>
         </Grid>
       </div>
     </ThemeProvider>
   );
 };
-export default InfoSection2;
+export default InfoSection3;

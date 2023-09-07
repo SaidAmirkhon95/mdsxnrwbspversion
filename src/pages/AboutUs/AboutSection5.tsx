@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection5 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const AboutSection5 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -115,7 +118,9 @@ const AboutSection5 = () => {
               textAlign='center'
               marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
             >
-              Transparenz
+              {isDeutsch
+                ? translationFunction().deutschTranslations.aboutSection51
+                : translationFunction().englishTranslations.aboutSection51}
             </Typography>
             {/* </Slide> */}
           </Grid>
@@ -151,12 +156,9 @@ const AboutSection5 = () => {
                   color='text.secondary'
                   textAlign={isMobile ? 'left' : 'left'}
                 >
-                  Von besonderem Stellenwert ist die Transparenz unserer Recommendation Engine. Die
-                  Connectorempfehlung wird daher möglichst nachvollziehbar gestaltet und mit unseren
-                  Partnern gemeinsam entwickelt. Über den Connector-Score ist einsehbar welcher
-                  Connector wie gut zu Ihrem Unternehmen passt. Es besteht außerdem die Möglichkeit
-                  nachzuvollziehen, wie sich der Score berechnet und welche Merkmale bei der
-                  Berechnung entscheidend sind.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection52
+                    : translationFunction().englishTranslations.aboutSection52}
                 </Typography>
               </CardContent>
             </Grid>

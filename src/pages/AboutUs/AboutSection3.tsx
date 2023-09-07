@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Slide from '@mui/material/Slide';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection3 = () => {
   const theme = createTheme({
@@ -24,6 +26,7 @@ const AboutSection3 = () => {
     },
   });
 
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -151,12 +154,9 @@ const AboutSection3 = () => {
                   color='text.secondary'
                   textAlign={isMobile ? 'left' : 'left'}
                 >
-                  Die Fraunhofer-Gesellschaft ist ein Pionier für innovative Entwicklungen und
-                  wissenschaftliche Exzellenz in der Datenökonomie. 2015 setzte Fraunhofer den
-                  Grundstein für die Entwicklung der International Data Spaces. Seitdem spezifiziert
-                  und entwickelt Fraunhofer die Technologie gemeinsam mit der IDS-Community. Als
-                  Forschungseinrichtungen vertritt Fraunhofer eine unvoreingenommene und neutrale
-                  Haltung, um sich für Datensouveränität einzusetzen.
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.aboutSection31
+                    : translationFunction().englishTranslations.aboutSection31}
                 </Typography>
               </CardContent>
             </Grid>

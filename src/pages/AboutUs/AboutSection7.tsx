@@ -9,6 +9,8 @@ import Slide from '@mui/material/Slide';
 import Kontakt from 'pages/InputForm/Kontakt';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const AboutSection7 = () => {
   const theme = createTheme({
@@ -27,6 +29,7 @@ const AboutSection7 = () => {
       },
     },
   });
+  const { isDeutsch } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -101,7 +104,9 @@ const AboutSection7 = () => {
             marginBottom={isMobile ? '' : isTablet ? '' : '50px'}
             marginTop={isMobile ? '' : isTablet ? '' : '200px'}
           >
-            Unser Team
+            {isDeutsch
+              ? translationFunction().deutschTranslations.aboutSection71
+              : translationFunction().englishTranslations.aboutSection71}
             <br />
             <br />
           </Typography>

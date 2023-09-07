@@ -20,6 +20,8 @@ import Grid from '@mui/material/Grid';
 import jsPDF from 'jspdf';
 import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 function Copyright() {
   return (
@@ -53,6 +55,11 @@ function Copyright() {
 }
 
 const steps = ['Unternehmensinformationen', 'Kategorisierung', 'Empfehlung'];
+
+const stepsObject = {
+  stepsAufDeutsch: ['Unternehmensinformationen', 'Kategorisierung', 'Empfehlung'],
+  stepsAufEnglisch: ['Company information', 'Category', 'Suggestion'],
+};
 
 function getStepContent(step: any) {
   switch (step) {
@@ -119,6 +126,7 @@ export default function MDSxNRW() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const { isDeutsch } = useLanguage();
 
   return (
     <ThemeProvider theme={theme}>
@@ -130,9 +138,13 @@ export default function MDSxNRW() {
             sx={{ pt: 3, pb: 5 }}
             orientation={isVerticalLayout ? 'vertical' : 'horizontal'}
           >
-            {steps.map((label) => (
+            {steps.map((label, index) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel>
+                  {isDeutsch
+                    ? stepsObject.stepsAufDeutsch[index]
+                    : stepsObject.stepsAufEnglisch[index]}
+                </StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -163,7 +175,9 @@ export default function MDSxNRW() {
                       style={{ textTransform: 'none' }}
                       size='large'
                     >
-                      Zurück zur Kategorisierung
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.kategorisierungButton
+                        : translationFunction().englishTranslations.kategorisierungButton}
                     </Button>
                   </Box>
                 )}
@@ -184,7 +198,9 @@ export default function MDSxNRW() {
                       style={{ textTransform: 'none' }}
                       size='large'
                     >
-                      Empfehlung als PDF
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.empfehlungPDFButton
+                        : translationFunction().englishTranslations.empfehlungPDFButton}
                     </Button>
                   </Box>
                 )}
@@ -203,7 +219,9 @@ export default function MDSxNRW() {
                       style={{ textTransform: 'none', whiteSpace: 'normal' }}
                       size='large'
                     >
-                      zum Connectorvergleich
+                      {isDeutsch
+                        ? translationFunction().deutschTranslations.zumConnectorvergleichButton
+                        : translationFunction().englishTranslations.zumConnectorvergleichButton}
                     </Button>
                   </Box>
                 )}
@@ -217,7 +235,9 @@ export default function MDSxNRW() {
                     style={{ textTransform: 'none' }}
                     size='large'
                   >
-                    Weiter
+                    {isDeutsch
+                      ? translationFunction().deutschTranslations.weiterButton
+                      : translationFunction().englishTranslations.weiterButton}
                   </Button>
                 </Box>
               )}

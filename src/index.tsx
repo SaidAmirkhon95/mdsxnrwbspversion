@@ -14,27 +14,30 @@ import ImpressumText from 'pages/InputForm/ImpressumText';
 import KontaktInfo from 'pages/InputForm/KontaktInfo';
 import ScrollToAbout from 'pages/AboutUs/ScrollToAbout';
 import ScrollToInfo from 'pages/Info/ScrollToInfo';
+import { LanguageProvider } from './LanguageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <React.Suspense fallback='Loading...'>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/'>
-            <Route index element={<LandingPage />} />
-            <Route path='about' element={<ScrollToAbout />} />
-            <Route path='info' element={<ScrollToInfo />} />
-            <Route path='contact' element={<KontaktInfo />} />
-            <Route path='app' element={<MDSxNRW />} />
-            <Route path='datenschutz' element={<DatenschutzText />} />
-            <Route path='impressum' element={<ImpressumText />} />
-            <Route path='kontaktinfo' element={<KontaktInfo />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </React.Suspense>
+    <LanguageProvider>
+      <React.Suspense fallback='Loading...'>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path='/'>
+              <Route index element={<LandingPage />} />
+              <Route path='about' element={<ScrollToAbout />} />
+              <Route path='info' element={<ScrollToInfo />} />
+              <Route path='contact' element={<KontaktInfo />} />
+              <Route path='app' element={<MDSxNRW />} />
+              <Route path='datenschutz' element={<DatenschutzText />} />
+              <Route path='impressum' element={<ImpressumText />} />
+              <Route path='kontaktinfo' element={<KontaktInfo />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </React.Suspense>
+    </LanguageProvider>
   </React.StrictMode>,
 );
 

@@ -10,6 +10,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
+import { useLanguage } from '../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const MenuProps = {
   PaperProps: {
@@ -27,7 +29,27 @@ const datas = [
   'Sonstige',
   'Keine Angabe',
 ];
+
+const datasObject = {
+  datasAufDeutsch: [
+    'API (z.B. HTTP, Rest)',
+    'Datei (z.B. Exel, Word, PDF)',
+    'FTP Server',
+    'Real Time via Message Bus (z.B. Kafka, RabbitMQ)',
+    'Sonstige',
+    'Keine Angabe',
+  ],
+  datasAufEnglisch: [
+    'API (e.g. HTTP, Rest)',
+    'File (e.g. Excel, Word, PDF)',
+    'FTP Server',
+    'Real Time via Message Bus (e.g. Kafka, RabbitMQ)',
+    'Other',
+    'Not specified',
+  ],
+};
 export default function FilterSelect() {
+  const { isDeutsch } = useLanguage();
   const [dataName, setDataName] = React.useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof dataName>) => {
@@ -43,9 +65,17 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>Verfügbarkeit der Daten</FormLabel>
+        <FormLabel component='legend'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxSix1
+            : translationFunction().englishTranslations.checkBoxSix1}
+        </FormLabel>
         <Tooltip
-          title='Wie sind die Daten, die Sie teilen oder nutzen möchten, angebunden bzw. verfügbar?'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.checkBoxSix2
+              : translationFunction().englishTranslations.checkBoxSix2
+          }
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -53,21 +83,39 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>Mehrfachantwort möglich</InputLabel>
+        <InputLabel id='element'>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.checkBoxSix3
+            : translationFunction().englishTranslations.checkBoxSix3}
+        </InputLabel>
         <Select
           labelId='element'
           id='someelement'
           multiple
           value={dataName}
           onChange={handleChange}
-          input={<OutlinedInput label='Mehrfachantwort möglich' />}
+          input={
+            <OutlinedInput
+              label={
+                isDeutsch
+                  ? translationFunction().deutschTranslations.checkBoxSix3
+                  : translationFunction().englishTranslations.checkBoxSix3
+              }
+            />
+          }
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {datas.map((data) => (
+          {datas.map((data, index) => (
             <MenuItem key={data} value={data} style={{ whiteSpace: 'normal' }}>
               <Checkbox checked={dataName.indexOf(data) > -1} style={{ marginLeft: '-10px' }} />
-              <ListItemText primary={data} />
+              <ListItemText
+                primary={
+                  isDeutsch
+                    ? datasObject.datasAufDeutsch[index]
+                    : datasObject.datasAufEnglisch[index]
+                }
+              />
             </MenuItem>
           ))}
         </Select>

@@ -14,6 +14,8 @@ import DrawerItem from './DrawerItem';
 // rotas
 import { Link } from 'react-router-dom';
 
+import TranslationButton from '../../components/TranslationButton';
+
 // personalizacao
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
@@ -52,6 +54,33 @@ const Navbar = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 800);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const [isTablet, setIsTablet] = useState(window.innerWidth < 1600);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth < 1600);
     };
 
     window.addEventListener('resize', handleResize);
@@ -118,6 +147,7 @@ const Navbar = () => {
             );
           })}
         </ListMenu>
+        {isMobile ? '' : <TranslationButton />}
       </StyledToolbar>
     </AppBar>
   );
