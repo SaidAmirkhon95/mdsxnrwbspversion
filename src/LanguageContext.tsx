@@ -21,7 +21,7 @@ interface LanguageProviderProps {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const storedLanguage = localStorage.getItem('selectedLanguage');
-  const [isDeutsch, setIsDeutsch] = useState(storedLanguage === 'de' ? true : false);
+  const [isDeutsch, setIsDeutsch] = useState(storedLanguage === 'en' ? true : false);
 
   const toggleLanguage = () => {
     const newLanguage = isDeutsch ? 'de' : 'en';
