@@ -383,12 +383,7 @@ export default function Stepper3() {
                                         >
                                           <TableBody>
                                             <TableRow>
-                                              <TableCell
-                                                style={{
-                                                  width: '0%',
-                                                  borderLeft: '1px solid #ccc',
-                                                }}
-                                              >
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
                                                 Name
                                               </TableCell>
                                               <TableCell>
@@ -396,12 +391,7 @@ export default function Stepper3() {
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
-                                              <TableCell
-                                                style={{
-                                                  width: '0%',
-                                                  borderLeft: '1px solid #ccc',
-                                                }}
-                                              >
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
                                                 {isDeutsch
                                                   ? translationFunction().deutschTranslations
                                                       .stepper310
