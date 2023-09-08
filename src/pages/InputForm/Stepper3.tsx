@@ -289,7 +289,7 @@ export default function Stepper3() {
                         }}
                       >
                         <Grid container>
-                          <Grid item xs={12} md={isTablet ? 3 : 5}>
+                          <Grid item xs={12} md={isMobile ? 12 : isTablet ? 3 : 5}>
                             <p style={{ marginTop: '-8px', marginLeft: '-5px' }}>
                               <img
                                 src={item.logo}
@@ -309,7 +309,7 @@ export default function Stepper3() {
                             )}
                             <p>{item?.maintainer}</p>
                             <p>{item?.dienst}</p>
-                            <Grid item xs={isTablet ? 7 : 12} md={11.1}>
+                            <Grid item xs={isMobile ? 12 : isTablet ? 7 : 12} md={11.1}>
                               <Typography
                                 onClick={() => handleDialogOpen(index)}
                                 style={{ textDecoration: 'underline', cursor: 'pointer' }}
@@ -343,6 +343,7 @@ export default function Stepper3() {
                                       value={value}
                                       onChange={handleChange}
                                       aria-label='basic tabs example'
+                                      orientation={isMobile ? 'vertical' : 'horizontal'}
                                     >
                                       <Tab
                                         label={
@@ -377,7 +378,7 @@ export default function Stepper3() {
                                         style={{ width: '100%', marginBottom: '20px' }}
                                       >
                                         <Table
-                                          sx={{ minWidth: 700 }}
+                                          sx={{ minWidth: isMobile ? 400 : 700 }}
                                           size='small'
                                           aria-label='a dense table'
                                         >
@@ -466,7 +467,7 @@ export default function Stepper3() {
                                         style={{ width: '100%', marginBottom: '20px' }}
                                       >
                                         <Table
-                                          sx={{ minWidth: 700 }}
+                                          sx={{ minWidth: isMobile ? 400 : 700 }}
                                           size='small'
                                           aria-label='a dense table'
                                         >
@@ -601,7 +602,7 @@ export default function Stepper3() {
                                         style={{ width: '100%', marginBottom: '20px' }}
                                       >
                                         <Table
-                                          sx={{ minWidth: 700 }}
+                                          sx={{ minWidth: isMobile ? 400 : 700 }}
                                           size='small'
                                           aria-label='a dense table'
                                         >
@@ -701,7 +702,11 @@ export default function Stepper3() {
                               </BootstrapDialog>
                             </Grid>
                           </Grid>
-                          <Grid item xs={isTablet ? 7 : 12} md={isTablet ? 3 : 5}>
+                          <Grid
+                            item
+                            xs={isMobile ? 12 : isTablet ? 7 : 12}
+                            md={isMobile ? 12 : isTablet ? 3 : 5}
+                          >
                             {isMobile ? (
                               ''
                             ) : (
@@ -772,8 +777,8 @@ export default function Stepper3() {
                           </Grid>
                           <Grid
                             item
-                            xs={isTablet ? 7 : 12}
-                            md={isTablet ? 1 : 2}
+                            xs={isMobile ? 12 : isTablet ? 7 : 12}
+                            md={isMobile ? 12 : isTablet ? 1 : 2}
                             style={{
                               display: 'flex',
                               justifyContent: 'flex-end',
