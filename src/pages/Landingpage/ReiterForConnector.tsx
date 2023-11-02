@@ -133,82 +133,37 @@ export default function ReiterForConnector() {
    }, []);
 
   const subjectBase = 'Connetor Onboarding';
-  /* const getEmailBody = () => {
-    // Construct the email body with the table data
-    const tableRows = [
-      "Name ihres Unternehmens: " + tableData.company,
-      "Gesellschaftsform: " + tableData.form,
-      "Branche: " + tableData.branch,
-      "Hauptstandort: " + tableData.ort,
-      "Postleitzahl: " + tableData.plz,
-      "Land: " + tableData.land,
-      "Vorname: " + tableData.vorname,
-      "Nachname: " + tableData.nachname,
-      "E-Mail für Kontakt: " + tableData.email,
-      "Connector Name: " + tableData.connectorName,
-      "Connector Typ: " + tableData.connectorTyp,
-      "Dauer der Einführung: " + tableData.dauer,
-      "FTE: " + tableData.fte,
-      "GUI vorhanden: " + tableData.gui,
-      "MDS GUI möglich: " + tableData.mdsGui,
-      "An Cloud-Anbieter gebunden: " + tableData.cloudAnbieter,
-      "Cloud: " + tableData.cloud,
-      "IT-Know-how: " + tableData.itKnowHow,
-      "Auf ODRL basierend: " + tableData.odrl,
-      "Open Source: " + tableData.openSource,
-      "Service-Level: " + tableData.serviceLevel,
-      "Deployment Type: " + tableData.deployment,
-    ];
-  
-    const emailBody = `
-      <html>
-        <body>
-          <h2>Connector Onboarding Details</h2>
-          <table border="1">
-            ${tableRows.map((row) => `<tr><td>${row}</td></tr>`).join('')}
-          </table>
-        </body>
-      </html>
-    `;
-  
-    return emailBody;
-  }; */
   const getEmailBody = () => {
     // Construct the email body with the table data
-    const tableBody = `
-      <table>
-        <tr>
-          <td>Name ihres Unternehmens:</td>
-          <td>${tableData.company}</td>
-        </tr>
-        <tr>
-          <td>Gesellschaftsform:</td>
-          <td>${tableData.form}</td>
-        </tr>
-        <tr>
-          <td>Branche:</td>
-          <td>${tableData.branch}</td>
-        </tr>
-        <!-- Add more rows here -->
-      </table>
-    `;
-  
-    return `
-      <html>
-        <body>
-          <h2>Connector Onboarding Details</h2>
-          ${tableBody}
-        </body>
-      </html>
-    `;
-  };
-  
-  // Use this function to create the mailto link
-  const createMailtoLink = () => {
-    const subject = encodeURIComponent(subjectBase);
-    const body = getEmailBody();
-    return `data:text/html;charset=UTF-8,${subject}${body}`;
-  };
+    const emailBody = `
+      Ich möchte folgende Connector onboarden:
+
+      Name ihres Unternehmens: ${tableData.company}
+      Gesellschaftsform: ${tableData.form}
+      Branche: ${tableData.branch}
+      Hauptstandort: ${tableData.ort}
+      Postleitzahl: ${tableData.plz}
+      Land: ${tableData.land}
+      Vorname: ${tableData.vorname}
+      Nachname: ${tableData.nachname}
+      E-Mail für Kontakt: ${tableData.email}
+      Connector Name: ${tableData.connectorName}
+      Connector Typ: ${tableData.connectorTyp}
+      Dauer der Einführung: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI vorhanden: ${tableData.gui}
+      MDS GUI möglich: ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Auf ODRL basierend: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
+      `;
+
+      return encodeURIComponent(emailBody);
+    };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
@@ -266,7 +221,11 @@ export default function ReiterForConnector() {
                 )}
                 {activeStep === steps.length - 2 && (
                   <Box>
-                    <a href={`mailto:${recipientEmail}?subject=${encodeURIComponent(subjectBase)}&body=${createMailtoLink()}`}>
+                    <a
+                      href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
+                        subjectBase
+                      )}&body=${getEmailBody()}`}
+                    >
                       <Button variant='outlined' onClick={handleNext}>
                         Send Email
                       </Button>
