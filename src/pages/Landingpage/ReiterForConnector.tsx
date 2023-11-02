@@ -175,53 +175,31 @@ export default function ReiterForConnector() {
   }; */
   const getEmailBody = () => {
     // Construct the email body with the table data
-    const tableRows = [
-      "Name ihres Unternehmens: " + tableData.company,
-      "Gesellschaftsform: " + tableData.form,
-      "Branche: " + tableData.branch,
-      "Hauptstandort: " + tableData.ort,
-      "Postleitzahl: " + tableData.plz,
-      "Land: " + tableData.land,
-      "Vorname: " + tableData.vorname,
-      "Nachname: " + tableData.nachname,
-      "E-Mail für Kontakt: " + tableData.email,
-      "Connector Name: " + tableData.connectorName,
-      "Connector Typ: " + tableData.connectorTyp,
-      "Dauer der Einführung: " + tableData.dauer,
-      "FTE: " + tableData.fte,
-      "GUI vorhanden: " + tableData.gui,
-      "MDS GUI möglich: " + tableData.mdsGui,
-      "An Cloud-Anbieter gebunden: " + tableData.cloudAnbieter,
-      "Cloud: " + tableData.cloud,
-      "IT-Know-how: " + tableData.itKnowHow,
-      "Auf ODRL basierend: " + tableData.odrl,
-      "Open Source: " + tableData.openSource,
-      "Service-Level: " + tableData.serviceLevel,
-      "Deployment Type: " + tableData.deployment,
-    ];
+    const tableBody = `
+      <table>
+        <tr>
+          <td>Name ihres Unternehmens:</td>
+          <td>${tableData.company}</td>
+        </tr>
+        <tr>
+          <td>Gesellschaftsform:</td>
+          <td>${tableData.form}</td>
+        </tr>
+        <tr>
+          <td>Branche:</td>
+          <td>${tableData.branch}</td>
+        </tr>
+      </table>
+    `;
   
-    const tableRowsHtml = tableRows.map((row) => `<tr><td>${row}</td></tr>`).join('');
-  
-    const emailBody = `
+    return `
       <html>
         <body>
           <h2>Connector Onboarding Details</h2>
-          <table border="1">
-            ${tableRowsHtml}
-          </table>
+          ${tableBody}
         </body>
       </html>
     `;
-  
-    // Set the Content-Type header to text/html
-    const headers = {
-      'Content-Type': 'text/html; charset=utf-8',
-    };
-  
-    return {
-      body: emailBody,
-      headers,
-    };
   };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
