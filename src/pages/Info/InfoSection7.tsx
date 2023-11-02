@@ -1,11 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
-import InfoIcon from '@mui/icons-material/Info';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Slide from '@mui/material/Slide';
 import Kontakt from 'pages/InputForm/Kontakt';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';
@@ -219,7 +216,7 @@ const InfoSection7 = () => {
         >
           <Typography variant='body2' color='text.secondary' align='center'>
             {'Copyright © '}
-            <Link color='inherit' target='_blank' href='https://www.isst.fraunhofer.de/'>
+            <Link color='inherit' rel='isst' target='_blank' href='https://www.isst.fraunhofer.de/'>
               Fraunhofer ISST
             </Link>{' '}
             {new Date().getFullYear()}

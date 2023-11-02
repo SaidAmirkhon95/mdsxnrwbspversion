@@ -15,6 +15,7 @@ import DrawerItem from './DrawerItem';
 import { Link } from 'react-router-dom';
 
 import TranslationButton from '../../components/TranslationButton';
+import { useLanguage } from '../../LanguageContext';
 
 // personalizacao
 const StyledToolbar = styled(Toolbar)({
@@ -30,7 +31,29 @@ const ListMenu = styled(List)(({ theme }) => ({
 }));
 
 //rotas
-const itemList = [
+const itemListDeutsch = [
+  {
+    text: 'Home',
+    to: '/',
+  },
+  {
+    text: 'MDSxNRW',
+    to: '/info',
+  },
+  {
+    text: 'Über uns',
+    to: '/about',
+  },
+  {
+    text: 'Kontakt',
+    to: '/contact',
+  },
+  {
+    text: 'Connector Onboarding',
+    to: '/reiter',
+  },
+];
+const itemListEnglisch = [
   {
     text: 'Home',
     to: '/',
@@ -47,9 +70,14 @@ const itemList = [
     text: 'Contact',
     to: '/contact',
   },
+  {
+    text: 'Connector Onboarding',
+    to: '/reiter',
+  },
 ];
 
 const Navbar = () => {
+  const { isDeutsch } = useLanguage();
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 800);
   useEffect(() => {
     const handleResize = () => {
@@ -68,19 +96,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 600);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  const [isTablet, setIsTablet] = useState(window.innerWidth < 1600);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth < 1600);
     };
 
     window.addEventListener('resize', handleResize);
@@ -126,26 +141,57 @@ const Navbar = () => {
           <DrawerItem />
         </Box>
         <ListMenu>
-          {itemList.map((item) => {
-            const { text } = item;
-            return (
-              <ListItem key={text}>
-                <ListItemButton
-                  component={Link}
-                  to={item.to}
-                  sx={{
-                    color: '#000',
-                    '&:hover': {
-                      backgroundColor: 'transparent',
-                      color: '#1e2a5a',
-                    },
-                  }}
-                >
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
+          {isDeutsch
+            ? itemListDeutsch.map((item) => {
+                const { text } = item;
+                return (
+                  <ListItem key={text}>
+                    <ListItemButton
+                      component={Link}
+                      to={item.to}
+                      sx={{
+                        color: '#000',
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          color: '#1e2a5a',
+                        },
+                      }}
+                    >
+                      <ListItemText
+                        primary={text}
+                        sx={
+                          text === 'Über uns' || text === 'Connector Onboarding'
+                            ? { whiteSpace: 'nowrap' }
+                            : {}
+                        }
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })
+            : itemListEnglisch.map((item) => {
+                const { text } = item;
+                return (
+                  <ListItem key={text}>
+                    <ListItemButton
+                      component={Link}
+                      to={item.to}
+                      sx={{
+                        color: '#000',
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          color: '#1e2a5a',
+                        },
+                      }}
+                    >
+                      <ListItemText
+                        primary={text}
+                        sx={text === 'Connector Onboarding' ? { whiteSpace: 'nowrap' } : {}}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
         </ListMenu>
         {isMobile ? '' : <TranslationButton />}
       </StyledToolbar>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Grid } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Grid } from '@mui/material';
 import Header from './Header';
 import Section1 from './Section1';
 import Section2 from './Section2';

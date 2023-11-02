@@ -14,29 +14,37 @@ import ImpressumText from 'pages/InputForm/ImpressumText';
 import KontaktInfo from 'pages/InputForm/KontaktInfo';
 import ScrollToAbout from 'pages/AboutUs/ScrollToAbout';
 import ScrollToInfo from 'pages/Info/ScrollToInfo';
+import ReiterForConnector from 'pages/Landingpage/ReiterForConnector';
 import { LanguageProvider } from './LanguageContext';
+import { MyContextProvider } from './MyContext';
+import { TableDataProvider } from 'TableDataProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <LanguageProvider>
-      <React.Suspense fallback='Loading...'>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path='/'>
-              <Route index element={<LandingPage />} />
-              <Route path='about' element={<ScrollToAbout />} />
-              <Route path='info' element={<ScrollToInfo />} />
-              <Route path='contact' element={<KontaktInfo />} />
-              <Route path='app' element={<MDSxNRW />} />
-              <Route path='datenschutz' element={<DatenschutzText />} />
-              <Route path='impressum' element={<ImpressumText />} />
-              <Route path='kontaktinfo' element={<KontaktInfo />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </React.Suspense>
+      <MyContextProvider>
+        <TableDataProvider>
+          <React.Suspense fallback='Loading...'>
+            <BrowserRouter>
+              <Navbar />
+              <Routes>
+                <Route path='/'>
+                  <Route index element={<LandingPage />} />
+                  <Route path='about' element={<ScrollToAbout />} />
+                  <Route path='info' element={<ScrollToInfo />} />
+                  <Route path='contact' element={<KontaktInfo />} />
+                  <Route path='app' element={<MDSxNRW />} />
+                  <Route path='reiter' element={<ReiterForConnector />} />
+                  <Route path='datenschutz' element={<DatenschutzText />} />
+                  <Route path='impressum' element={<ImpressumText />} />
+                  <Route path='kontaktinfo' element={<KontaktInfo />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </React.Suspense>
+        </TableDataProvider>
+      </MyContextProvider>
     </LanguageProvider>
   </React.StrictMode>,
 );

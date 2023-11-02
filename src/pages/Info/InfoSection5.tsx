@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
+import { Box, Grid, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Slide from '@mui/material/Slide';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 
@@ -174,7 +171,7 @@ const InfoSection3 = () => {
                     ? translationFunction().deutschTranslations.infoSection56
                     : translationFunction().englishTranslations.infoSection56}
                   &nbsp;
-                  <a target='_blank' rel='mobilDataSpace' href='https://mobility-dataspace.eu/de'>
+                  <a rel='mobilDataSpace' target='_blank' href='https://mobility-dataspace.eu/de'>
                     {isDeutsch
                       ? translationFunction().deutschTranslations.infoSection57
                       : translationFunction().englishTranslations.infoSection57}

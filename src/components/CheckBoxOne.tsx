@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';
 import Tooltip from '@mui/material/Tooltip';
@@ -7,16 +8,21 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { useLanguage } from '../LanguageContext';
-import translationFunction from 'translationFunction';
+import { useMyContext } from '../MyContext';
 
-export default function FilterSelect() {
-  const { isDeutsch } = useLanguage();
-  const [aufwand, setAufwand] = React.useState('');
+export default function CheckBoxOne() {
+  const { aufwandOne, setAufwandOne } = useMyContext();
+
+  const [selectedValue, setSelectedValue] = useState(aufwandOne);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAufwand(event.target.value);
+    setSelectedValue(event.target.value);
+    setAufwandOne(event.target.value);
   };
+
+  useEffect(() => {
+    setSelectedValue(aufwandOne);
+  }, [aufwandOne]);
 
   return (
     <Box sx={{ display: 'grid' }}>
@@ -24,17 +30,9 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxOne1
-            : translationFunction().englishTranslations.checkBoxOne1}
-        </FormLabel>
+        <FormLabel component='legend'>Unternehmensgröße</FormLabel>
         <Tooltip
-          title={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne2
-              : translationFunction().englishTranslations.checkBoxOne2
-          }
+          title='Bitte geben Sie hier Ihre Unternehmensgröße nach Mitarbeitendenanzahl und Umsatz an: Start-Up: (junges)Kleinesunternehmen mit dynamische Wachstum. Kleinstunternehmen: <10 Beschäftigte, <2 Mio.€ Umsatz. Kleines Unternehmen: <11-49 Beschäftigte, <10 Mio.€ Umsatz. Mittleres Unternehmen: <50-249 Beschäftigte, <50 Mio.€ Umsatz. Großes Unternehmen: >249 Beschäftigte, >50 Mio.€ Umsatz.'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -42,43 +40,19 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxOne3
-            : translationFunction().englishTranslations.checkBoxOne3}
-        </InputLabel>
+        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
         <Select
           labelId='element'
           id='someelement'
-          value={aufwand}
-          label={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne3
-              : translationFunction().englishTranslations.checkBoxOne3
-          }
+          value={selectedValue}
+          label='Wählen Sie ein Element aus'
           onChange={handleChange}
         >
-          <MenuItem value={'startup'}>Start-Up</MenuItem>
-          <MenuItem value={'kleinst'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne4
-              : translationFunction().englishTranslations.checkBoxOne4}
-          </MenuItem>
-          <MenuItem value={'kleines'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne5
-              : translationFunction().englishTranslations.checkBoxOne5}
-          </MenuItem>
-          <MenuItem value={'mittel'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne6
-              : translationFunction().englishTranslations.checkBoxOne6}
-          </MenuItem>
-          <MenuItem value={'groß'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxOne7
-              : translationFunction().englishTranslations.checkBoxOne7}
-          </MenuItem>
+          <MenuItem value={'Start-Up'}>Start-Up</MenuItem>
+          <MenuItem value={'Kleinstunternehmen'}>Kleinstunternehmen</MenuItem>
+          <MenuItem value={'Kleines Unternehmen'}>Kleines Unternehmen</MenuItem>
+          <MenuItem value={'Mittleres Unternehmen'}>Mittleres Unternehmen</MenuItem>
+          <MenuItem value={'Großunternehmen'}>Großunternehmen</MenuItem>
         </Select>
       </FormControl>
     </Box>

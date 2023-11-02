@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';
 import Tooltip from '@mui/material/Tooltip';
@@ -7,16 +8,21 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { useLanguage } from '../LanguageContext';
-import translationFunction from 'translationFunction';
+import { useMyContext } from '../MyContext';
 
-export default function FilterSelect() {
-  const { isDeutsch } = useLanguage();
-  const [aufwand, setAufwand] = React.useState('');
+export default function CheckBoxSeven() {
+  const { aufwandSeven, setAufwandSeven } = useMyContext();
+
+  const [selectedValue, setSelectedValue] = useState(aufwandSeven);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAufwand(event.target.value);
+    setSelectedValue(event.target.value);
+    setAufwandSeven(event.target.value);
   };
+
+  useEffect(() => {
+    setSelectedValue(aufwandSeven);
+  }, [aufwandSeven]);
 
   return (
     <Box sx={{ display: 'grid' }}>
@@ -24,17 +30,9 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxSeven1
-            : translationFunction().englishTranslations.checkBoxSeven1}
-        </FormLabel>
+        <FormLabel component='legend'>Service Level</FormLabel>
         <Tooltip
-          title={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSeven2
-              : translationFunction().englishTranslations.checkBoxSeven2
-          }
+          title='Wie soll der Connector eingesetezt werden? CaaS: Connector-as-a-Service, Of-the-Shelf-Solution. Ähnlich wie bei Software wird Ihnen der Connector als komplettes Software-Paket (Software-as-a-Service) angeboten. PaaS: Platform-as-a-Service. Der Connector ist ein zusätzlicher Dienst im Rahmen eines Platfform-Dienstes, auf dem Sie ggf. schon Daten in der Cloud speichern. Self-Service: Sie entwickeln einen Connector slebst und entwickeln diesen passgenau auf Ihre Anforderungen.'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -42,37 +40,18 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxSeven3
-            : translationFunction().englishTranslations.checkBoxSeven3}
-        </InputLabel>
+        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
         <Select
           labelId='element'
           id='someelement'
-          value={aufwand}
-          label={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSeven3
-              : translationFunction().englishTranslations.checkBoxSeven3
-          }
+          value={selectedValue}
+          label='Wählen Sie ein Element aus'
           onChange={handleChange}
         >
-          <MenuItem value={'keine'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSeven4
-              : translationFunction().englishTranslations.checkBoxSeven4}
-          </MenuItem>
-          <MenuItem value={'standard'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSeven5
-              : translationFunction().englishTranslations.checkBoxSeven5}
-          </MenuItem>
-          <MenuItem value={'speziell'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSeven6
-              : translationFunction().englishTranslations.checkBoxSeven6}
-          </MenuItem>
+          <MenuItem value={'keine Angabe'}>keine Angabe</MenuItem>
+          <MenuItem value={'Caas'}>CaaS</MenuItem>
+          <MenuItem value={'Paas'}>PaaS</MenuItem>
+          <MenuItem value={'Self-Service'}>Self-Service</MenuItem>
         </Select>
       </FormControl>
     </Box>

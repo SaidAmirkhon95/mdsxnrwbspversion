@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
+import { Box, Grid, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Slide from '@mui/material/Slide';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 
@@ -148,6 +145,7 @@ const AboutSection6 = () => {
                   height: isMobile ? '150px' : isTablet ? '180px' : '200px',
                   width: isMobile ? '300px' : isTablet ? '350px' : '530px',
                   marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
+                  marginLeft: '10px',
                 }}
               ></Box>
               <CardContent>

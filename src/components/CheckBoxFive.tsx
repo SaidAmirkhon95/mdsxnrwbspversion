@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';
 import Tooltip from '@mui/material/Tooltip';
@@ -10,8 +11,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
-import { useLanguage } from '../LanguageContext';
-import translationFunction from 'translationFunction';
+import { useMyContext } from '../MyContext';
 
 const MenuProps = {
   PaperProps: {
@@ -22,37 +22,28 @@ const MenuProps = {
 };
 
 const datas = [
-  'Datengeber (Datenquelle)',
-  'Datennehmer (Datenkonsument)',
-  'Service Provider (Bereitstellung von Services im MDS)',
-  'Noch nicht sicher',
+  'API (z.B. HTTP, Rest)',
+  'Datei (z.B. Exel, Word, PDF)',
+  'FTP Server',
+  'Real Time via Message Bus (z.B. Kafka, RabbitMQ)',
+  'Sonstige',
+  'Keine Angabe',
 ];
 
-const datasObject = {
-  datasAufDeutsch: [
-    'Datengeber (Datenquelle)',
-    'Datennehmer (Datenkonsument)',
-    'Service Provider (Bereitstellung von Services im MDS)',
-    'Noch nicht sicher',
-  ],
-  datasAufEnglisch: [
-    'Data supplier (Data source)',
-    'Data client (Data consumer)',
-    'Service Provider (provision of services in the MDS)',
-    'Not sure yet',
-  ],
-};
+export default function CheckBoxFive() {
+  const { aufwandFive, setAufwandFive } = useMyContext();
 
-export default function FilterSelect() {
-  const { isDeutsch } = useLanguage();
-  const [dataName, setDataName] = React.useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof dataName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof aufwandFive>) => {
     const {
       target: { value },
     } = event;
-    setDataName(typeof value === 'string' ? value.split(',') : value);
+    // Ensure value is always an array, even if it's a single string
+    setAufwandFive(Array.isArray(value) ? value : [value]);
   };
+
+  useEffect(() => {
+    setAufwandFive(aufwandFive);
+  }, [aufwandFive]);
 
   return (
     <Box sx={{ display: 'grid' }}>
@@ -60,17 +51,9 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxFive1
-            : translationFunction().englishTranslations.checkBoxFive1}
-        </FormLabel>
+        <FormLabel component='legend'>Verfügbarkeit der Daten</FormLabel>
         <Tooltip
-          title={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxFive2
-              : translationFunction().englishTranslations.checkBoxFive2
-          }
+          title='Wie sind die Daten, die Sie teilen oder nutzen möchten, angebunden bzw. verfügbar?'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -78,40 +61,21 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxFive3
-            : translationFunction().englishTranslations.checkBoxFive3}
-        </InputLabel>
+        <InputLabel id='element'>Mehrfachantwort möglich</InputLabel>
         <Select
           labelId='element'
           id='someelement'
           multiple
-          value={dataName}
-          label='Wählen Sie ein Element aus'
+          value={aufwandFive}
           onChange={handleChange}
-          input={
-            <OutlinedInput
-              label={
-                isDeutsch
-                  ? translationFunction().deutschTranslations.checkBoxFive3
-                  : translationFunction().englishTranslations.checkBoxFive3
-              }
-            />
-          }
+          input={<OutlinedInput label='Mehrfachantwort möglich' />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
           {datas.map((data, index) => (
             <MenuItem key={data} value={data} style={{ whiteSpace: 'normal' }}>
-              <Checkbox checked={dataName.indexOf(data) > -1} style={{ marginLeft: '-10px' }} />
-              <ListItemText
-                primary={
-                  isDeutsch
-                    ? datasObject.datasAufDeutsch[index]
-                    : datasObject.datasAufEnglisch[index]
-                }
-              />
+              <Checkbox checked={aufwandFive.includes(data)} style={{ marginLeft: '-10px' }} />
+              <ListItemText primary={data} />
             </MenuItem>
           ))}
         </Select>

@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
+import { Box, Grid, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Slide from '@mui/material/Slide';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 
@@ -143,7 +139,7 @@ const AboutSection4 = () => {
                   backgroundImage: 'url(./image1.svg)',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
-                  backgroundSize: isMobile ? 300 : isTablet ? 350 : 530,
+                  backgroundSize: isMobile ? 290 : isTablet ? 345 : 545,
                   height: isMobile ? '80px' : isTablet ? '120px' : '140px',
                   width: isMobile ? '300px' : isTablet ? '350px' : '530px',
                   marginTop: isMobile ? '-50px' : isTablet ? '-40px' : '100px',
@@ -160,6 +156,7 @@ const AboutSection4 = () => {
                     : translationFunction().englishTranslations.aboutSection41}
                   &nbsp;
                   <a
+                    rel='pendelstatsitik'
                     target='_blank'
                     href='https://www.it.nrw/pendlerstatistik-nrw-48-millionen-erwerbstaetige-pendeln-zur-arbeit-eine-andere-gemeinde-17066'
                     style={{ color: '#616161' }}
@@ -174,6 +171,7 @@ const AboutSection4 = () => {
                     : translationFunction().englishTranslations.aboutSection43}
                   &nbsp;
                   <a
+                    rel='verkehrsdaten'
                     target='_blank'
                     href='https://www.strassen.nrw.de/de/verkehrsdaten.html'
                     style={{ color: '#616161' }}

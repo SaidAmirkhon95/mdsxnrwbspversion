@@ -20,19 +20,6 @@ export default function BasicButtons() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  const [isTablet, setIsTablet] = useState(window.innerWidth < 1600);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth < 1600);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
     <Stack spacing={2} direction='row'>

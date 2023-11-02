@@ -20,11 +20,11 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const storedLanguage = localStorage.getItem('selectedLanguage');
-  const [isDeutsch, setIsDeutsch] = useState(storedLanguage === 'en' ? true : false);
+  const storedLanguage = localStorage.getItem('selectedLanguage') || 'de';
+  const [isDeutsch, setIsDeutsch] = useState(storedLanguage === 'de');
 
   const toggleLanguage = () => {
-    const newLanguage = isDeutsch ? 'de' : 'en';
+    const newLanguage = isDeutsch ? 'en' : 'de';
     setIsDeutsch(!isDeutsch);
     localStorage.setItem('selectedLanguage', newLanguage);
   };
@@ -32,7 +32,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('selectedLanguage');
     if (storedLanguage === 'de' || storedLanguage === 'en') {
-      setIsDeutsch(storedLanguage === 'en' ? true : false);
+      setIsDeutsch(storedLanguage === 'de');
     }
   }, []);
 

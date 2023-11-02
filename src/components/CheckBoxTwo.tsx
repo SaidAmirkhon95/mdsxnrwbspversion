@@ -7,16 +7,22 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { useLanguage } from '../LanguageContext';
-import translationFunction from 'translationFunction';
+import { useMyContext } from '../MyContext';
+import { useState, useEffect } from 'react';
 
-export default function FilterSelect() {
-  const { isDeutsch } = useLanguage();
-  const [aufwand, setAufwand] = React.useState('');
+export default function CheckBoxTwo() {
+  const { aufwandTwo, setAufwandTwo } = useMyContext();
+
+  const [selectedValue, setSelectedValue] = useState(aufwandTwo);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAufwand(event.target.value);
+    setSelectedValue(event.target.value);
+    setAufwandTwo(event.target.value);
   };
+
+  useEffect(() => {
+    setSelectedValue(aufwandTwo);
+  }, [aufwandTwo]);
 
   return (
     <Box sx={{ display: 'grid' }}>
@@ -24,17 +30,9 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxTwo1
-            : translationFunction().englishTranslations.checkBoxTwo1}
-        </FormLabel>
+        <FormLabel component='legend'>Beschäftigte IT-Experten</FormLabel>
         <Tooltip
-          title={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo2
-              : translationFunction().englishTranslations.checkBoxTwo2
-          }
+          title='Bitte geben Sie an, wie viele IT-Experten bei Ihnen Beschäftigt sind.'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -42,47 +40,19 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxTwo3
-            : translationFunction().englishTranslations.checkBoxTwo3}
-        </InputLabel>
+        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
         <Select
           labelId='element'
           id='someelement'
-          value={aufwand}
-          label={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo3
-              : translationFunction().englishTranslations.checkBoxTwo3
-          }
+          value={selectedValue}
+          label='Wählen Sie ein Element aus'
           onChange={handleChange}
         >
-          <MenuItem value={'keine'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo4
-              : translationFunction().englishTranslations.checkBoxTwo4}
-          </MenuItem>
-          <MenuItem value={'>10'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo5
-              : translationFunction().englishTranslations.checkBoxTwo5}
-          </MenuItem>
-          <MenuItem value={'11-49'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo6
-              : translationFunction().englishTranslations.checkBoxTwo6}
-          </MenuItem>
-          <MenuItem value={'50-249'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo7
-              : translationFunction().englishTranslations.checkBoxTwo7}
-          </MenuItem>
-          <MenuItem value={'>249'}>
-            {isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxTwo8
-              : translationFunction().englishTranslations.checkBoxTwo8}
-          </MenuItem>
+          <MenuItem value={'keine Angabe'}>keine Angabe</MenuItem>
+          <MenuItem value={'bis 10 Beschäftigte'}>bis 10 Beschäftigte</MenuItem>
+          <MenuItem value={'11-49 Beschäftigte'}>11-49 Beschäftigte</MenuItem>
+          <MenuItem value={'50-249 Beschäftigte'}>50-249 Beschäftigte</MenuItem>
+          <MenuItem value={'mehr als 249 Beschäftigte'}>mehr als 249 Beschäftigte</MenuItem>
         </Select>
       </FormControl>
     </Box>

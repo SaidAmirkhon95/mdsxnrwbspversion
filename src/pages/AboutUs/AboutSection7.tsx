@@ -4,8 +4,6 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Marcel from '../../components/Pictures/Marcel.jpg';
 import Marius from '../../components/Pictures/Marius.jpg';
-import DataVisualizationThree from '../../components/Pictures/DataVisualizationThree.png';
-import Slide from '@mui/material/Slide';
 import Kontakt from 'pages/InputForm/Kontakt';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';

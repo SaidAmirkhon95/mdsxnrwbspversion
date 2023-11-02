@@ -4,9 +4,24 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useLanguage } from '../LanguageContext';
 import translationFunction from 'translationFunction';
+import { useTableData } from '../TableDataProvider';
+import { useState } from 'react';
 
 export default function CountrySelect() {
   const { isDeutsch } = useLanguage();
+  const { tableData, updateTableData } = useTableData();
+
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const handleCountrySelect = (event: any, value: any) => {
+    setSelectedCountry(value); // Set the selected country in state
+    if (value) {
+      updateTableData({
+        ...tableData,
+        land: value.label, // Assuming 'land' is the field in your tableData where you want to store the country name.
+      });
+    }
+  };
   return (
     <Autocomplete
       id='country-select-demo'
@@ -15,6 +30,8 @@ export default function CountrySelect() {
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.label}
+      onChange={handleCountrySelect}
+      value={selectedCountry}
       renderOption={(props, option) => (
         <Box component='li' sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
           <img

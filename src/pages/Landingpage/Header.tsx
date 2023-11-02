@@ -122,7 +122,9 @@ const Header = () => {
                     ? translationFunction().deutschTranslations.schritteZu
                     : translationFunction().englishTranslations.schritteZu}
                   <br />
-                  Connector
+                  {isDeutsch
+                    ? translationFunction().deutschTranslations.requirements
+                    : translationFunction().englishTranslations.requirements}
                 </Typography>
                 <Typography
                   variant={isMobile ? 'subtitle2' : isTablet ? 'body2' : 'body1'}
@@ -140,6 +142,7 @@ const Header = () => {
                     ? translationFunction().deutschTranslations.sDurch
                     : translationFunction().englishTranslations.sDurch}
                   {isMobile ? <br /> : ''}
+                  {isDeutsch ? '' : <br />}
                   {isDeutsch
                     ? translationFunction().deutschTranslations.passgenau
                     : translationFunction().englishTranslations.passgenau}

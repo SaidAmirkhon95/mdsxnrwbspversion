@@ -4,13 +4,19 @@ import Grid from '@mui/material/Grid';
 import CheckBoxOne from '../../components/CheckBoxOne';
 import CheckBoxTwo from '../../components/CheckBoxTwo';
 import CheckBoxThree from '../../components/CheckBoxThree';
-/* import CheckBoxFour from 'components/CheckBoxFour'; */
+import CheckBoxFour from 'components/CheckBoxFour';
 import CheckBoxFive from 'components/CheckBoxFive';
 import CheckBoxSix from 'components/CheckBoxSix';
 import CheckBoxSeven from 'components/CheckBoxSeven';
-import CheckBoxEight from 'components/CheckBoxEight';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
+import CheckBoxOneEn from 'components/CheckBoxOneEn';
+import CheckBoxTwoEn from 'components/CheckBoxTwoEn';
+import CheckBoxThreeEn from 'components/CheckBoxThreeEn';
+import CheckBoxFourEn from 'components/CheckBoxFourEn';
+import CheckBoxFiveEn from 'components/CheckBoxFiveEn';
+import CheckBoxSixEn from 'components/CheckBoxSixEn';
+import CheckBoxSevenEn from 'components/CheckBoxSevenEn';
 
 export default function Stepper2() {
   const { isDeutsch } = useLanguage();
@@ -23,25 +29,25 @@ export default function Stepper2() {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <CheckBoxOne />
+          {isDeutsch ? <CheckBoxOne /> : <CheckBoxOneEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxTwo />
+          {isDeutsch ? <CheckBoxTwo /> : <CheckBoxTwoEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxThree />
+          {isDeutsch ? <CheckBoxThree /> : <CheckBoxThreeEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxFive />
+          {isDeutsch ? <CheckBoxFour /> : <CheckBoxFourEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxSix />
+          {isDeutsch ? <CheckBoxFive /> : <CheckBoxFiveEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxSeven />
+          {isDeutsch ? <CheckBoxSix /> : <CheckBoxSixEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <CheckBoxEight />
+          {isDeutsch ? <CheckBoxSeven /> : <CheckBoxSevenEn />}
         </Grid>
       </Grid>
     </React.Fragment>

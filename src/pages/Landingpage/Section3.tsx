@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Button, Grid, styled } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import styles from './Page.module.css';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Kontakt from 'pages/InputForm/Kontakt';
@@ -257,6 +256,7 @@ const Section3 = () => {
                       ? translationFunction().deutschTranslations.dssc5
                       : translationFunction().englishTranslations.dssc5}
                     <br />
+                    {isDeutsch ? '' : translationFunction().englishTranslations.dssc6}
                     <br />
                   </Typography>
                 </CardContent>

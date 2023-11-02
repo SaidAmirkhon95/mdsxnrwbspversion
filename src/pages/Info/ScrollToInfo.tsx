@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Grid } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Grid } from '@mui/material';
 import InfoSection1 from './InfoSection1';
 import InfoSection2 from './InfoSection2';
 import InfoSection3 from './InfoSection3';

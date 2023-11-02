@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';
 import Tooltip from '@mui/material/Tooltip';
@@ -7,56 +8,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Checkbox from '@mui/material/Checkbox';
-import ListItemText from '@mui/material/ListItemText';
-import { useLanguage } from '../LanguageContext';
-import translationFunction from 'translationFunction';
+import { useMyContext } from '../MyContext';
 
-const MenuProps = {
-  PaperProps: {
-    style: {
-      width: 200,
-    },
-  },
-};
+export default function CheckBoxSix() {
+  const { aufwandSix, setAufwandSix } = useMyContext();
 
-const datas = [
-  'API (z.B. HTTP, Rest)',
-  'Datei (z.B. Exel, Word, PDF)',
-  'FTP Server',
-  'Real Time via Message Bus (z.B. Kafka, RabbitMQ)',
-  'Sonstige',
-  'Keine Angabe',
-];
+  const [selectedValue, setSelectedValue] = useState(aufwandSix);
 
-const datasObject = {
-  datasAufDeutsch: [
-    'API (z.B. HTTP, Rest)',
-    'Datei (z.B. Exel, Word, PDF)',
-    'FTP Server',
-    'Real Time via Message Bus (z.B. Kafka, RabbitMQ)',
-    'Sonstige',
-    'Keine Angabe',
-  ],
-  datasAufEnglisch: [
-    'API (e.g. HTTP, Rest)',
-    'File (e.g. Excel, Word, PDF)',
-    'FTP Server',
-    'Real Time via Message Bus (e.g. Kafka, RabbitMQ)',
-    'Other',
-    'Not specified',
-  ],
-};
-export default function FilterSelect() {
-  const { isDeutsch } = useLanguage();
-  const [dataName, setDataName] = React.useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof dataName>) => {
-    const {
-      target: { value },
-    } = event;
-    setDataName(typeof value === 'string' ? value.split(',') : value);
+  const handleChange = (event: SelectChangeEvent) => {
+    setSelectedValue(event.target.value);
+    setAufwandSix(event.target.value);
   };
 
   return (
@@ -65,17 +26,9 @@ export default function FilterSelect() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start', flexDirection: 'row' }}
       >
-        <FormLabel component='legend'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxSix1
-            : translationFunction().englishTranslations.checkBoxSix1}
-        </FormLabel>
+        <FormLabel component='legend'>Datennutzungsbediengungen (Usage Policies)</FormLabel>
         <Tooltip
-          title={
-            isDeutsch
-              ? translationFunction().deutschTranslations.checkBoxSix2
-              : translationFunction().englishTranslations.checkBoxSix2
-          }
+          title='Welche Datennutzungsbedingungen benötigen Sie? Standardnutzungsbedingungen: zum Beispiel „Datennutzung auf bestimmte Orte beschränken“, „Datennutzung auf bestimmte Connectoren beschränken“, „Datennutzer darf nur verschlüsselte Daten weiterleiten“. Komplette Nutzungsbedingungen siehe: Appendix A.1in Usage Control in the International Data Spaces (https://doi.org/10.5281/zenodo.5675884) Spezielle Nutzungsbedingungen: Selbsterstellte Nutzungsbedingungen, die über die gegebenen Standardbedingungen hinausgehen.'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -83,41 +36,17 @@ export default function FilterSelect() {
         </Tooltip>
       </FormControl>
       <FormControl sx={{ m: 0.5, minWidth: 250 }}>
-        <InputLabel id='element'>
-          {isDeutsch
-            ? translationFunction().deutschTranslations.checkBoxSix3
-            : translationFunction().englishTranslations.checkBoxSix3}
-        </InputLabel>
+        <InputLabel id='element'>Wählen Sie ein Element aus</InputLabel>
         <Select
           labelId='element'
           id='someelement'
-          multiple
-          value={dataName}
+          value={selectedValue}
+          label='Wählen Sie ein Element aus'
           onChange={handleChange}
-          input={
-            <OutlinedInput
-              label={
-                isDeutsch
-                  ? translationFunction().deutschTranslations.checkBoxSix3
-                  : translationFunction().englishTranslations.checkBoxSix3
-              }
-            />
-          }
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
         >
-          {datas.map((data, index) => (
-            <MenuItem key={data} value={data} style={{ whiteSpace: 'normal' }}>
-              <Checkbox checked={dataName.indexOf(data) > -1} style={{ marginLeft: '-10px' }} />
-              <ListItemText
-                primary={
-                  isDeutsch
-                    ? datasObject.datasAufDeutsch[index]
-                    : datasObject.datasAufEnglisch[index]
-                }
-              />
-            </MenuItem>
-          ))}
+          <MenuItem value={'keine Angabe'}>keine Angabe</MenuItem>
+          <MenuItem value={'Standardnutzungsbedingungen'}>Standardnutzungsbedingungen</MenuItem>
+          <MenuItem value={'Spezielle Nutzungsbedingungen'}>Spezielle Nutzungsbedingungen</MenuItem>
         </Select>
       </FormControl>
     </Box>

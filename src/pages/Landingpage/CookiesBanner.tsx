@@ -11,9 +11,10 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import PrivacyText from 'pages/InputForm/PrivacyText';
 import Impressum from 'pages/InputForm/Impressum';
+import { useLanguage } from '../../LanguageContext';
+import translationFunction from 'translationFunction';
 
 const theme = createTheme({
   palette: {
@@ -39,6 +40,7 @@ const myComponent = {
 };
 
 const CookiesBanner = () => {
+  const { isDeutsch } = useLanguage();
   const [cookies, setCookie] = useCookies(['cookiesAccepted']);
   const [open, setOpen] = useState(cookies.cookiesAccepted === undefined); // make ! invisible to see cookies
   const [customizeOpen, setCustomizeOpen] = useState(false);
@@ -136,20 +138,14 @@ const CookiesBanner = () => {
         message={
           <div>
             <Typography variant='h6' color='primary' align='center' marginBottom='20px'>
-              Privatsphäre-Einstellungen!
+              {isDeutsch
+                ? translationFunction().deutschTranslations.cookies1
+                : translationFunction().englishTranslations.cookies1}
             </Typography>
             <Typography variant={isMobile ? 'body2' : 'body1'}>
-              Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für
-              soziale Medien anbieten zu können und die Zugriffe auf unsere Website zu analysieren.
-              Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner
-              für z.B. soziale Medien, Werbung und Analysen weiter. Unsere Partner führen diese
-              Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen bereitgestellt
-              haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben. Die
-              Datenverarbeitung kann mit Ihrer Einwilligung oder auf Basis eines berechtigten
-              Interesses erfolgen, dem Sie in den individuellen Datenschutzeinstellungen
-              widersprechen können. Sie haben das Recht, nur in essenzielle Services einzuwilligen
-              und deine Einwilligung in der Datenschutzerklärung zu einem späteren Zeitpunkt zu
-              ändern oder zu widerrufen.
+              {isDeutsch
+                ? translationFunction().deutschTranslations.cookies2
+                : translationFunction().englishTranslations.cookies2}
             </Typography>
           </div>
         }
@@ -162,7 +158,9 @@ const CookiesBanner = () => {
               style={{ border: '1px solid #11998E', marginBottom: '10px', width: '100%' }}
               variant='contained'
             >
-              Alle Akzeptieren
+              {isDeutsch
+                ? translationFunction().deutschTranslations.cookies3
+                : translationFunction().englishTranslations.cookies3}
             </Button>
             <Button
               color='primary'
@@ -171,7 +169,9 @@ const CookiesBanner = () => {
               style={{ border: '1px solid #11998E', marginBottom: '10px', width: '100%' }}
               variant='outlined'
             >
-              Weiter ohne Einwilligung
+              {isDeutsch
+                ? translationFunction().deutschTranslations.cookies4
+                : translationFunction().englishTranslations.cookies4}
             </Button>
             <Button
               color='primary'
@@ -180,7 +180,9 @@ const CookiesBanner = () => {
               style={{ border: '1px solid #11998E', width: '100%' }}
               variant='outlined'
             >
-              Individuelle Privatsphäre-Einstellungen
+              {isDeutsch
+                ? translationFunction().deutschTranslations.cookies5
+                : translationFunction().englishTranslations.cookies5}
             </Button>
             <Grid maxWidth='2000px' overflow='hidden'>
               <Typography variant='body2' color='text.secondary' align='center'>
@@ -209,7 +211,11 @@ const CookiesBanner = () => {
         onClose={handleClose}
       />
       <Dialog open={customizeOpen} onClose={handleCustomizeClose} style={myComponent}>
-        <DialogTitle>Cookie-Einstellungen anpassen</DialogTitle>
+        <DialogTitle>
+          {isDeutsch
+            ? translationFunction().deutschTranslations.cookies6
+            : translationFunction().englishTranslations.cookies6}
+        </DialogTitle>
         <DialogContent>
           <Accordion>
             <AccordionSummary
@@ -218,14 +224,21 @@ const CookiesBanner = () => {
               id='panel1a-header'
             >
               <FormGroup>
-                <FormControlLabel control={<Checkbox defaultChecked />} label='Notwendig' />
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label={
+                    isDeutsch
+                      ? translationFunction().deutschTranslations.cookiesNotwendig
+                      : translationFunction().englishTranslations.cookiesNotwendig
+                  }
+                />
               </FormGroup>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Diese Cookies und andere Informationen sind für die Funktion unserer Services
-                unbedingt erforderlich. Sie garantieren, dass unser Service sicher und so wie von
-                Ihnen gewünscht funktioniert. Daher kann man sie nicht deaktivieren.
+                {isDeutsch
+                  ? translationFunction().deutschTranslations.cookies7
+                  : translationFunction().englishTranslations.cookies7}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -235,13 +248,20 @@ const CookiesBanner = () => {
               aria-controls='panel1a-content'
               id='panel1a-header'
             >
-              <FormControlLabel control={<Checkbox />} label='Analytisch' />
+              <FormControlLabel
+                control={<Checkbox />}
+                label={
+                  isDeutsch
+                    ? translationFunction().deutschTranslations.cookiesAnalytisch
+                    : translationFunction().englishTranslations.cookiesAnalytisch
+                }
+              />
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Wir möchten für Sie unseren Service so gut wie möglich machen. Daher verbessern wir
-                unsere Services und Ihr Nutzungserlebnis stetig. Um dies zu tun, möchten wir die
-                Nutzung des Services analysieren und in statistischer Form auswerten.
+                {isDeutsch
+                  ? translationFunction().deutschTranslations.cookies8
+                  : translationFunction().englishTranslations.cookies8}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -255,23 +275,23 @@ const CookiesBanner = () => {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Um Ihnen unser Angebot kostenfrei anbieten zu können, finanzieren wir uns u.a. durch
-                Werbeeinblendungen und richten werbliche und nicht-werbliche Inhalte auf Ihre
-                Interessen aus. Dafür arbeiten wir mit ausgewählten Partnern zusammen. Ihre
-                Einstellungen können Sie jederzeit mit Klick auf Datenschutz im unteren Bereich
-                unserer Webseite anpassen. Ausführlichere Informationen zu den folgenden
-                ausgeführten Verarbeitungszwecken finden Sie ebenfalls in unserer
-                Datenschutzerklärung.
+                {isDeutsch
+                  ? translationFunction().deutschTranslations.cookies9
+                  : translationFunction().englishTranslations.cookies9}
               </Typography>
             </AccordionDetails>
           </Accordion>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCustomizeClose} color='primary'>
-            Abbrechen
+            {isDeutsch
+              ? translationFunction().deutschTranslations.cookies10
+              : translationFunction().englishTranslations.cookies10}
           </Button>
           <Button onClick={handleCustomizeSave} color='primary'>
-            Speichern
+            {isDeutsch
+              ? translationFunction().deutschTranslations.cookies11
+              : translationFunction().englishTranslations.cookies11}
           </Button>
         </DialogActions>
       </Dialog>
