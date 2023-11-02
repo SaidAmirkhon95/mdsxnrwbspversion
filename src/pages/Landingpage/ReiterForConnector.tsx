@@ -20,6 +20,8 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 import OnboardButton from 'components/OnboardButton';
+import { useTableData } from '../../TableDataProvider';
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 
 function Copyright() {
   return (
@@ -90,6 +92,7 @@ const theme = createTheme({
 });
 
 export default function ReiterForConnector() {
+  const { tableData } = useTableData();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -113,6 +116,21 @@ export default function ReiterForConnector() {
     };
   }, []);
   const { isDeutsch } = useLanguage();
+
+   //Mobile and Tablet Views
+   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
+   useEffect(() => {
+     const handleResize = () => {
+       setIsMobile(window.innerWidth < 600);
+     };
+ 
+     window.addEventListener('resize', handleResize);
+ 
+     return () => {
+       window.removeEventListener('resize', handleResize);
+     };
+   }, []);
 
   const subjectBase = 'Connetor Onboarding';
   const bodyBase = 'Ich möchte folgende Connector onboarden';
@@ -174,15 +192,322 @@ export default function ReiterForConnector() {
                 {activeStep === steps.length - 2 && (
                   <Box>
                     <Button onClick={handleNext}>
-                      <OnboardButton
+                    <OnboardButton subjectBase='Connector Onboarding' email='marcel.altendeitering@isst.fraunhofer.de'>
+                      <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: isMobile ? 400 : 700 }} size='small' aria-label='a dense table'>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                Name ihres Unternehmens
+                              </TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.company}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Gesellschaftsform</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.form}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Branche</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.branch}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Hauptstandort</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.ort}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Postleitzahl</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.plz}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Land</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.land}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Vorname</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.vorname}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Nachname</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.nachname}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>E-Mail für Kontakt</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.email}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Connector Name</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.connectorName}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Connector Typ</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.connectorTyp}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Dauer der Einführung</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.dauer}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>FTE</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.fte}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>GUI vorhanden</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.gui}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>MDS GUI möglich</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.mdsGui}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                An Cloud-Anbieter gebunden
+                              </TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.cloudAnbieter}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Cloud</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.cloud}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>IT-Know-how</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.itKnowHow}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Auf ODRL besierend</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.odrl}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Open Source</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.openSource}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Service-Level</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.serviceLevel}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>Deployment Type</TableCell>
+                              <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                {tableData.deployment}
+                              </TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    </OnboardButton>
+                    {/* <OnboardButton
                         subjectBase='Connector Onboarding'
-                        data={[
-                          { name: 'John', age: 30 },
-                          { name: 'Alice', age: 25 },
-                          { name: 'Bob', age: 35 },
-                        ]}
+                        tableData={{
+                          'Name ihres Unternehmens': tableData.company,
+                          'Gesellschaftsform': tableData.form,
+                          'Branche': tableData.branch,
+                          'Hauptstandort': tableData.ort,
+                          'Postleitzahl': tableData.plz,
+                          'Land': tableData.land,
+                          'Vorname': tableData.vorname,
+                          'Nachname': tableData.nachname,
+                          'E-Mail für Kontakt': tableData.email,
+                          'Connector Name': tableData.connectorName,
+                          'Connector Typ': tableData.connectorTyp,
+                          'Dauer der Einführung': tableData.dauer,
+                          'FTE': tableData.fte,
+                          'GUI vorhanden': tableData.gui,
+                          'MDS GUI möglich': tableData.mdsGui,
+                          'An Cloud-Anbieter gebunden': tableData.cloudAnbieter,
+                          'Cloud': tableData.cloud,
+                          'IT-Know-how': tableData.itKnowHow,
+                          'Auf ODRL besierend': tableData.odrl,
+                          'Open Source': tableData.openSource,
+                          'Service-Level': tableData.serviceLevel,
+                          'Deployment Type': tableData.deployment,
+                        }}
                         email='marcel.altendeitering@isst.fraunhofer.de'
-                      />
+                        tableStructure={(
+                          <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: isMobile ? 400 : 700 }} size='small' aria-label='a dense table'>
+                              <TableBody>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                    Name ihres Unternehmens
+                                  </TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.company}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Gesellschaftsform</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.form}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Branche</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.branch}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Hauptstandort</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.ort}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Postleitzahl</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.plz}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Land</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.land}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Vorname</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.vorname}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Nachname</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.nachname}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>E-Mail für Kontakt</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.email}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Connector Name</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.connectorName}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Connector Typ</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.connectorTyp}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Dauer der Einführung</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.dauer}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>FTE</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.fte}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>GUI vorhanden</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.gui}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>MDS GUI möglich</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.mdsGui}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                    An Cloud-Anbieter gebunden
+                                  </TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.cloudAnbieter}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Cloud</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.cloud}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>IT-Know-how</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.itKnowHow}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Auf ODRL besierend</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.odrl}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Open Source</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.openSource}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Service-Level</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.serviceLevel}
+                                  </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc' }}>Deployment Type</TableCell>
+                                  <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
+                                    {tableData.deployment}
+                                  </TableCell>
+                                </TableRow>
+                              </TableBody>
+                            </Table>
+                          </TableContainer>
+                        )}
+                      /> */}
                     </Button>
                   </Box>
                 )}
