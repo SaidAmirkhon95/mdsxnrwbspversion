@@ -189,6 +189,7 @@ export default function ReiterForConnector() {
           <td>Branche:</td>
           <td>${tableData.branch}</td>
         </tr>
+        <!-- Add more rows here -->
       </table>
     `;
   
@@ -200,6 +201,13 @@ export default function ReiterForConnector() {
         </body>
       </html>
     `;
+  };
+  
+  // Use this function to create the mailto link
+  const createMailtoLink = () => {
+    const subject = encodeURIComponent(subjectBase);
+    const body = getEmailBody();
+    return `data:text/html;charset=UTF-8,${subject}${body}`;
   };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
@@ -258,11 +266,7 @@ export default function ReiterForConnector() {
                 )}
                 {activeStep === steps.length - 2 && (
                   <Box>
-                    <a
-                      href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
-                        subjectBase
-                      )}&body=${getEmailBody()}`}
-                    >
+                    <a href={`mailto:${recipientEmail}?subject=${encodeURIComponent(subjectBase)}&body=${createMailtoLink()}`}>
                       <Button variant='outlined' onClick={handleNext}>
                         Send Email
                       </Button>
