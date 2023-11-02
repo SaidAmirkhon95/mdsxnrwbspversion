@@ -198,7 +198,7 @@ export default function ReiterForConnector() {
                 justifyContent='space-between'
                 alignItems='center'
               >
-                {activeStep !== 0 && activeStep !== 3 && (
+                {activeStep !== 0 && activeStep !== 2 && (
                   <Box sx={{ ml: '-8px' }}>
                     <Button
                       variant='outlined'
