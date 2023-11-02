@@ -33,7 +33,7 @@ const OnboardButton: React.FC<OnboardButtonProps> = ({ subjectBase, email, child
       onClick={handleSendEmail}
     >
       Send Email
-      {/* {children} */}
+      {children}
     </Button>
   );
 };
