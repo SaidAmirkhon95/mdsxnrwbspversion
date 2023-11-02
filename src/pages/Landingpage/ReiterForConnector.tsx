@@ -135,35 +135,103 @@ export default function ReiterForConnector() {
   const subjectBase = 'Connetor Onboarding';
   const getEmailBody = () => {
     // Construct the email body with the table data
-    const emailBody = `
-      Ich möchte folgende Connector onboarden:
-
-      Name ihres Unternehmens: ${tableData.company}
-      Gesellschaftsform: ${tableData.form}
-      Branche: ${tableData.branch}
-      Hauptstandort: ${tableData.ort}
-      Postleitzahl: ${tableData.plz}
-      Land: ${tableData.land}
-      Vorname: ${tableData.vorname}
-      Nachname: ${tableData.nachname}
-      E-Mail für Kontakt: ${tableData.email}
-      Connector Name: ${tableData.connectorName}
-      Connector Typ: ${tableData.connectorTyp}
-      Dauer der Einführung: ${tableData.dauer}
-      FTE: ${tableData.fte}
-      GUI vorhanden: ${tableData.gui}
-      MDS GUI möglich: ${tableData.mdsGui}
-      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
-      Cloud: ${tableData.cloud}
-      IT-Know-how: ${tableData.itKnowHow}
-      Auf ODRL basierend: ${tableData.odrl}
-      Open Source: ${tableData.openSource}
-      Service-Level: ${tableData.serviceLevel}
-      Deployment Type: ${tableData.deployment}
-      `;
-
-      return encodeURIComponent(emailBody);
-    };
+    return (
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>Name ihres Unternehmens:</TableCell>
+              <TableCell>{tableData.company}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Gesellschaftsform:</TableCell>
+              <TableCell>{tableData.form}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Branche:</TableCell>
+              <TableCell>{tableData.branch}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Hauptstandort:</TableCell>
+              <TableCell>{tableData.ort}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Postleitzahl:</TableCell>
+              <TableCell>{tableData.plz}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Land:</TableCell>
+              <TableCell>{tableData.land}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Vorname:</TableCell>
+              <TableCell>{tableData.vorname}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Nachname:</TableCell>
+              <TableCell>{tableData.nachname}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>E-Mail für Kontakt:</TableCell>
+              <TableCell>{tableData.email}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Connector Name:</TableCell>
+              <TableCell>{tableData.connectorName}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Connector Typ:</TableCell>
+              <TableCell>{tableData.connectorTyp}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Dauer der Einführung:</TableCell>
+              <TableCell>{tableData.dauer}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>FTE:</TableCell>
+              <TableCell>{tableData.fte}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>GUI vorhanden:</TableCell>
+              <TableCell>{tableData.gui}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>MDS GUI möglich:</TableCell>
+              <TableCell>{tableData.mdsGui}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>An Cloud-Anbieter gebunden:</TableCell>
+              <TableCell>{tableData.cloudAnbieter}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Cloud:</TableCell>
+              <TableCell>{tableData.cloud}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>IT-Know-how:</TableCell>
+              <TableCell>{tableData.itKnowHow}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Auf ODRL basierend:</TableCell>
+              <TableCell>{tableData.odrl}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Open Source:</TableCell>
+              <TableCell>{tableData.openSource}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Service-Level:</TableCell>
+              <TableCell>{tableData.serviceLevel}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deployment Type:</TableCell>
+              <TableCell>{tableData.deployment}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
+  };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
