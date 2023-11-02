@@ -133,7 +133,37 @@ export default function ReiterForConnector() {
    }, []);
 
   const subjectBase = 'Connetor Onboarding';
-  const bodyBase = 'Ich möchte folgende Connector onboarden';
+  const getEmailBody = () => {
+    // Construct the email body with the table data
+    const emailBody = `
+      Ich möchte folgende Connector onboarden:
+
+      Name ihres Unternehmens: ${tableData.company}
+      Gesellschaftsform: ${tableData.form}
+      Branche: ${tableData.branch}
+      Hauptstandort: ${tableData.ort}
+      Postleitzahl: ${tableData.plz}
+      Land: ${tableData.land}
+      Vorname: ${tableData.vorname}
+      Nachname: ${tableData.nachname}
+      E-Mail für Kontakt: ${tableData.email}
+      Connector Name: ${tableData.connectorName}
+      Connector Typ: ${tableData.connectorTyp}
+      Dauer der Einführung: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI vorhanden: ${tableData.gui}
+      MDS GUI möglich: ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Auf ODRL basierend: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
+      `;
+
+      return encodeURIComponent(emailBody);
+    };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
@@ -191,8 +221,17 @@ export default function ReiterForConnector() {
                 )}
                 {activeStep === steps.length - 2 && (
                   <Box>
+                    <a
+                      href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
+                        subjectBase
+                      )}&body=${getEmailBody()}`}
+                    >
+                      <Button variant='outlined'>
+                        Send Email
+                      </Button>
+                    </a>
                     <Button onClick={handleNext}>
-                    <OnboardButton subjectBase='Connector Onboarding' email='marcel.altendeitering@isst.fraunhofer.de'>
+                    {/* <OnboardButton subjectBase='Connector Onboarding' email='marcel.altendeitering@isst.fraunhofer.de'>
                       <TableContainer component={Paper}>
                         <Table sx={{ minWidth: isMobile ? 400 : 700 }} size='small' aria-label='a dense table'>
                           <TableBody>
@@ -335,7 +374,7 @@ export default function ReiterForConnector() {
                           </TableBody>
                         </Table>
                       </TableContainer>
-                    </OnboardButton>
+                    </OnboardButton> */}
                     {/* <OnboardButton
                         subjectBase='Connector Onboarding'
                         tableData={{

@@ -1,20 +1,24 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
-import { Connectors } from './Connectors';
 
 interface OnboardButtonProps {
   subjectBase: string;
   email: string;
-  children: ReactNode; // Add children prop for table structure and data
+  tableData: Record<string, string>;
 }
 
-const OnboardButton: React.FC<OnboardButtonProps> = ({ subjectBase, email, children }) => {
-  const bodyBase = 'Ich möchte folgende Connector onboarden';
-
+const OnboardButton: React.FC<OnboardButtonProps> = ({ subjectBase, email, tableData }) => {
   const handleSendEmail = () => {
+    const bodyBase = 'Ich möchte folgende Connector onboarden:\n\n';
+
+    const emailBody = Object.keys(tableData)
+      .map((key) => `${key}: ${tableData[key]}`)
+      .join('\n');
+
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subjectBase,
-    )}&body=${encodeURIComponent(bodyBase)}`;
+    )}&body=${encodeURIComponent(bodyBase + emailBody)}`;
+
     window.location.href = mailtoLink;
   };
 
@@ -33,7 +37,6 @@ const OnboardButton: React.FC<OnboardButtonProps> = ({ subjectBase, email, child
       onClick={handleSendEmail}
     >
       Send Email
-      {children}
     </Button>
   );
 };
