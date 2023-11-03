@@ -89,6 +89,43 @@ const Header = () => {
           alignItems='center'
           maxWidth='2000px'
         >
+          <Slide direction='down' in={true} timeout={1000}>
+            <Grid
+              item
+              xs={isMobile ? 12 : isTablet ? 5 : 12}
+              md={7}
+              display='flex'
+              marginTop='70px'
+              marginBottom='-100px'
+              justifyContent='space-around'
+              flexDirection={isMobile ? 'column' : 'row'}
+              alignItems='center'
+            >
+              <img
+                style={{
+                  maxWidth: '170px',
+                  paddingRight: '20px',
+                }}
+                src='logo_MDS_black.svg'
+                alt='mds'
+              />
+              <img
+                style={{
+                  maxWidth: '160px',
+                  paddingRight: '10px',
+                }}
+                src='Fraunhofer_ISST-Logo_Internet.svg'
+                alt='mds'
+              />
+              <img
+                style={{
+                  maxWidth: '220px',
+                }}
+                src='image1.svg'
+                alt='mds'
+              />
+            </Grid>
+          </Slide>
           <Grid
             item
             xs={isMobile ? 12 : isTablet ? 7 : 12}
