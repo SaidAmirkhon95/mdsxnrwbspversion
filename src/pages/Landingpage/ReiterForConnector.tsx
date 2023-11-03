@@ -134,26 +134,36 @@ export default function ReiterForConnector() {
 
   const subjectBase = 'Connetor Onboarding';
   const getEmailBody = () => {
-    // Construct the email body with the table data as an HTML table
-    const tableRows = `
-      <tr>
-        <td>Name ihres Unternehmens:</td>
-        <td>${tableData.company}</td>
-      </tr>
-      <tr>
-        <td>Gesellschaftsform:</td>
-        <td>${tableData.form}</td>
-      </tr>
-    `;
+    // Construct the email body with the table data
     const emailBody = `
-      <p>Ich möchte folgende Connector onboarden:</p>
-      <table>
-        ${tableRows}
-      </table>
-    `;
-  
-    return encodeURIComponent(emailBody);
-  };
+      Ich möchte folgende Connector onboarden:
+
+      Name ihres Unternehmens: ${tableData.company}
+      Gesellschaftsform: ${tableData.form}
+      Branche: ${tableData.branch}
+      Hauptstandort: ${tableData.ort}
+      Postleitzahl: ${tableData.plz}
+      Land: ${tableData.land}
+      Vorname: ${tableData.vorname}
+      Nachname: ${tableData.nachname}
+      E-Mail für Kontakt: ${tableData.email}
+      Connector Name: ${tableData.connectorName}
+      Connector Typ: ${tableData.connectorTyp}
+      Dauer der Einführung: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI vorhanden: ${tableData.gui}
+      MDS GUI möglich: ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Auf ODRL basierend: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
+      `;
+
+      return encodeURIComponent(emailBody);
+    };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
