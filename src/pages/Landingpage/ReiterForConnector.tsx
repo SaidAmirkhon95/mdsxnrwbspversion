@@ -226,7 +226,19 @@ export default function ReiterForConnector() {
                         subjectBase
                       )}&body=${getEmailBody()}`}
                     >
-                      <Button variant='outlined' onClick={handleNext}>
+                      <Button
+                        variant='outlined'
+                        onClick={handleNext}
+                        sx={{
+                          mt: 3,
+                          ml: 1,
+                          '@media (max-width: 550px)': {
+                            fontSize: 'small',
+                          },
+                        }}
+                        style={{ textTransform: 'none' }}
+                        size='large'
+                      >
                         Send Email
                       </Button>
                     </a>
