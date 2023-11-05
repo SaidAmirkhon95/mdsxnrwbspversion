@@ -75,7 +75,7 @@ export default function ReiterStepper3() {
                   {tableData.company}
                 </TableCell>
               </TableRow>
-              <TableRow>
+              {/* <TableRow>
                 <TableCell style={{ borderLeft: '1px solid #ccc' }}>Gesellschaftsform</TableCell>
                 <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
                   {tableData.form}
@@ -86,7 +86,7 @@ export default function ReiterStepper3() {
                 <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>
                   {tableData.branch}
                 </TableCell>
-              </TableRow>
+              </TableRow> */}
               <TableRow>
                 <TableCell style={{ borderLeft: '1px solid #ccc' }}>Hauptstandort</TableCell>
                 <TableCell style={{ borderLeft: '1px solid #ccc', borderRight: '1px solid #ccc' }}>

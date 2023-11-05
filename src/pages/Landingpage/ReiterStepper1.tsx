@@ -60,7 +60,7 @@ export default function ReiterStepper1() {
             value={tableData.company}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <TextField
             id='form'
             name='form'
@@ -83,7 +83,7 @@ export default function ReiterStepper1() {
             onChange={handleInputChange}
             value={tableData.branch}
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} sm={4}>
           <TextField
             id='ort'

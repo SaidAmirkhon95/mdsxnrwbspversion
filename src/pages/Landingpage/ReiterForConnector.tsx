@@ -139,8 +139,8 @@ export default function ReiterForConnector() {
       Ich möchte folgende Connector onboarden:
 
       Name ihres Unternehmens: ${tableData.company}
-      Gesellschaftsform: ${tableData.form}
-      Branche: ${tableData.branch}
+      /* Gesellschaftsform: ${tableData.form}
+      Branche: ${tableData.branch} */
       Hauptstandort: ${tableData.ort}
       Postleitzahl: ${tableData.plz}
       Land: ${tableData.land}
