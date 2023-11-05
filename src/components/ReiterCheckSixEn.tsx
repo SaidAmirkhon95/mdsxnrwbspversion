@@ -13,20 +13,20 @@ import { useTableData } from '../TableDataProvider';
 import Tooltip from '@mui/material/Tooltip';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-export default function ReiterCheckSix() {
+export default function ReiterCheckSixEn() {
   const [aufwand, setAufwand] = React.useState('');
   const [selectedCloud, setSelectedCloud] = React.useState('');
   const [isSecondFormControlActive, setIsSecondFormControlActive] = React.useState(false);
 
   const handleChange = (event: SelectChangeEvent) => {
     setAufwand(event.target.value);
-    setIsSecondFormControlActive(event.target.value !== 'nein');
+    setIsSecondFormControlActive(event.target.value !== 'No');
     handleInputChange(event);
   };
   const handleSelectChange = (event: SelectChangeEvent) => {
     setSelectedCloud(event.target.value);
     const { name, value } = event.target;
-    if (name === 'cloud' && value === 'Andere') {
+    if (name === 'cloud' && value === 'Other') {
       // If "Andere" is selected in the Select, use an empty string
       updateTableData({
         ...tableData,
@@ -56,11 +56,9 @@ export default function ReiterCheckSix() {
         sx={{ m: 0.5, minWidth: 250 }}
         style={{ display: 'inline-flex', alignItems: 'flex-start' }}
       >
-        <FormLabel component='legend'>
-          Ist der Connector an bestimmte Cloud-Anbieter gebunden?
-        </FormLabel>
+        <FormLabel component='legend'>Is the connector tied to specific cloud provider?</FormLabel>
         <Tooltip
-          title='Bitte geben Sie an, ob der Connector an einen bestimmten Cloud-Anbieter gebunden ist. Sollte dies der Fall sein, ist der Cloudanbieter jedoch nicht mit aufgelistet, wählen Sie bitte „andere“ und geben den Cloud-Anbieter an…'
+          title='Please specify whether the connector is tied to a specific cloud provider. If this is the case and the cloud provider is not listed, please select ‘other’ and enter the cloud provider:'
           placement='top-start'
           style={{ position: 'absolute', right: 0 }}
         >
@@ -69,16 +67,16 @@ export default function ReiterCheckSix() {
         <RadioGroup row value={aufwand} onChange={handleChange}>
           <FormControlLabel
             name='cloudAnbieter'
-            value='Ja'
+            value='Yes'
             control={<Radio />}
-            label='Ja'
+            label='Yes'
             onChange={(event) => handleInputChange(event)}
           />
           <FormControlLabel
             name='cloudAnbieter'
-            value='Nein'
+            value='No'
             control={<Radio />}
-            label='Nein'
+            label='No'
             onChange={(event) => handleInputChange(event)}
           />
         </RadioGroup>
@@ -101,13 +99,13 @@ export default function ReiterCheckSix() {
           <MenuItem value={'Redhat'}>Redhat</MenuItem>
           <MenuItem value={'VMWare'}>VMWare</MenuItem>
           <MenuItem value={'MyCloud'}>MyCloud</MenuItem>
-          <MenuItem value={'Andere'}>Andere</MenuItem>
+          <MenuItem value={'Other'}>Other</MenuItem>
         </Select>
-        {selectedCloud === 'Andere' && (
+        {selectedCloud === 'Other' && (
           <TextField
             name='cloud'
             id='outlined-basic'
-            placeholder='Bitte geben Sie den Cloud-Anbieter an'
+            placeholder='Please specify the Cloud-Provider'
             variant='outlined'
             value={tableData.cloud}
             onChange={handleInputChange}

@@ -4,16 +4,27 @@ import Grid from '@mui/material/Grid';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 import ReiterCheckOne from 'components/ReiterCheckOne';
+import ReiterCheckOneEn from 'components/ReiterCheckOneEn';
 import ReiterCheckTwo from 'components/ReiterCheckTwo';
+import ReiterCheckTwoEn from 'components/ReiterCheckTwoEn';
 import ReiterCheckThree from 'components/ReiterCheckThree';
+import ReiterCheckThreeEn from 'components/ReiterCheckThreeEn';
 import ReiterCheckFour from 'components/ReiterCheckFour';
+import ReiterCheckFourEn from 'components/ReiterCheckFourEn';
 import ReiterCheckFive from 'components/ReiterCheckFive';
+import ReiterCheckFiveEn from 'components/ReiterCheckFiveEn';
 import ReiterCheckSix from 'components/ReiterCheckSix';
+import ReiterCheckSixEn from 'components/ReiterCheckSixEn';
 import ReiterCheckSeven from 'components/ReiterCheckSeven';
+import ReiterCheckSevenEn from 'components/ReiterCheckSevenEn';
 import ReiterCheckEight from 'components/ReiterCheckEight';
+import ReiterCheckEightEn from 'components/ReiterCheckEightEn';
 import ReiterCheckNine from 'components/ReiterCheckNine';
+import ReiterCheckNineEn from 'components/ReiterCheckNineEn';
 import ReiterCheckTen from 'components/ReiterCheckTen';
+import ReiterCheckTenEn from 'components/ReiterCheckTenEn';
 import ReiterCheckEleven from 'components/ReiterCheckEleven';
+import ReiterCheckElevenEn from 'components/ReiterCheckElevenEn';
 
 export default function ReiterStepper2() {
   const { isDeutsch } = useLanguage();
@@ -26,35 +37,35 @@ export default function ReiterStepper2() {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <ReiterCheckOne />
+          {isDeutsch ? <ReiterCheckOne /> : <ReiterCheckOneEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckTwo />
+          {isDeutsch ? <ReiterCheckTwo /> : <ReiterCheckTwoEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckThree />
+          {isDeutsch ? <ReiterCheckThree /> : <ReiterCheckThreeEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckFour />
+          {isDeutsch ? <ReiterCheckFour /> : <ReiterCheckFourEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckFive />
+          {isDeutsch ? <ReiterCheckFive /> : <ReiterCheckFiveEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckSix />
+          {isDeutsch ? <ReiterCheckSix /> : <ReiterCheckSixEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckSeven />
+          {isDeutsch ? <ReiterCheckSeven /> : <ReiterCheckSevenEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckEight />
+          {isDeutsch ? <ReiterCheckEight /> : <ReiterCheckEightEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckNine />
-          <ReiterCheckTen />
+          {isDeutsch ? <ReiterCheckNine /> : <ReiterCheckNineEn />}
+          {isDeutsch ? <ReiterCheckTen /> : <ReiterCheckTenEn />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <ReiterCheckEleven />
+          {isDeutsch ? <ReiterCheckEleven /> : <ReiterCheckElevenEn />}
         </Grid>
       </Grid>
     </React.Fragment>
