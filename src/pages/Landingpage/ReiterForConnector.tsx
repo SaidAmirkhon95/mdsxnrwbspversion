@@ -134,34 +134,36 @@ export default function ReiterForConnector() {
 
   const subjectBase = 'Connetor Onboarding';
   const getEmailBody = () => {
-    // Construct the email body with line breaks
+    // Construct the email body with the table data
     const emailBody = `
-  Name ihres Unternehmens: ${tableData.company}%0D%0A
-  Gesellschaftsform: ${tableData.form}%0D%0A
-  Branche: ${tableData.branch}%0D%0A
-  Hauptstandort: ${tableData.ort}%0D%0A
-  Postleitzahl: ${tableData.plz}%0D%0A
-  Land: ${tableData.land}%0D%0A
-  Vorname: ${tableData.vorname}%0D%0A
-  Nachname: ${tableData.nachname}%0D%0A
-  E-Mail für Kontakt: ${tableData.email}%0D%0A
-  Connector Name: ${tableData.connectorName}%0D%0A
-  Connector Typ: ${tableData.connectorTyp}%0D%0A
-  Dauer der Einführung: ${tableData.dauer}%0D%0A
-  FTE: ${tableData.fte}%0D%0A
-  GUI vorhanden: ${tableData.gui}%0D%0A
-  MDS GUI möglich: ${tableData.mdsGui}%0D%0A
-  An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}%0D%0A
-  Cloud: ${tableData.cloud}%0D%0A
-  IT-Know-how: ${tableData.itKnowHow}%0D%0A
-  Auf ODRL basierend: ${tableData.odrl}%0D%0A
-  Open Source: ${tableData.openSource}%0D%0A
-  Service-Level: ${tableData.serviceLevel}%0D%0A
-  Deployment Type: ${tableData.deployment}%0D%0A
-    `;
-  
-    return emailBody;
-  };
+      Ich möchte folgende Connector onboarden:
+
+      Name ihres Unternehmens: ${tableData.company}
+      Gesellschaftsform: ${tableData.form}
+      Branche: ${tableData.branch}
+      Hauptstandort: ${tableData.ort}
+      Postleitzahl: ${tableData.plz}
+      Land: ${tableData.land}
+      Vorname: ${tableData.vorname}
+      Nachname: ${tableData.nachname}
+      E-Mail für Kontakt: ${tableData.email}
+      Connector Name: ${tableData.connectorName}
+      Connector Typ: ${tableData.connectorTyp}
+      Dauer der Einführung: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI vorhanden: ${tableData.gui}
+      MDS GUI möglich: ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Auf ODRL basierend: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
+      `;
+
+      return encodeURIComponent(emailBody);
+    };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
