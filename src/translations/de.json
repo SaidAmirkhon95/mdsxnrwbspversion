@@ -252,5 +252,11 @@
   "cookies10": "Abbrechen",
   "cookies11": "Speichern",
   "cookiesNotwendig": "Notwendig",
-  "cookiesAnalytisch": "Analytisch"
+  "cookiesAnalytisch": "Analytisch",
+  "connectorTyp": "Connector Typ",
+  "dauerEinführung": "Dauer der Einführung",
+  "guiVorhanden": "GUI vorhanden",
+  "mdsGuiMöglich": "MDS GUI möglich",
+  "cloudAnbieterGebunden": "An Cloud-Anbieter gebunden",
+  "oDRLbasierend": "Auf ODRL besierend"
 }

@@ -117,20 +117,20 @@ export default function ReiterForConnector() {
   }, []);
   const { isDeutsch } = useLanguage();
 
-   //Mobile and Tablet Views
-   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  //Mobile and Tablet Views
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
-   useEffect(() => {
-     const handleResize = () => {
-       setIsMobile(window.innerWidth < 600);
-     };
- 
-     window.addEventListener('resize', handleResize);
- 
-     return () => {
-       window.removeEventListener('resize', handleResize);
-     };
-   }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const subjectBase = 'Connetor Onboarding';
   const getEmailBody = () => {
@@ -160,8 +160,37 @@ export default function ReiterForConnector() {
       Deployment Type: ${tableData.deployment}
       `;
 
-      return encodeURIComponent(emailBody);
-    };
+    return encodeURIComponent(emailBody);
+  };
+  const getEmailBodyEn = () => {
+    // Construct the email body with the table data
+    const emailBody = `
+      I would like to onboard the following connectors:
+
+      Name of your company: ${tableData.company}
+      Main location: ${tableData.ort}
+      Zip code: ${tableData.plz}
+      Land: ${tableData.land}
+      First name: ${tableData.vorname}
+      Last name: ${tableData.nachname}
+      E-Mail for Contact: ${tableData.email}
+      Connector Name: ${tableData.connectorName}
+      Connector Type: ${tableData.connectorTyp}
+      Duration of the introduction: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI available: ${tableData.gui}
+      MDS GUI possible: ${tableData.mdsGui}
+      Tied to Cloud-Provider: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Based on ODRL: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
+      `;
+
+    return encodeURIComponent(emailBody);
+  };
   const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
@@ -219,27 +248,51 @@ export default function ReiterForConnector() {
                 )}
                 {activeStep === steps.length - 2 && (
                   <Box>
-                    <a
-                      href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
-                        subjectBase
-                      )}&body=${getEmailBody()}`}
-                    >
-                      <Button
-                        variant='outlined'
-                        onClick={handleNext}
-                        sx={{
-                          mt: 3,
-                          ml: 1,
-                          '@media (max-width: 550px)': {
-                            fontSize: 'small',
-                          },
-                        }}
-                        style={{ textTransform: 'none' }}
-                        size='large'
+                    {isDeutsch ? (
+                      <a
+                        href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
+                          subjectBase,
+                        )}&body=${getEmailBody()}`}
                       >
-                        Send Email
-                      </Button>
-                    </a>
+                        <Button
+                          variant='outlined'
+                          onClick={handleNext}
+                          sx={{
+                            mt: 3,
+                            ml: 1,
+                            '@media (max-width: 550px)': {
+                              fontSize: 'small',
+                            },
+                          }}
+                          style={{ textTransform: 'none' }}
+                          size='large'
+                        >
+                          Send Email
+                        </Button>
+                      </a>
+                    ) : (
+                      <a
+                        href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
+                          subjectBase,
+                        )}&body=${getEmailBodyEn()}`}
+                      >
+                        <Button
+                          variant='outlined'
+                          onClick={handleNext}
+                          sx={{
+                            mt: 3,
+                            ml: 1,
+                            '@media (max-width: 550px)': {
+                              fontSize: 'small',
+                            },
+                          }}
+                          style={{ textTransform: 'none' }}
+                          size='large'
+                        >
+                          Send Email
+                        </Button>
+                      </a>
+                    )}
                   </Box>
                 )}
               </Box>

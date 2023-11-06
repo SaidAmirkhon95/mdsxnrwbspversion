@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useLanguage } from '../../LanguageContext';
 import { useTableData } from '../../TableDataProvider';
+import translationFunction from 'translationFunction';
 
 export default function ReiterStepper1() {
   const { isDeutsch } = useLanguage();
@@ -30,10 +31,16 @@ export default function ReiterStepper1() {
         }}
       >
         <Typography variant='h6' gutterBottom>
-          Generelle Unternehmensinformationen
+          {isDeutsch
+            ? translationFunction().deutschTranslations.stepper11
+            : translationFunction().englishTranslations.stepper11}
         </Typography>
         <Tooltip
-          title='Tragen Sie hier bitte generelle Informationen zu Ihrem Unternehmen in den Freitextfeldern ein. Diese dienen der eindeutigen Zuordnung ihres Unternehmens.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.stepper12
+              : translationFunction().englishTranslations.stepper12
+          }
           placement='top-start'
         >
           <InfoOutlinedIcon
@@ -52,7 +59,11 @@ export default function ReiterStepper1() {
             required
             id='unternehmen'
             name='company'
-            label='Name ihres Unternehmens'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper13
+                : translationFunction().englishTranslations.stepper13
+            }
             fullWidth
             autoComplete='unternehmen'
             variant='standard'
@@ -60,35 +71,15 @@ export default function ReiterStepper1() {
             value={tableData.company}
           />
         </Grid>
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            id='form'
-            name='form'
-            label='Gesellschaftsform'
-            fullWidth
-            autoComplete='form'
-            variant='standard'
-            onChange={handleInputChange}
-            value={tableData.form}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id='branch'
-            name='branch'
-            label='Branche'
-            fullWidth
-            autoComplete='branch'
-            variant='standard'
-            onChange={handleInputChange}
-            value={tableData.branch}
-          />
-        </Grid> */}
         <Grid item xs={12} sm={4}>
           <TextField
             id='ort'
             name='ort'
-            label='Hauptstandort'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper16
+                : translationFunction().englishTranslations.stepper16
+            }
             fullWidth
             autoComplete='ort'
             variant='standard'
@@ -100,7 +91,11 @@ export default function ReiterStepper1() {
           <TextField
             id='plz'
             name='plz'
-            label='Postleitzahl'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper17
+                : translationFunction().englishTranslations.stepper17
+            }
             fullWidth
             autoComplete='postleitzahl'
             variant='standard'
@@ -125,10 +120,16 @@ export default function ReiterStepper1() {
         }}
       >
         <Typography variant='h6' gutterBottom>
-          Kontaktinformationen
+          {isDeutsch
+            ? translationFunction().deutschTranslations.stepper18
+            : translationFunction().englishTranslations.stepper18}
         </Typography>
         <Tooltip
-          title='Tragen Sie hier bitte Informationen zur Kontaktperson in den Freitextfeldern ein.'
+          title={
+            isDeutsch
+              ? translationFunction().deutschTranslations.stepper19
+              : translationFunction().englishTranslations.stepper19
+          }
           placement='top-start'
           style={{ marginLeft: '5px', marginTop: '5px' }}
         >
@@ -141,7 +142,11 @@ export default function ReiterStepper1() {
             required
             id='vorname'
             name='vorname'
-            label='Vorname'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper110
+                : translationFunction().englishTranslations.stepper110
+            }
             fullWidth
             autoComplete='vorname'
             variant='standard'
@@ -154,7 +159,11 @@ export default function ReiterStepper1() {
             required
             id='nachname'
             name='nachname'
-            label='Nachname'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper111
+                : translationFunction().englishTranslations.stepper111
+            }
             fullWidth
             autoComplete='nachname'
             variant='standard'
@@ -167,7 +176,11 @@ export default function ReiterStepper1() {
             required
             id='email'
             name='email'
-            label='E-Mail für Kontakt'
+            label={
+              isDeutsch
+                ? translationFunction().deutschTranslations.stepper112
+                : translationFunction().englishTranslations.stepper112
+            }
             fullWidth
             autoComplete='email'
             variant='standard'
