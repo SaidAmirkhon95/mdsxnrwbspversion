@@ -53,7 +53,7 @@ export default function ReiterStepper3() {
   return (
     <React.Fragment>
       <div style={{ display: 'grid', overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
-        <div
+        {/* <div
           style={{
             flexGrow: '15',
             padding: '0px',
@@ -62,6 +62,29 @@ export default function ReiterStepper3() {
         >
           <Typography variant='h6' gutterBottom align='center'>
             Bitte fügen Sie unten stehende Tabelle der Mail zu
+          </Typography>
+        </div> */}
+        <div
+          style={{
+            flexGrow: '15',
+            padding: '0px',
+            marginRight: '0px',
+          }}
+        >
+          <Typography variant='h6' gutterBottom align='center'>
+            <br />
+            Sollte sich ihr E-Mail-Programm nicht automatisch öffnen, senden Sie bitte eine Mail mit
+            dem Betreff &quot;Connector Onboarding&quot; an&nbsp;
+            <br />
+            <a href={`mailto: marcel.altendeitering@isst.fraunhofer.de`}>
+              marcel.altendeitering@isst.fraunhofer.de
+            </a>
+            &nbsp;und&nbsp;
+            <a href={`mailto: marius.hupperz@isst.fraunhofer.de`}>
+              marius.hupperz@isst.fraunhofer.de
+            </a>
+            <br />
+            &nbsp;und fügen Sie bitte unten stehende Tabelle als Text hinzu.
           </Typography>
         </div>
         <TableContainer component={Paper}>
@@ -206,7 +229,7 @@ export default function ReiterStepper3() {
             </TableBody>
           </Table>
         </TableContainer>
-        <div
+        {/* <div
           style={{
             flexGrow: '15',
             padding: '0px',
@@ -228,7 +251,7 @@ export default function ReiterStepper3() {
             <br />
             &nbsp;und fügen Sie bitte oben stehende Tabelle als Text hinzu.
           </Typography>
-        </div>
+        </div> */}
       </div>
     </React.Fragment>
   );
