@@ -146,18 +146,18 @@ export default function ReiterForConnector() {
       Nachname:                                   ${tableData.nachname}
       E-Mail für Kontakt:                         ${tableData.email}
       Connector Name:                             ${tableData.connectorName}
-      Connector Typ:                              ${tableData.connectorTyp}
-      Dauer der Einführung:                       ${tableData.dauer}
-      FTE:                                        ${tableData.fte}
-      GUI vorhanden:                              ${tableData.gui}
-      MDS GUI möglich:                            ${tableData.mdsGui}
-      An Cloud-Anbieter gebunden:                 ${tableData.cloudAnbieter}
-      Cloud:                                      ${tableData.cloud}
-      IT-Know-how:                                ${tableData.itKnowHow}
-      Auf ODRL basierend:                         ${tableData.odrl}
-      Open Source:                                ${tableData.openSource}
-      Service-Level:                              ${tableData.serviceLevel}
-      Deployment Type:                            ${tableData.deployment}
+      Connector Typ: ${tableData.connectorTyp}
+      Dauer der Einführung: ${tableData.dauer}
+      FTE: ${tableData.fte}
+      GUI vorhanden: ${tableData.gui}
+      MDS GUI möglich: ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud: ${tableData.cloud}
+      IT-Know-how: ${tableData.itKnowHow}
+      Auf ODRL basierend: ${tableData.odrl}
+      Open Source: ${tableData.openSource}
+      Service-Level: ${tableData.serviceLevel}
+      Deployment Type: ${tableData.deployment}
       `;
 
       return encodeURIComponent(emailBody);
