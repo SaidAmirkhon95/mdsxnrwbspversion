@@ -138,7 +138,7 @@ export default function ReiterForConnector() {
     const emailBody = `
       Ich möchte folgende Connector onboarden:
 
-      Name ihres Unternehmens: ${tableData.company}
+      Name ihres Unternehmens:            ${tableData.company}
       Hauptstandort: ${tableData.ort}
       Postleitzahl: ${tableData.plz}
       Land: ${tableData.land}
