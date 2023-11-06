@@ -133,40 +133,37 @@ export default function ReiterForConnector() {
    }, []);
 
   const subjectBase = 'Connetor Onboarding';
-  const sendEmail = () => {
+  const getEmailBody = () => {
+    // Construct the email body with the table data
     const emailBody = `
-  Name ihres Unternehmens: ${tableData.company}
-  Gesellschaftsform: ${tableData.form}
-  Branche: ${tableData.branch}
-  Hauptstandort: ${tableData.ort}
-  Postleitzahl: ${tableData.plz}
-  Land: ${tableData.land}
-  Vorname: ${tableData.vorname}
-  Nachname: ${tableData.nachname}
-  E-Mail für Kontakt: ${tableData.email}
-  Connector Name: ${tableData.connectorName}
-  Connector Typ: ${tableData.connectorTyp}
-  Dauer der Einführung: ${tableData.dauer}
-  FTE: ${tableData.fte}
-  GUI vorhanden: ${tableData.gui}
-  MDS GUI möglich: ${tableData.mdsGui}
-  An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
-  Cloud: ${tableData.cloud}
-  IT-Know-how: ${tableData.itKnowHow}
-  Auf ODRL basierend: ${tableData.odrl}
-  Open Source: ${tableData.openSource}
-  Service-Level: ${tableData.serviceLevel}
-  Deployment Type: ${tableData.deployment}
-  `;
+      Ich möchte folgende Connector onboarden:
   
-    const subject = 'Connector Onboarding Information';
-    const recipientEmail = 'recipient@example.com';
+      Name ihres Unternehmens:            ${tableData.company}
+      Hauptstandort:                       ${tableData.ort}
+      Postleitzahl:                          ${tableData.plz}
+      Land:                                        ${tableData.land}
+      Vorname:                                  ${tableData.vorname}
+      Nachname:                              ${tableData.nachname}
+      E-Mail für Kontakt:               ${tableData.email}
+      Connector Name:                  ${tableData.connectorName}
+      Connector Typ:                      ${tableData.connectorTyp}
+      Dauer der Einführung:         ${tableData.dauer}
+      FTE:                                          ${tableData.fte}
+      GUI vorhanden:                      ${tableData.gui}
+      MDS GUI möglich:                ${tableData.mdsGui}
+      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+      Cloud:                                   ${tableData.cloud}
+      IT-Know-how:                        ${tableData.itKnowHow}
+      Auf ODRL basierend:             ${tableData.odrl}
+      Open Source:                        ${tableData.openSource}
+      Service-Level:                      ${tableData.serviceLevel}
+      Deployment Type:                ${tableData.deployment}
+    `;
   
-    const dataUri = `data:text/plain;charset=utf-8,${encodeURIComponent(emailBody)}`;
-    const emailLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${dataUri}`;
-  
-    window.location.href = emailLink;
+    return encodeURIComponent(emailBody);
   };
+  
+  const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de';
 
   return (
     <ThemeProvider theme={theme}>
@@ -223,10 +220,7 @@ export default function ReiterForConnector() {
                 )}
                 {activeStep === steps.length - 2 && (
                   <Box>
-                    <Button onClick={sendEmail}>
-                      Send Email
-                    </Button>
-                    {/* <a
+                    <a
                       href={`mailto:${recipientEmail}?subject=${encodeURIComponent(
                         subjectBase
                       )}&body=${getEmailBody()}`}
@@ -246,7 +240,7 @@ export default function ReiterForConnector() {
                       >
                         Send Email
                       </Button>
-                    </a> */}
+                    </a>
                   </Box>
                 )}
               </Box>
