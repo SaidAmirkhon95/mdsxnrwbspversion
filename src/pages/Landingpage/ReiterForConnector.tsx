@@ -165,7 +165,7 @@ export default function ReiterForConnector() {
   const getEmailBodyEn = () => {
     // Construct the email body with the table data
     const emailBody = `
-      I would like to onboard the following connectors:
+      I would like to onboard the following Connector:
 
       Name of your company: ${tableData.company}
       Main location: ${tableData.ort}
