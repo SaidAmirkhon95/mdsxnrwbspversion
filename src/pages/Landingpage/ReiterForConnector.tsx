@@ -136,28 +136,28 @@ export default function ReiterForConnector() {
   const getEmailBody = () => {
     // Construct the email body with the table data
     const emailBody = `
-      Ich möchte folgende Connector onboarden:
+    Ich möchte folgende Connector onboarden:
 
-      Name ihres Unternehmens: ${tableData.company}
-      Hauptstandort: ${tableData.ort}
-      Postleitzahl: ${tableData.plz}
-      Land: ${tableData.land}
-      Vorname: ${tableData.vorname}
-      Nachname: ${tableData.nachname}
-      E-Mail für Kontakt: ${tableData.email}
-      Connector Name: ${tableData.connectorName}
-      Connector Typ: ${tableData.connectorTyp}
-      Dauer der Einführung: ${tableData.dauer}
-      FTE: ${tableData.fte}
-      GUI vorhanden: ${tableData.gui}
-      MDS GUI möglich: ${tableData.mdsGui}
-      An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
-      Cloud: ${tableData.cloud}
-      IT-Know-how: ${tableData.itKnowHow}
-      Auf ODRL basierend: ${tableData.odrl}
-      Open Source: ${tableData.openSource}
-      Service-Level: ${tableData.serviceLevel}
-      Deployment Type: ${tableData.deployment}
+    Name ihres Unternehmens:            ${tableData.company}
+    Hauptstandort:                       ${tableData.ort}
+    Postleitzahl:                          ${tableData.plz}
+    Land:                                        ${tableData.land}
+    Vorname:                                  ${tableData.vorname}
+    Nachname:                              ${tableData.nachname}
+    E-Mail für Kontakt:               ${tableData.email}
+    Connector Name:                  ${tableData.connectorName}
+    Connector Typ:                      ${tableData.connectorTyp}
+    Dauer der Einführung:         ${tableData.dauer}
+    FTE:                                          ${tableData.fte}
+    GUI vorhanden:                      ${tableData.gui}
+    MDS GUI möglich:                ${tableData.mdsGui}
+    An Cloud-Anbieter gebunden: ${tableData.cloudAnbieter}
+    Cloud:                                   ${tableData.cloud}
+    IT-Know-how:                        ${tableData.itKnowHow}
+    Auf ODRL basierend:             ${tableData.odrl}
+    Open Source:                        ${tableData.openSource}
+    Service-Level:                      ${tableData.serviceLevel}
+    Deployment Type:                ${tableData.deployment}
       `;
 
       return encodeURIComponent(emailBody);
