@@ -165,7 +165,7 @@ export default function ReiterForConnector() {
   const getEmailBodyEn = () => {
     // Construct the email body with the table data
     const emailBody = `
-      I would like to onboard the following Connector:
+      I would like to onboard the following connectors:
 
       Name of your company: ${tableData.company}
       Main location: ${tableData.ort}
@@ -191,13 +191,26 @@ export default function ReiterForConnector() {
 
     return encodeURIComponent(emailBody);
   };
-  const recipientEmail = 'marcel.altendeitering@isst.fraunhofer.de,marius.hupperz@isst.fraunhofer.de';
+  const recipientEmail =
+    'marcel.altendeitering@isst.fraunhofer.de,marius.hupperz@isst.fraunhofer.de';
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container component='main' maxWidth='md' sx={{ mb: 4 }}>
         <Paper variant='outlined' sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+          <Typography variant='h5' gutterBottom fontWeight='bold'>
+            Connector Onboarding
+            {activeStep === steps.length - 3 ? (
+              <Typography>
+                {isDeutsch
+                  ? translationFunction().deutschTranslations.reiterInfo
+                  : translationFunction().englishTranslations.reiterInfo}
+              </Typography>
+            ) : (
+              ''
+            )}
+          </Typography>
           <Stepper
             activeStep={activeStep}
             sx={{ pt: 3, pb: 5 }}
@@ -241,8 +254,8 @@ export default function ReiterForConnector() {
                       size='large'
                     >
                       {isDeutsch
-                        ? translationFunction().deutschTranslations.kategorisierungButton
-                        : translationFunction().englishTranslations.kategorisierungButton}
+                        ? translationFunction().deutschTranslations.zurückButton
+                        : translationFunction().englishTranslations.zurückButton}
                     </Button>
                   </Box>
                 )}

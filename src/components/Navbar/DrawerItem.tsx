@@ -21,6 +21,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { createTheme } from '@mui/material/styles';
 import TranslationButton from '../../components/TranslationButton';
+import { useLanguage } from '../../LanguageContext';
+import AddchartIcon from '@mui/icons-material/Addchart';
 
 const drawerWidth = 240;
 const theme = createTheme({
@@ -54,18 +56,47 @@ const itemList = [
     to: '/info',
   },
   {
+    text: 'Über uns',
+    icon: <InfoIcon />,
+    to: '/about',
+  },
+  {
+    text: 'Kontakt',
+    icon: <EmailIcon />,
+    to: '/contact',
+  },
+  {
+    text: 'Connector Onboarding',
+    icon: <AddchartIcon />,
+    to: '/reiter',
+  },
+];
+
+const itemListEn = [
+  {
+    text: 'Home',
+    icon: <HomeIcon />,
+    to: '/',
+  },
+  {
+    text: 'MDSxNRW',
+    icon: <PublicIcon />,
+    to: '/info',
+  },
+  {
     text: 'About',
     icon: <InfoIcon />,
     to: '/about',
   },
   {
     text: 'Contact',
-    icon: <EmailIcon />,
+    icon: <AddchartIcon />,
     to: '/contact',
   },
 ];
 
 const DrawerItem = () => {
+  const { isDeutsch } = useLanguage();
   const [open, setOpen] = useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -106,35 +137,65 @@ const DrawerItem = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {itemList.map((item) => {
-            const { text } = item;
-            return (
-              <ListItem
-                key={text}
-                component={Link}
-                to={item.to}
-                sx={{
-                  color: '#414141',
-                  '&:hover': {
-                    backgroundColor: '#e9e5e5',
-                    color: '#1c2859',
-                  },
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    '&:hover': {
-                      backgroundColor: 'transparent',
-                      color: '#1c2859',
-                    },
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            );
-          })}
+          {isDeutsch
+            ? itemList.map((item) => {
+                const { text } = item;
+                return (
+                  <ListItem
+                    key={text}
+                    component={Link}
+                    to={item.to}
+                    sx={{
+                      color: '#414141',
+                      '&:hover': {
+                        backgroundColor: '#e9e5e5',
+                        color: '#1c2859',
+                      },
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          color: '#1c2859',
+                        },
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                );
+              })
+            : itemListEn.map((item) => {
+                const { text } = item;
+                return (
+                  <ListItem
+                    key={text}
+                    component={Link}
+                    to={item.to}
+                    sx={{
+                      color: '#414141',
+                      '&:hover': {
+                        backgroundColor: '#e9e5e5',
+                        color: '#1c2859',
+                      },
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          color: '#1c2859',
+                        },
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                );
+              })}
           <div style={{ marginLeft: '8px' }}>
             <TranslationButton />
           </div>

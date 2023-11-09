@@ -259,5 +259,9 @@
   "guiVorhanden": "GUI available",
   "mdsGuiMöglich": "MDS GUI possible",
   "cloudAnbieterGebunden": "Tied to Cloud-Provider",
-  "oDRLbasierend": "Based on ODRL"
+  "oDRLbasierend": "Based on ODRL",
+  "reiterStepper11": "Company information",
+  "reiterStepper21": "Connector Categorization",
+  "zurückButton": "Back",
+  "reiterInfo": "To add your connector to the MDSxNRW portal, please fill out the following questionnaire. We will go over this information with you again in a subsequent bilateral conversation. Please enter the information required to categorize your connector on this and the following pages. You can then send this information to us by email."
 }

@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 import TranslationButton from '../../components/TranslationButton';
 import { useLanguage } from '../../LanguageContext';
+import { useLocation } from 'react-router-dom';
 
 // personalizacao
 const StyledToolbar = styled(Toolbar)({
@@ -78,6 +79,7 @@ const itemListEnglisch = [
 
 const Navbar = () => {
   const { isDeutsch } = useLanguage();
+  const location = useLocation();
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 800);
   useEffect(() => {
     const handleResize = () => {
@@ -150,7 +152,10 @@ const Navbar = () => {
                       component={Link}
                       to={item.to}
                       sx={{
-                        color: '#000',
+                        color:
+                          text === 'Connector Onboarding' && location.pathname === '/reiter'
+                            ? '#11998E'
+                            : '#000',
                         '&:hover': {
                           backgroundColor: 'transparent',
                           color: '#1e2a5a',
@@ -177,7 +182,10 @@ const Navbar = () => {
                       component={Link}
                       to={item.to}
                       sx={{
-                        color: '#000',
+                        color:
+                          text === 'Connector Onboarding' && location.pathname === '/reiter'
+                            ? '#11998E'
+                            : '#000',
                         '&:hover': {
                           backgroundColor: 'transparent',
                           color: '#1e2a5a',

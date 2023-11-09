@@ -32,8 +32,8 @@ export default function ReiterStepper1() {
       >
         <Typography variant='h6' gutterBottom>
           {isDeutsch
-            ? translationFunction().deutschTranslations.stepper11
-            : translationFunction().englishTranslations.stepper11}
+            ? translationFunction().deutschTranslations.reiterStepper11
+            : translationFunction().englishTranslations.reiterStepper11}
         </Typography>
         <Tooltip
           title={

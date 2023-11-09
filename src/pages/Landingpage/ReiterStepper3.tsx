@@ -53,7 +53,7 @@ export default function ReiterStepper3() {
 
   return (
     <React.Fragment>
-      <div style={{ display: 'grid', overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
+      <div style={{ overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
         <div
           style={{
             flexGrow: '15',
@@ -62,7 +62,7 @@ export default function ReiterStepper3() {
           }}
         >
           {isDeutsch ? (
-            <Typography variant='h6' gutterBottom align='center'>
+            <Typography variant={isMobile ? 'subtitle2' : 'h6'} gutterBottom align='center'>
               <br />
               Sollte sich ihr E-Mail-Programm nicht automatisch öffnen, senden Sie bitte eine Mail
               mit dem Betreff &quot;Connector Onboarding&quot; an&nbsp;
@@ -78,7 +78,7 @@ export default function ReiterStepper3() {
               &nbsp;und fügen Sie bitte unten stehende Tabelle als Text hinzu.
             </Typography>
           ) : (
-            <Typography variant='h6' gutterBottom align='center'>
+            <Typography variant={isMobile ? 'subtitle2' : 'h6'} gutterBottom align='center'>
               <br />
               If your email program does not open automatically, please send an email with the
               subject &quot;Connector Onboarding&quot; to
@@ -96,7 +96,7 @@ export default function ReiterStepper3() {
           )}
         </div>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: isMobile ? 400 : 700 }} size='small' aria-label='a dense table'>
+          <Table sx={{ minWidth: isMobile ? 300 : 700 }} size='small' aria-label='a dense table'>
             <TableBody>
               <TableRow>
                 <TableCell style={{ borderLeft: '1px solid #ccc' }}>

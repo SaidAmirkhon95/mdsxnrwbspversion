@@ -30,10 +30,10 @@ export default function ReiterStepper2() {
   const { isDeutsch } = useLanguage();
   return (
     <React.Fragment>
-      <Typography variant='h6' gutterBottom align='center' style={{ marginBottom: '20px' }}>
+      <Typography variant='h6' gutterBottom align='left' style={{ marginBottom: '20px' }}>
         {isDeutsch
-          ? translationFunction().deutschTranslations.stepper2
-          : translationFunction().englishTranslations.stepper2}
+          ? translationFunction().deutschTranslations.reiterStepper21
+          : translationFunction().englishTranslations.reiterStepper21}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
