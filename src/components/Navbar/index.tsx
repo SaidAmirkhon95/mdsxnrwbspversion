@@ -153,7 +153,11 @@ const Navbar = () => {
                       to={item.to}
                       sx={{
                         color:
-                          text === 'Connector Onboarding' && location.pathname === '/reiter'
+                          (text === 'Connector Onboarding' && location.pathname === '/reiter') ||
+                          (text === 'Home' && location.pathname === '/') ||
+                          (text === 'MDSxNRW' && location.pathname === '/info') ||
+                          (text === 'Über uns' && location.pathname === '/about') ||
+                          (text === 'Kontakt' && location.pathname === '/contact')
                             ? '#11998E'
                             : '#000',
                         '&:hover': {
@@ -183,7 +187,11 @@ const Navbar = () => {
                       to={item.to}
                       sx={{
                         color:
-                          text === 'Connector Onboarding' && location.pathname === '/reiter'
+                          (text === 'Connector Onboarding' && location.pathname === '/reiter') ||
+                          (text === 'Home' && location.pathname === '/') ||
+                          (text === 'MDSxNRW' && location.pathname === '/info') ||
+                          (text === 'About' && location.pathname === '/about') ||
+                          (text === 'Contact' && location.pathname === '/contact')
                             ? '#11998E'
                             : '#000',
                         '&:hover': {

@@ -57,8 +57,8 @@ function Copyright() {
 const steps = ['Unternehmensinformationen', 'Kategorisierung', 'Empfehlung'];
 
 const stepsObject = {
-  stepsAufDeutsch: ['Unternehmensinformationen', 'Kategorisierung', 'Empfehlung'],
-  stepsAufEnglisch: ['Company information', 'Category', 'Suggestion'],
+  stepsAufDeutsch: ['Unternehmensinformationen', 'Kategorisierung', 'Zusammenfassung'],
+  stepsAufEnglisch: ['Company information', 'Category', 'Summary'],
 };
 
 function getStepContent(step: any) {
@@ -132,7 +132,7 @@ export default function ReiterForConnector() {
     };
   }, []);
 
-  const subjectBase = 'Connetor Onboarding';
+  const subjectBase = 'Connector Onboarding';
   const getEmailBody = () => {
     // Construct the email body with the table data
     const emailBody = `
