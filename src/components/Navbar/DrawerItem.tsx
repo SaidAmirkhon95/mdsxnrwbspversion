@@ -65,11 +65,6 @@ const itemList = [
     icon: <EmailIcon />,
     to: '/contact',
   },
-  {
-    text: 'Connector Onboarding',
-    icon: <AddchartIcon />,
-    to: '/reiter',
-  },
 ];
 
 const itemListEn = [
@@ -90,7 +85,7 @@ const itemListEn = [
   },
   {
     text: 'Contact',
-    icon: <AddchartIcon />,
+    icon: <EmailIcon />,
     to: '/contact',
   },
 ];

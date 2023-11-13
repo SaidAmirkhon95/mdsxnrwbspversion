@@ -49,10 +49,10 @@ const itemListDeutsch = [
     text: 'Kontakt',
     to: '/contact',
   },
-  {
+  /* {
     text: 'Connector Onboarding',
     to: '/reiter',
-  },
+  }, */
 ];
 const itemListEnglisch = [
   {
@@ -71,10 +71,10 @@ const itemListEnglisch = [
     text: 'Contact',
     to: '/contact',
   },
-  {
+  /* {
     text: 'Connector Onboarding',
     to: '/reiter',
-  },
+  }, */
 ];
 
 const Navbar = () => {

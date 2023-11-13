@@ -13,6 +13,7 @@ import Impressum from 'pages/InputForm/Impressum';
 import Slide from '@mui/material/Slide';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Section3 = () => {
   const theme = createTheme({
@@ -269,6 +270,37 @@ const Section3 = () => {
             </Slide>
           </Grid>
         </Grid>
+        <Typography
+          variant='subtitle1'
+          display='flex'
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          sx={{
+            '@media (max-width: 600px)': {
+              marginTop: '180px !important',
+            },
+            '@media (max-width: 1100px)': {
+              marginTop: '150px !important',
+            },
+            '@media (max-width: 1535px)': {
+              marginTop: '100px',
+            },
+            '@media (min-width: 1536px)': {
+              marginTop: '50px',
+            },
+          }}
+        >
+          Als Connectoranbieter können Sie hier Ihren Connector in das MDSxNRW-Portal aufnehmen
+          <br />
+          <Button
+            component={RouterLink}
+            to={'/reiter'}
+            sx={{ textTransform: 'none', textAlign: 'center', mt: 2, fontSize: '16px' }}
+          >
+            Zum Connector Onboarding
+          </Button>
+        </Typography>
         <Grid
           item
           xs={12}
@@ -284,7 +316,7 @@ const Section3 = () => {
               marginTop: '200px',
             },
             '@media (min-width: 1536px)': {
-              marginTop: '200px',
+              marginTop: '160px',
             },
           }}
           maxWidth='2000px'

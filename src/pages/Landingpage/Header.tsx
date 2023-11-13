@@ -149,7 +149,6 @@ const Header = () => {
                 </Typography>
                 <Typography sx={{ display: 'flex', marginTop: isMobile ? '' : '30px' }}>
                   <Button
-                    /* disabled */ // am Ende muss weg
                     component={Link}
                     to={'/app'}
                     variant='contained'
