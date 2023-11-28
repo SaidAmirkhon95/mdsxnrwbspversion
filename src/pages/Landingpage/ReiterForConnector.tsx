@@ -192,7 +192,7 @@ export default function ReiterForConnector() {
     return encodeURIComponent(emailBody);
   };
   const recipientEmail =
-    'marcel.altendeitering@isst.fraunhofer.de,marius.hupperz@isst.fraunhofer.de';
+    'marcel.altendeitering@isst.fraunhofer.de; marius.hupperz@isst.fraunhofer.de';
 
   return (
     <ThemeProvider theme={theme}>
