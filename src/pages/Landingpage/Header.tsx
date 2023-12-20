@@ -149,6 +149,7 @@ const Header = () => {
                 </Typography>
                 <Typography sx={{ display: 'flex', marginTop: isMobile ? '' : '30px' }}>
                   <Button
+                    //disabled
                     component={Link}
                     to={'/app'}
                     variant='contained'
@@ -182,10 +183,6 @@ const Header = () => {
                         </BaseText>
                         {/* <OverlappedText>Coming Soon</OverlappedText> */}
                       </OverlappingContainer>
-                      {/* {isDeutsch
-                        ? translationFunction().deutschTranslations.empfehlungStarten
-                        : translationFunction().englishTranslations.empfehlungStarten}
-                      <span style={{ fontSize: '15px', marginTop: '8px' }}>Coming Soon</span> */}
                     </Typography>
                   </Button>
                   <Button

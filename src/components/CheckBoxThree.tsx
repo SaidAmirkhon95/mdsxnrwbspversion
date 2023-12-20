@@ -48,10 +48,10 @@ export default function CheckBxoThree() {
           label='Wählen Sie ein Element aus'
           onChange={handleChange}
         >
-          <MenuItem value={'keine Angabe'}>keine Angabe</MenuItem>
-          <MenuItem value={'Gering'}>Gering</MenuItem>
-          <MenuItem value={'Mittel'}>Mittel</MenuItem>
-          <MenuItem value={'Hoch'}>Hoch</MenuItem>
+          <MenuItem value={'none'}>none</MenuItem>
+          <MenuItem value={'Low'}>Low</MenuItem>
+          <MenuItem value={'Medium'}>Medium</MenuItem>
+          <MenuItem value={'High'}>High</MenuItem>
         </Select>
       </FormControl>
     </Box>

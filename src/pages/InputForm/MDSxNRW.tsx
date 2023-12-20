@@ -22,6 +22,9 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
 import { useMyContext } from '../../MyContext';
+import greenTrue from './../../components/Pictures/greenTrue.jpg';
+import yellowTrue from './../../components/Pictures/yellowTrue.jpg';
+import redFalse from './../../components/Pictures/redFalse.jpg';
 
 function Copyright() {
   return (
@@ -180,38 +183,46 @@ export default function MDSxNRW() {
     let count = 1;
     Connectors.slice(0, 5).forEach((connector, index) => {
       pdfDoc.setFontSize(defaultFontSize);
-      const imgData = connector.logo;
-      const greenImg = connector.greenImg;
-      const yellowImg = connector.yellowImg;
-      const redImg = connector.redImg;
+      const imgData = connector.connectorLogo;
+      const greenImg = <img src={greenTrue} alt='Green' />;
+      const yellowImg = <img src={yellowTrue} alt='Yellow' />;
+      const redImg = <img src={redFalse} alt='Red' />;
       const table1Data = [
-        ['Name', connector.name],
-        ['Beschreibung', connector.description],
+        ['Name', connector.connectorName],
+        ['Beschreibung', connector.connectorDescription],
+        ['Zahlung', connector.payment],
         ['Preis', connector.price],
-        ['Matching', connector.score],
-        ['Kontakt Ort', `${connector.location}`],
-        ['Website', `${connector.website}`],
-        ['Zielgruppe', `${connector.zielgruppe}`],
+        ['Matching', connector.score.toFixed(2)],
+        ['Vorname', connector.contactForename],
+        ['Nachname', connector.contactName],
+        ['Kontakt Email', connector.connectorEmail],
+        ['Kontakt Ort', connector.contactLocation],
+        ['Website', connector.connectorWebsite],
       ];
       const table2Data = [
         ['Open Source', connector.openSource],
-        ['Lizenz', connector.lizenz],
-        ['Spezifische GUI', connector.spezifischeGUI],
+        ['Lizenz', connector.license],
+        ['GUI', connector.gui],
+        ['Spezifische GUI', connector.dsSpecificGui],
+        ['Selbstimplementierung', connector.selfImplementation],
         ['Cloud', connector.cloud],
-        ['Cloud Provider', connector.cloudGebraucht],
-        ['ODRL Sprachmodell', connector.basedonODRL],
-        ['Alternatives Policy Sprachmodell', connector.alternativPolicy],
-        ['Speicher Begrenzung', connector.volumeRestricted],
+        ['Cloud Provider', connector.cloudNeeded],
+        ['ODRL Sprachmodell', connector.basedOnODRL],
+        ['Alternatives Policy Sprachmodell', connector.alternativePolicyExpressionModel],
         ['Verwendete Protokolle', connector.usedProtocols],
         ['Technologie Reifegrad (TRL)', connector.trl],
+        ['Target Data Space Roles', connector.targetDataspaceRoles],
       ];
       const table3Data = [
-        ['Typ', connector.typ],
-        ['Version', connector.version],
-        ['Deployment Typ', connector.deployment],
-        ['Regional Beschränkt', connector.regionalBeschränkt],
-        ['Industrie Fokus', connector.industrie],
-        ['Spezielle Nutzungsbediengunen', connector.specialUsagePolicies],
+        ['Preismodell', connector.pricingModel],
+        ['Zahlungsintervall', connector.paymentInterval],
+        ['Abonnementbeschreibung', connector.abonnementDescription],
+        ['Kostenberechnungsbasis', connector.costCalculationBasis],
+        ['Typ', connector.connectorType],
+        ['Version', connector.connectorVersion],
+        ['Deployment Typ', connector.deploymentType],
+        ['Regional Beschränkt', connector.regionalRestrictions],
+        ['Industrie Fokus', connector.targetIndustrySectors],
         ['Referenzen', connector.references],
       ];
       if (currentY + 4 * verticalSpacing + table2Data.length * cellHeight * 2 > pageHeight) {
@@ -220,26 +231,26 @@ export default function MDSxNRW() {
       }
       //Ampel Ordnung
       const guiSymbol = connector.gui ? greenImg : redImg;
-      const supportSymbol = connector.support ? greenImg : redImg;
-      const dokumentationSymbol = connector.dokumentation ? greenImg : redImg;
+      const supportSymbol = connector.hasSupport ? greenImg : redImg;
+      const dokumentationSymbol = connector.hasDocumentation ? greenImg : redImg;
       let itKnowHowIcon;
-      if (connector.itknowhow === 0) {
+      if (connector.itKnowhow === aufwandThree || aufwandThree === 'High') {
         itKnowHowIcon = greenImg;
-      } else if (connector.itknowhow === 1) {
+      } else if (connector.itKnowhow === 'Medium' && aufwandThree === 'Low') {
         itKnowHowIcon = yellowImg;
       } else {
         itKnowHowIcon = redImg;
       }
       //link zum Homepage der Connector
-      const homepageUrl = connector.homepage?.props.href || '';
+      const homepageUrl = connector.connectorWebsite || '';
       //linke Spalte
       pdfDoc.text(`${count}`, x, currentY);
       count++;
       pdfDoc.addImage(imgData, 'JPEG', x, currentY, imgWidth, imgHeight);
-      pdfDoc.text(`${connector.maintainer}`, x, currentY + 7 * verticalSpacing);
-      pdfDoc.text(`${connector.dienst}`, x, currentY + 8 * verticalSpacing);
+      pdfDoc.text(`${connector.connectorMaintainer}`, x, currentY + 7 * verticalSpacing);
+      pdfDoc.text(`${connector.serviceLevel}`, x, currentY + 8 * verticalSpacing);
       //mittlere Spalte
-      pdfDoc.text(`${connector.name}`, x + 75, currentY + verticalSpacing);
+      pdfDoc.text(`${connector.connectorName}`, x + 75, currentY + verticalSpacing);
       pdfDoc.text(
         `Implementierungs-Dauer: ${connector.duration}`,
         x + 75,
@@ -284,7 +295,11 @@ export default function MDSxNRW() {
       );
       pdfDoc.text(`Dokumentation`, x + 80, currentY + 8 * verticalSpacing);
       //rechte Spalte
-      pdfDoc.text(`${connector.score}`, x + 150, currentY + 5 * verticalSpacing);
+      pdfDoc.text(
+        `${(connector.score * 100).toFixed(0)}%`,
+        x + 150,
+        currentY + 5 * verticalSpacing,
+      );
       pdfDoc.text(`${connector.price}`, x + 150, currentY + 6 * verticalSpacing);
       pdfDoc.textWithLink('Homepage', x + 150, currentY + 8 * verticalSpacing, {
         url: homepageUrl,
@@ -292,46 +307,53 @@ export default function MDSxNRW() {
       //die Tabellen
       pdfDoc.setFontSize(tableFontSize);
       if (index >= 0) {
-        currentY += table1Data.length * cellHeight + verticalSpacing;
+        currentY += table1Data.length * cellHeight + verticalSpacing - 20;
       }
       const tableData = [table1Data, table3Data, table2Data];
       const totalTables = tableData.length;
       let currentYOffset = 10; //Abstand zwischen Daten und Tabelle
       const lineHeight = 5;
       const maxRowHeight = 20; //bestimmt Abstand zwischen größe Text Zeilen
+      // Iterate through each table in tableData
       tableData.forEach((table, tableIndex) => {
         table.forEach((row, rowIndex) => {
           const nextRowHeight = maxRowHeight;
           const maxCellWidth = cellWidth - 2;
           let rowHeight = 0;
           const cellSpacing = 1;
-          let isRowWithLargeText = true;
+          let isRowWithLargeText = false;
           // Calculate the maximum height needed for this row
           row.forEach((cell, colIndex) => {
-            const cellText = cell.toString();
+            const cellText = cell !== null ? cell.toString() : 'Null';
             const textLines = pdfDoc.splitTextToSize(cellText, maxCellWidth, { splitBy: 'auto' });
             const cellLinesHeight = textLines.length * tableFontSize;
+            // Adjust rowHeight based on the content of the cell
             if (cellLinesHeight > rowHeight) {
               rowHeight = cellLinesHeight - 4;
             }
+            // Adjust rowHeight if it exceeds the maxRowHeight
             if (rowHeight > maxRowHeight) {
               rowHeight = maxRowHeight * (textLines.length / 6); //bestimmt Abstand zwischen größe Text Zeilen
               isRowWithLargeText = true;
             }
           });
+          // Check if the row with large text exceeds the page height, then start a new page
           if (isRowWithLargeText && currentY + rowHeight > pageHeight / 1.6) {
             pdfDoc.addPage(); // Start a new page
             currentY = 0; // Reset the Y position
           }
+          // Iterate through each cell in the row
           row.forEach((cell, colIndex) => {
             const cellX = x + colIndex * cellWidth;
-            const cellText = cell.toString();
+            const cellText = cell !== null ? cell.toString() : 'Null';
             const textLines = pdfDoc.splitTextToSize(cellText, maxCellWidth, { splitBy: 'auto' });
             const cellLinesHeight = textLines.length * tableFontSize;
             const cellY = currentY + rowIndex * cellHeight + currentYOffset;
             const textY = cellY + (rowHeight - cellLinesHeight) / 2;
             const cellLines = textLines.length;
+            // Calculate space between lines for proper vertical alignment
             const spaceBetweenLines = (rowHeight - 7 - cellLines * tableFontSize) / (cellLines + 1);
+            // Check if textLines length is greater than 2, then handle multi-line text
             if (textLines.length > 2) {
               textLines.forEach((line: string, lineIndex: number) => {
                 const adjustedTextY =
@@ -339,18 +361,28 @@ export default function MDSxNRW() {
                 pdfDoc.text(line, cellX + 1, adjustedTextY + 3);
               });
             } else {
+              // Handle single or double-line text
               textLines.forEach((line: string, lineIndex: number) => {
                 const adjustedTextY =
                   textY + (tableFontSize - cellSpacing - lineHeight) * lineIndex + 6;
                 pdfDoc.text(line, cellX + 1, adjustedTextY);
               });
             }
+            // Draw rectangle for each cell
             pdfDoc.rect(cellX, cellY, cellWidth, rowHeight);
           });
+          // Update currentY position after processing the row
           currentY += rowHeight - 5;
+          // Check if the next row exceeds the page height, then start a new page
+          if (currentY + nextRowHeight > pageHeight / 2) {
+            pdfDoc.addPage(); // Start a new page
+            currentY = 0; // Reset the Y position
+          }
         });
+
+        // Add vertical offset between tables if not the last table
         if (tableIndex < totalTables - 1) {
-          currentYOffset += 7 * cellHeight + verticalSpacing;
+          currentYOffset += 10 * cellHeight + verticalSpacing;
         }
       });
       pdfDoc.setFontSize(defaultFontSize);

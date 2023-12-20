@@ -18,11 +18,36 @@ export default function CheckBoxOne() {
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedValue(event.target.value);
     setAufwandOne(event.target.value);
+
+    // Send the selected data to the backend
+    /* sendSelectedData(event.target.value); */
   };
 
   useEffect(() => {
     setSelectedValue(aufwandOne);
   }, [aufwandOne]);
+
+  /* const sendSelectedData = async (selectedData: any) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/saveData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send data to the backend');
+      }
+
+      // Handle the response if needed
+      const responseData = await response.json();
+      console.log('Response from backend:', responseData);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }; */
 
   return (
     <Box sx={{ display: 'grid' }}>

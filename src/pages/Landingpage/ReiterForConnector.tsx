@@ -19,9 +19,7 @@ import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
-import OnboardButton from 'components/OnboardButton';
 import { useTableData } from '../../TableDataProvider';
-import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 
 function Copyright() {
   return (

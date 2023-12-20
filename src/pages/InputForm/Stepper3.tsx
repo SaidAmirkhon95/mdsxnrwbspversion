@@ -23,8 +23,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import { useLanguage } from '../../LanguageContext';
 import translationFunction from 'translationFunction';
+import { useMyContext } from '../../MyContext';
+import Tooltip from '@mui/material/Tooltip';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const theme = createTheme({
   palette: {
@@ -208,6 +212,8 @@ export default function Stepper3() {
     };
   }, []);
 
+  const { aufwandThree } = useMyContext();
+
   return (
     <React.Fragment>
       <div style={{ display: 'flex', overflow: 'hidden', maxWidth: '2000px', margin: '0 auto' }}>
@@ -248,28 +254,27 @@ export default function Stepper3() {
                     itemsFalseRed.push('GUI');
                   }
 
-                  if (item?.dokumentation) {
+                  if (item?.hasDocumentation) {
                     itemsTrueGreen.push('Dokumentation');
                   } else {
                     itemsFalseRed.push('Dokumentation');
                   }
-
-                  if (item?.itknowhow === 0) {
+                  if (item?.itknowhow === aufwandThree || aufwandThree === 'High') {
                     itemsTrueGreen.push('IT-Know-How');
-                  } else if (item?.itknowhow === 1) {
+                  } else if (item?.itknowhow === 'Medium' && aufwandThree === 'Low') {
                     itemsYellow.push('IT-Know-How');
                   } else {
                     itemsFalseRed.push('IT-Know-How');
                   }
 
-                  if (item?.support) {
+                  if (item?.hasSupport) {
                     itemsTrueGreen.push('Support');
                   } else {
                     itemsFalseRed.push('Support');
                   }
                   return (
                     <Paper
-                      key={item.connector}
+                      key={item.id}
                       elevation={0}
                       sx={{
                         p: 1,
@@ -278,7 +283,7 @@ export default function Stepper3() {
                     >
                       <Paper
                         elevation={6}
-                        key={item.connector}
+                        key={item.id}
                         sx={{ py: 1, px: 0 }}
                         style={{
                           borderColor: '#B4B4B4',
@@ -288,10 +293,26 @@ export default function Stepper3() {
                       >
                         <Grid container>
                           <Grid item xs={12} md={isMobile ? 12 : isTablet ? 3 : 5}>
+                            <div style={{ color: 'grey' }}>{`${item.id}.`}</div>
+                            {/* <div>
+                              <text style={{ fontSize: '15px', color: '#11998E' }}>
+                                Preis-Leistungs-Empfehlung
+                              </text>
+                              <Tooltip title='Info' placement='top-start'>
+                                <InfoOutlinedIcon
+                                  color='disabled'
+                                  fontSize='small'
+                                  style={{
+                                    marginLeft: '5px',
+                                    paddingTop: '5px',
+                                  }}
+                                />
+                              </Tooltip>
+                            </div> */}
                             <p style={{ marginTop: '-8px', marginLeft: '-5px' }}>
                               <img
-                                src={item.logo}
-                                alt={`Logo für ${item.logo}`}
+                                src={item.connectorLogo}
+                                alt={`Logo für ${item.connectorLogo}`}
                                 style={{ width: '100px', height: '100px' }}
                               />
                             </p>
@@ -300,22 +321,25 @@ export default function Stepper3() {
                                 variant='h6'
                                 sx={{ textAlign: 'start', fontWeight: 'bold' }}
                               >
-                                {item?.name}
+                                {item?.connectorName}
                               </Typography>
                             ) : (
                               ''
                             )}
-                            <p>{item?.maintainer}</p>
-                            <p>{item?.dienst}</p>
+                            <p>{item?.connectorMaintainer}</p>
+                            <p>{item?.serviceLevel}</p>
                             <Grid item xs={isMobile ? 12 : isTablet ? 7 : 12} md={11.1}>
                               <Typography
                                 onClick={() => handleDialogOpen(index)}
-                                style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                                style={{
+                                  textDecoration: 'underline',
+                                  cursor: 'pointer',
+                                  color: '#11998E',
+                                }}
                               >
                                 {isDeutsch
                                   ? translationFunction().deutschTranslations.stepper35
                                   : translationFunction().englishTranslations.stepper35}{' '}
-                                {item.connector}
                               </Typography>
                               <BootstrapDialog
                                 onClose={() => handleDialogClose(index)}
@@ -332,7 +356,7 @@ export default function Stepper3() {
                                     ? translationFunction().deutschTranslations.stepper36
                                     : translationFunction().englishTranslations.stepper36}{' '}
                                   {selectedConnectorIndex !== null
-                                    ? Connectors[selectedConnectorIndex].connector
+                                    ? Connectors[selectedConnectorIndex].connectorName
                                     : ''}
                                 </BootstrapDialogTitle>
                                 <DialogContent dividers>
@@ -386,7 +410,7 @@ export default function Stepper3() {
                                                 Name
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].name}
+                                                {Connectors[selectedConnectorIndex].connectorName}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -398,7 +422,32 @@ export default function Stepper3() {
                                                       .stepper310}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].description}
+                                                {
+                                                  Connectors[selectedConnectorIndex]
+                                                    .connectorDescription
+                                                }
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch ? 'Zahlung' : 'Payment'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].payment === true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch ? 'Preismodell' : 'Pricing Model'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].pricingModel}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -415,10 +464,77 @@ export default function Stepper3() {
                                             </TableRow>
                                             <TableRow>
                                               <TableCell style={{ borderLeft: '1px solid #ccc' }}>
-                                                Matching
+                                                {isDeutsch
+                                                  ? 'Zahlungsintervall'
+                                                  : 'Payment Interval'}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].score}
+                                                {Connectors[selectedConnectorIndex].paymentInterval}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch
+                                                  ? 'Abonnementbeschreibung'
+                                                  : 'Abonnement Description'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {
+                                                  Connectors[selectedConnectorIndex]
+                                                    .abonnementDescription
+                                                }
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch
+                                                  ? 'Kostenberechnungsbasis'
+                                                  : 'Cost Calculation Basis'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {
+                                                  Connectors[selectedConnectorIndex]
+                                                    .costCalculationBasis
+                                                }
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch
+                                                  ? 'Matching zu Benutzerangaben'
+                                                  : 'Matching to user information'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].score !==
+                                                undefined
+                                                  ? `${Math.floor(item.score * 100)}% ${
+                                                      isDeutsch ? 'Score' : 'Score'
+                                                    }`
+                                                  : ''}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch ? 'Vorname' : 'First Name'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].contactForename}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch ? 'Nachname' : 'Last Name'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].contactName}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch ? 'Kontakt Email' : 'Contact Email'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].connectorEmail}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -430,7 +546,7 @@ export default function Stepper3() {
                                                       .stepper312}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].location}
+                                                {Connectors[selectedConnectorIndex].contactLocation}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -438,19 +554,10 @@ export default function Stepper3() {
                                                 Website
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].website}
-                                              </TableCell>
-                                            </TableRow>
-                                            <TableRow>
-                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
-                                                {isDeutsch
-                                                  ? translationFunction().deutschTranslations
-                                                      .stepper313
-                                                  : translationFunction().englishTranslations
-                                                      .stepper313}
-                                              </TableCell>
-                                              <TableCell>
-                                                {Connectors[selectedConnectorIndex].zielgruppe}
+                                                {
+                                                  Connectors[selectedConnectorIndex]
+                                                    .connectorWebsite
+                                                }
                                               </TableCell>
                                             </TableRow>
                                           </TableBody>
@@ -487,7 +594,21 @@ export default function Stepper3() {
                                                       .stepper314}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].lizenz}
+                                                {Connectors[selectedConnectorIndex].license}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                GUI
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex].gui === true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -499,7 +620,31 @@ export default function Stepper3() {
                                                       .stepper315}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].spezifischeGUI}
+                                                {Connectors[selectedConnectorIndex]
+                                                  .dsSpecificGui === true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
+                                              </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                              <TableCell style={{ borderLeft: '1px solid #ccc' }}>
+                                                {isDeutsch
+                                                  ? 'Selbstimplementierung'
+                                                  : 'Self-implementation'}
+                                              </TableCell>
+                                              <TableCell>
+                                                {Connectors[selectedConnectorIndex]
+                                                  .selfImplementation === true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -511,7 +656,14 @@ export default function Stepper3() {
                                                       .stepper316}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].cloudGebraucht}
+                                                {Connectors[selectedConnectorIndex].cloudNeeded ===
+                                                true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -531,7 +683,14 @@ export default function Stepper3() {
                                                       .stepper317}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].basedonODRL}
+                                                {Connectors[selectedConnectorIndex].basedOnODRL ===
+                                                true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -545,11 +704,11 @@ export default function Stepper3() {
                                               <TableCell>
                                                 {
                                                   Connectors[selectedConnectorIndex]
-                                                    .alternativPolicy
+                                                    .alternativePolicyExpressionModel
                                                 }
                                               </TableCell>
                                             </TableRow>
-                                            <TableRow>
+                                            {/* <TableRow>
                                               <TableCell style={{ borderLeft: '1px solid #ccc' }}>
                                                 {isDeutsch
                                                   ? translationFunction().deutschTranslations
@@ -563,7 +722,7 @@ export default function Stepper3() {
                                                     .volumeRestricted
                                                 }
                                               </TableCell>
-                                            </TableRow>
+                                            </TableRow> */}
                                             <TableRow>
                                               <TableCell style={{ borderLeft: '1px solid #ccc' }}>
                                                 {isDeutsch
@@ -573,7 +732,11 @@ export default function Stepper3() {
                                                       .stepper320}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].usedProtocols}
+                                                {Connectors[
+                                                  selectedConnectorIndex
+                                                ].usedProtocols.map((protocol, index) => (
+                                                  <div key={index}>{protocol}</div>
+                                                ))}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -614,7 +777,7 @@ export default function Stepper3() {
                                                       .stepper322}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].typ}
+                                                {Connectors[selectedConnectorIndex].connectorType}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -622,7 +785,10 @@ export default function Stepper3() {
                                                 Version
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].version}
+                                                {
+                                                  Connectors[selectedConnectorIndex]
+                                                    .connectorVersion
+                                                }
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -634,7 +800,11 @@ export default function Stepper3() {
                                                       .stepper323}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].deployment}
+                                                {Connectors[
+                                                  selectedConnectorIndex
+                                                ].deploymentType.map((deployment, index) => (
+                                                  <div key={index}>{deployment}</div>
+                                                ))}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -646,10 +816,14 @@ export default function Stepper3() {
                                                       .stepper324}
                                               </TableCell>
                                               <TableCell>
-                                                {
-                                                  Connectors[selectedConnectorIndex]
-                                                    .regionalBeschränkt
-                                                }
+                                                {Connectors[selectedConnectorIndex]
+                                                  .regionalRestrictions === true
+                                                  ? isDeutsch
+                                                    ? 'Ja'
+                                                    : 'Yes'
+                                                  : isDeutsch
+                                                  ? 'Nein'
+                                                  : 'No'}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -661,22 +835,23 @@ export default function Stepper3() {
                                                       .stepper325}
                                               </TableCell>
                                               <TableCell>
-                                                {Connectors[selectedConnectorIndex].industrie}
+                                                {Connectors[
+                                                  selectedConnectorIndex
+                                                ].targetIndustrySectors.map((sector, index) => (
+                                                  <div key={index}>{sector}</div>
+                                                ))}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
                                               <TableCell style={{ borderLeft: '1px solid #ccc' }}>
-                                                {isDeutsch
-                                                  ? translationFunction().deutschTranslations
-                                                      .stepper326
-                                                  : translationFunction().englishTranslations
-                                                      .stepper326}
+                                                Target Data Space Roles
                                               </TableCell>
                                               <TableCell>
-                                                {
-                                                  Connectors[selectedConnectorIndex]
-                                                    .specialUsagePolicies
-                                                }
+                                                {Connectors[
+                                                  selectedConnectorIndex
+                                                ].targetDataspaceRoles.map((sector, index) => (
+                                                  <div key={index}>{sector}</div>
+                                                ))}
                                               </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -709,10 +884,10 @@ export default function Stepper3() {
                               ''
                             ) : (
                               <Typography
-                                variant='h6'
+                                variant='subtitle1'
                                 sx={{ textAlign: 'start', fontWeight: 'bold' }}
                               >
-                                {item?.name}
+                                {item?.connectorName}
                               </Typography>
                             )}
                             {isDeutsch
@@ -722,7 +897,7 @@ export default function Stepper3() {
                             {isDeutsch
                               ? translationFunction().deutschTranslations.stepper32halb
                               : translationFunction().englishTranslations.stepper32halb}{' '}
-                            {item?.fte} FTE
+                            {item?.fte}
                             <p></p>
                             <div
                               style={{
@@ -777,23 +952,58 @@ export default function Stepper3() {
                             item
                             xs={isMobile ? 12 : isTablet ? 7 : 12}
                             md={isMobile ? 12 : isTablet ? 1 : 2}
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'flex-end',
-                              alignItems: 'center',
-                              marginLeft: '-20px',
-                            }}
+                            style={{ marginLeft: '-20px' }}
                           >
                             <Typography variant='body1' align='right'>
-                              {item?.score} <br />
-                              {item?.price}
-                              <div
+                              <Grid>
+                                <div style={{ fontSize: '15px' }}>
+                                  {item?.score !== undefined
+                                    ? `${Math.floor(item.score * 100)}% ${
+                                        isDeutsch ? 'Score' : 'Score'
+                                      }`
+                                    : ''}
+                                </div>
+                                <div
+                                  style={{
+                                    color: 'grey',
+                                    fontWeight: 'bold',
+                                    fontSize: '25px',
+                                    display: 'inline-flex',
+                                    flexDirection: 'row',
+                                  }}
+                                >
+                                  {`${item?.price} €`}
+                                  <Tooltip title='Info' placement='top-start'>
+                                    <InfoOutlinedIcon
+                                      color='disabled'
+                                      fontSize='small'
+                                      style={{
+                                        marginLeft: '5px',
+                                        paddingTop: '5px',
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </div>
+                                <text style={{ fontSize: '10px' }}>Durchschnitt pro Monat</text>
+                              </Grid>
+                              {isMobile ? '' : isTablet ? '' : <br />}
+                              {isMobile ? '' : isTablet ? '' : <br />}
+                              {isMobile ? '' : isTablet ? '' : <br />}
+                              <Grid
                                 style={{
-                                  marginBottom: isMobile ? '' : isTablet ? '' : '-100px',
+                                  display: 'flex',
+                                  justifyContent: 'flex-end',
                                 }}
                               >
-                                {item?.link}
-                              </div>
+                                <Button
+                                  variant='contained'
+                                  sx={{ mt: 3, ml: 1 }}
+                                  href={item?.connectorWebsite}
+                                  target='_blank'
+                                >
+                                  Weiter
+                                </Button>
+                              </Grid>
                             </Typography>
                           </Grid>
                         </Grid>
